@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class SwipeController : MonoBehaviour
+public class SwipeController : Singleton<SwipeController>
 {
 
     //Swipe Controls
