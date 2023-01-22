@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class UiManager : Singleton<UiManager>
+public class Enemy : Unit
 {
-    public TextMeshProUGUI swipeDirTxt;
+    [HideInInspector] public Arrow enemyArrow;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        enemyArrow = GetComponent<Arrow>();
     }
 
     // Update is called once per frame

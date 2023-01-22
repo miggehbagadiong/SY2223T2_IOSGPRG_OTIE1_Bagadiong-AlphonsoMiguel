@@ -7,7 +7,6 @@ using System;
 
 public class SwipeController : Singleton<SwipeController>
 {
-
     //Swipe Controls
     Vector2 startTapPos;
     Vector2 endTapPos;
@@ -97,11 +96,14 @@ public class SwipeController : Singleton<SwipeController>
             {
                 Debug.Log("Swiped Left!");
                 swipeDir = "Left";
+                UiManager.Instance.swipeDirTxt.text = swipeDir;
+
             }
             else
             {
                 Debug.Log("Swiped Right");
                 swipeDir = "Right";
+                UiManager.Instance.swipeDirTxt.text = swipeDir;
             }
         }
         else
@@ -111,11 +113,13 @@ public class SwipeController : Singleton<SwipeController>
             {
                 Debug.Log("Swiped Down");
                 swipeDir = "Down";
+                UiManager.Instance.swipeDirTxt.text = swipeDir;
             }
             else
             {
                 Debug.Log("Swiped Up!");
                 swipeDir = "Up";
+                UiManager.Instance.swipeDirTxt.text = swipeDir;
             }
         }
 
@@ -126,6 +130,8 @@ public class SwipeController : Singleton<SwipeController>
     {
         Debug.Log("Tapped!");
         swipeDir = "Tap";
+
+        UiManager.Instance.swipeDirTxt.text = swipeDir;
 
         // the dash implementation may also be placed here just remember to look back here
         this.isTapped = true;
