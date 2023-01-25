@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum ArrowDirection
 {
-    North = 1,
-    East = 2,
-    South = 3,
-    West = 4
+    Up = 1,
+    Right = 2,
+    Down = 3,
+    Left = 4
 };
 
 public class Arrow : Singleton<Arrow>
-{
-    public ArrowDirection arrowDir;
-
+{ 
     public SpriteRenderer arrowRender;
 
     public Sprite[] greenArrowDir;
@@ -21,29 +19,21 @@ public class Arrow : Singleton<Arrow>
     void Start()
     {
         arrowRender= GetComponent<SpriteRenderer>();
-
-        // temporary for now
-        SetArrowRender((int)arrowDir, true);
     }
 
-    void Update()
+    public void SetArrowRender(int index, bool isArrowNormalDir)
     {
-        
-    }
-
-    void SetArrowRender(int index, bool isArrowOpposite)
-    {
-        if (isArrowOpposite)
+        if (isArrowNormalDir)
         {
             arrowRender.sprite = greenArrowDir[index - 1];
         }
         else
         {
-            arrowRender.sprite= redArrowDir[index - 1];
+            arrowRender.sprite = redArrowDir[index - 1];
         }
     }
 
-    // latter milestones
+    // latter milestone
     void SetRotatingArrowRender(int index)
     {
 

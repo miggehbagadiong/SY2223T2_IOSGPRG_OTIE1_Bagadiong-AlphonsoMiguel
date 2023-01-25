@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
-    [HideInInspector] public Arrow enemyArrow;
+    //public Arrow enemyArrow;
+    public ArrowDirection arrowDirection;
+    public bool isArrowRightDir; // adjust this
+    [HideInInspector] public string setArrowDir;
 
-    // Start is called before the first frame update
     void Start()
     {
-        enemyArrow = GetComponent<Arrow>();
+        //enemyArrow= GetComponent<Arrow>();
+        Arrow.Instance.SetArrowRender((int)arrowDirection, isArrowRightDir);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+    void SetArrowDirection()
+    {
+
+    }
+
+    
 }

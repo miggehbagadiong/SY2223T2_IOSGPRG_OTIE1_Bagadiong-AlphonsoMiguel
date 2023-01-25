@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 
 public class Player : Unit
@@ -18,6 +19,11 @@ public class Player : Unit
     void Update()
     {
         closestEnemy = FindClosestEnemy();
+    }
+
+    private void LateUpdate()
+    {
+        SwipeAttack();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,4 +57,31 @@ public class Player : Unit
 
         return closestEnemy;
     }
+
+    private void SwipeAttack()
+    {
+        Debug.Log("Can Attack");
+
+        if (closestEnemy != null) 
+        {
+            if (SwipeController.Instance.swipeDir == closestEnemy.arrowDirection.ToString())
+            {
+                Destroy(closestEnemy.gameObject);
+                Debug.Log("Swipe correct! Enemy Destroyed!");
+                // reference managers to this part
+
+            }
+            else if (SwipeController.Instance.swipeDir != closestEnemy.arrowDirection.ToString())
+            {
+                Debug.Log("Swipe wrong. Player swipe disabled!");
+
+                // start coroutine where swipe is disabled
+            }
+        }
+        else
+        {
+            Debug.Log("No Enemy in Sight!");
+        }
+    }
+
 }
