@@ -123,7 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bcb8427c7efe94eb48096a4541c398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowDirection: 2
+  eArrowComp: {fileID: 0}
+  arrowDirection: 0
   isArrowRightDir: 0
   setArrowDir: 
 --- !u!1 &5452152072765630414

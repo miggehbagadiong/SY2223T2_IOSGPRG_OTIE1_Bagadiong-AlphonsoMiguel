@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
-    //public Arrow enemyArrow;
+    public Arrow eArrowComp;
     public ArrowDirection arrowDirection;
     public bool isArrowRightDir; // adjust this
     [HideInInspector] public string setArrowDir;
 
     void Start()
     {
-        //enemyArrow= GetComponent<Arrow>();
-        Arrow.Instance.SetArrowRender((int)arrowDirection, isArrowRightDir);
+        eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
+        eArrowComp.SetArrowRender((int)arrowDirection, isArrowRightDir);
     }
 
     void Update()
