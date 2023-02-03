@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Unit
 {
@@ -31,6 +32,7 @@ public class Player : Unit
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
+            SceneManager.LoadScene("Game Over");
             
         }
     }
@@ -60,20 +62,20 @@ public class Player : Unit
 
     private void SwipeAttack()
     {
-        Debug.Log("Can Attack");
+        //Debug.Log("Can Attack");
 
         if (closestEnemy != null) 
         {
             if (SwipeController.Instance.swipeDir == closestEnemy.arrowDirection.ToString())
             {
                 Destroy(closestEnemy.gameObject);
-                Debug.Log("Swipe correct! Enemy Destroyed!");
+                //Debug.Log("Swipe correct! Enemy Destroyed!");
                 // reference managers to this part
 
             }
             else if (SwipeController.Instance.swipeDir != closestEnemy.arrowDirection.ToString())
             {
-                Debug.Log("Swipe wrong. Player swipe disabled!");
+                //Debug.Log("Swipe wrong. Player swipe disabled!");
 
                 // start coroutine where swipe is disabled
             }

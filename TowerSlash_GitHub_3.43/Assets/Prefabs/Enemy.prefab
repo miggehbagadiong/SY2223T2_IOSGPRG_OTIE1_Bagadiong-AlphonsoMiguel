@@ -233,3 +233,8 @@ MonoBehaviour:
   - {fileID: -8804616457426036517, guid: c3b079607e21dd74aa88dee2c1e010ec, type: 3}
   - {fileID: -5536453835264154603, guid: c3b079607e21dd74aa88dee2c1e010ec, type: 3}
   - {fileID: -378127801991057421, guid: c3b079607e21dd74aa88dee2c1e010ec, type: 3}
+  yellowArrowDir:
+  - {fileID: 7295645155103252252, guid: 14a2b914167b58d4f971a2e8b959f95c, type: 3}
+  - {fileID: -6650988006519082288, guid: 14a2b914167b58d4f971a2e8b959f95c, type: 3}
+  - {fileID: 5920775636592295410, guid: 14a2b914167b58d4f971a2e8b959f95c, type: 3}
+  - {fileID: -4685805890758785722, guid: 14a2b914167b58d4f971a2e8b959f95c, type: 3}
