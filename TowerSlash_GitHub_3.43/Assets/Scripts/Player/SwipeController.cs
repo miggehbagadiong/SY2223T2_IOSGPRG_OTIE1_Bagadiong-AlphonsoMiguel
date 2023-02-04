@@ -15,11 +15,6 @@ public class SwipeController : Singleton<SwipeController>
     [SerializeField] float tapRange = 10;
     [HideInInspector] public string swipeDir;
 
-    void Start()
-    {
-            
-    }
-
     void Update()
     {
 #if UNITY_EDITOR

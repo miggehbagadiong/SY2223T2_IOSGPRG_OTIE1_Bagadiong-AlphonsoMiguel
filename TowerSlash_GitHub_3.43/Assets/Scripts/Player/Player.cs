@@ -9,6 +9,7 @@ public class Player : Unit
     #region Player Variables
 
     [HideInInspector] public Enemy closestEnemy;
+    [HideInInspector] public bool isSwipeEnabled = true;
 
     #endregion
 
@@ -32,7 +33,8 @@ public class Player : Unit
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
-            SceneManager.LoadScene("Game Over");
+            //SceneManager.LoadScene("Game Over");
+            this.isSwipeEnabled = true;
             
         }
     }
@@ -75,7 +77,8 @@ public class Player : Unit
             }
             else if (SwipeController.Instance.swipeDir != closestEnemy.arrowDirection.ToString())
             {
-                //Debug.Log("Swipe wrong. Player swipe disabled!");
+                Debug.Log("Swipe wrong. Player swipe disabled!");
+                this.isSwipeEnabled = false;
 
                 // start coroutine where swipe is disabled
             }

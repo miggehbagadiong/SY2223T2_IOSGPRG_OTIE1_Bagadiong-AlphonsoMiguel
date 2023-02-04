@@ -10,21 +10,18 @@ public class Enemy : Unit
     [HideInInspector] public string setArrowDir;
     [HideInInspector] public int arrowPicker; // pick either red/green or yellow
 
-    void Start()
+    public ArrowDirection SetArrowDirection(int dirIndex)
     {
-        eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
-        eArrowComp.SetArrowRender((int)arrowDirection, isArrowRightDir);
-        //eArrowComp.SetRotatingArrowRender();
-    }
+        if (dirIndex == 1)
+           arrowDirection = ArrowDirection.Up;
+        else if (dirIndex == 2)
+           arrowDirection = ArrowDirection.Right;
+        else if (dirIndex == 3)
+            arrowDirection = ArrowDirection.Down;
+        else
+            arrowDirection = ArrowDirection.Left;
 
-    void Update()
-    {
-        
-    }
-
-    void SetArrowDirection()
-    {
-
+        return arrowDirection;
     }
 
     
