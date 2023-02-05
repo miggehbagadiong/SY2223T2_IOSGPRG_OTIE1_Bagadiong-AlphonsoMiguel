@@ -21,6 +21,9 @@ public class SpawnManager : Singleton<SpawnManager>
     int randomDirection;
     int enemyToSpawn;
 
+    // INDEX REFERENCING - for the rotating arrow to work 
+    [HideInInspector] public int rotArrowRefIndex;
+    public RotationZone rotationZone;
 
     void Start()
     {
@@ -32,7 +35,7 @@ public class SpawnManager : Singleton<SpawnManager>
         while (isGameActive)
         {
             randomDirection = Random.Range(1, 4);
-            enemyToSpawn = Random.Range(1, 10);
+            enemyToSpawn = Random.Range(1, 15);
 
             if (enemyToSpawn >= 1 && enemyToSpawn <= 5)
             {
@@ -52,13 +55,31 @@ public class SpawnManager : Singleton<SpawnManager>
                 newEnemy.GetComponent<Enemy>().SetArrowDirection(randomDirection);
                 newEnemy.GetComponentInChildren<Arrow>().SetArrowRender(randomDirection, false);
             }
-            //else if (enemyToSpawn == 3)
-            //{
-            //    // spawn rotating arrow
-            //}
+            else if (enemyToSpawn >= 11 && enemyToSpawn <= 15)
+            {
+                // Spawn Rotating Arrow
+                Debug.Log("Spawn Rotating Arrow");
+
+                GameObject newEnemy = Instantiate(spawnedEnemy, spawnPoint.transform.position, Quaternion.identity);
+                newEnemy.GetComponent<Enemy>().eArrowComp.SetRotatingArrowRender(rotationZone.GetRotationZoneBool());  
+
+
+            }
 
             yield return new WaitForSeconds(spawnDelayTime);
         }
+    }
+
+    public int SetRotArrowRefIndex(int index)
+    {
+        rotArrowRefIndex += index;
+
+        return rotArrowRefIndex;
+    }
+
+    public int GetRotArrowRefIndex()
+    {
+        return rotArrowRefIndex;
     }
 
 }

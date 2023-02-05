@@ -16,12 +16,13 @@ public class Arrow : Singleton<Arrow>
     public Sprite[] greenArrowDir;
     public Sprite[] redArrowDir;
     public Sprite[] yellowArrowDir;
+    public Sprite setYellowArrowDir;
 
-    [HideInInspector] bool isArrowRotating = true;
+    [HideInInspector] bool isArrowRotating;
 
     void Start()
     {
-        arrowRender= GetComponent<SpriteRenderer>();
+        arrowRender = GetComponent<SpriteRenderer>();
     }
 
     public void SetArrowRender(int index, bool isArrowNormalDir)
@@ -36,34 +37,26 @@ public class Arrow : Singleton<Arrow>
         }
     }
 
-    // latter milestone
-    public void SetRotatingArrowRender()
+    public void SetRotatingArrowRender(bool isRotating)
     {
-       
-        StartCoroutine(RotateArrow());
-
-        /*
-         
-        NOTE: try using update to make the arrow rotate.
-
-         */
+        StartCoroutine(RotateArrow(isRotating));
     }
 
-
-    public IEnumerator RotateArrow()
+    public void SetFinalRotatingArrow(Sprite finalArrow)
     {
-        int randomRotArrowVal = Random.Range(0, yellowArrowDir.Length);
 
-        if (isArrowRotating == true)
+    }
+
+    public IEnumerator RotateArrow(bool isRotating)
+    {
+        while (isRotating)
         {
-            while (isArrowRotating == true)
-            {
-                arrowRender.sprite = yellowArrowDir[randomRotArrowVal];
-            }
+            arrowRender.sprite = yellowArrowDir[Random.Range(0, yellowArrowDir.Length - 1)];
+
+            yield return new WaitForSeconds(0.5f);
         }
 
-        yield return new WaitForSeconds(2f);
 
-        isArrowRotating = false;
+
     }
 }

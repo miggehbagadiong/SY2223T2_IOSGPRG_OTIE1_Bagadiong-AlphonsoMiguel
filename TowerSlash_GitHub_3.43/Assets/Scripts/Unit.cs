@@ -2,16 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public abstract class Unit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] protected HealthComponent unitHealth;
+    
+    protected virtual void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
+    {
+        CheckHealth();
+    }
+
+    protected virtual void LateUpdate()
+    {
+
+    }
+
+    protected virtual void CheckHealth()
     {
         
     }

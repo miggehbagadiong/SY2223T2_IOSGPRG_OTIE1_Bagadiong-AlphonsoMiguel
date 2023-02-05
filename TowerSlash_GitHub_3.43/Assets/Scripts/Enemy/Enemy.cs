@@ -8,7 +8,27 @@ public class Enemy : Unit
     public ArrowDirection arrowDirection;
     public bool isArrowRightDir; // adjust this
     [HideInInspector] public string setArrowDir;
-    [HideInInspector] public int arrowPicker; // pick either red/green or yellow
+
+    protected override void Start()
+    {
+        base.Start();
+        
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+    }
+
+    protected override void LateUpdate()
+    {
+        base.LateUpdate();
+    }
+
+    protected override void CheckHealth()
+    {
+        base.CheckHealth();
+    }
 
     public ArrowDirection SetArrowDirection(int dirIndex)
     {
@@ -24,5 +44,4 @@ public class Enemy : Unit
         return arrowDirection;
     }
 
-    
 }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : Unit
 {
@@ -13,19 +12,36 @@ public class Player : Unit
 
     #endregion
 
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
+
+        unitHealth = GetComponent<HealthComponent>();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         closestEnemy = FindClosestEnemy();
     }
 
-    private void LateUpdate()
+    protected override void LateUpdate()
     {
+        base.LateUpdate();
+
         SwipeAttack();
+        
+    }
+
+    protected override void CheckHealth()
+    {
+        base.CheckHealth();
+
+        if (this.unitHealth.lifePoint <= 0)
+        {
+            GameManager.Instance.GoToGameOverScreen();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +49,7 @@ public class Player : Unit
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
-            //SceneManager.LoadScene("Game Over");
+            this.unitHealth.TakeDamage(1);
             this.isSwipeEnabled = true;
             
         }
@@ -64,7 +80,7 @@ public class Player : Unit
 
     private void SwipeAttack()
     {
-        //Debug.Log("Can Attack");
+        // set parameters to the swipe zone
 
         if (closestEnemy != null) 
         {
