@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-
+    public Player player;
     void Start()
     {
 
@@ -15,6 +15,11 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
 
+    }
+
+    public Player GetPlayer()
+    {
+        return player;
     }
 
     public void GoToGameOverScreen()

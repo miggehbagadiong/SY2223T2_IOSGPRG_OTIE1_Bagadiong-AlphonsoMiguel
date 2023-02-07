@@ -11,26 +11,26 @@ public class RotationZone : Singleton<RotationZone>
         isInRotationZone = true;    
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            this.isInRotationZone = true;
-        }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        this.isInRotationZone = true;
+    //    }
 
-    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            this.isInRotationZone = false;
-        }
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        this.isInRotationZone = false;
+    //    }
+    //}
 
-    public bool GetRotationZoneBool()
-    {
-        return this.isInRotationZone;
-    }
+    //public bool GetRotationZoneBool()
+    //{
+    //    return this.isInRotationZone;
+    //}
 
 }

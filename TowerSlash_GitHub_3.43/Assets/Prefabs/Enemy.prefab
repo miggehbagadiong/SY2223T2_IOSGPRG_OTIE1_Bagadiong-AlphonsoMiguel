@@ -95,7 +95,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -123,10 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bcb8427c7efe94eb48096a4541c398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitHealth: {fileID: 0}
   eArrowComp: {fileID: 0}
   arrowDirection: 0
   isArrowRightDir: 0
   setArrowDir: 
+  isInPlayerRange: 0
 --- !u!1 &5452152072765630414
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,3 +240,5 @@ MonoBehaviour:
   - {fileID: -6650988006519082288, guid: 14a2b914167b58d4f971a2e8b959f95c, type: 3}
   - {fileID: 5920775636592295410, guid: 14a2b914167b58d4f971a2e8b959f95c, type: 3}
   - {fileID: -4685805890758785722, guid: 14a2b914167b58d4f971a2e8b959f95c, type: 3}
+  realYellowArrow: {fileID: 0}
+  isArrowRotating: 0

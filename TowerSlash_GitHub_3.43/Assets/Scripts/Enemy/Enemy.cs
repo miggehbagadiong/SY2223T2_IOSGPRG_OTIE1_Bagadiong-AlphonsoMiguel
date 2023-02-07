@@ -9,9 +9,14 @@ public class Enemy : Unit
     public bool isArrowRightDir; // adjust this
     [HideInInspector] public string setArrowDir;
 
+    // rotating arrow
+    public bool isInPlayerRange;
+
     protected override void Start()
     {
         base.Start();
+
+        this.isInPlayerRange = false;
         
     }
 
@@ -30,6 +35,31 @@ public class Enemy : Unit
         base.CheckHealth();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("SwipeZone"))
+        {
+            this.isInPlayerRange = true;
+            eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
+            eArrowComp.SetArrowRotatingBool(this.isInPlayerRange);
+
+            Debug.Log("enemy in swipe zone");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("SwipeZone"))
+        {
+            this.isInPlayerRange = false;
+            eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
+            eArrowComp.SetArrowRotatingBool(this.isInPlayerRange);
+
+            Debug.Log("enemy in swipe zone");
+        }
+    }
+
+
     public ArrowDirection SetArrowDirection(int dirIndex)
     {
         if (dirIndex == 1)
@@ -42,6 +72,29 @@ public class Enemy : Unit
             arrowDirection = ArrowDirection.Left;
 
         return arrowDirection;
+    }
+
+    public void CheckArrowDirection(int dirIndex)
+    {
+        if (this.gameObject == null)
+        {
+            if (dirIndex == 1)
+                UiManager.Instance.rotArrowDirTxt.text = ArrowDirection.Up.ToString();
+            else if (dirIndex == 2)
+                UiManager.Instance.rotArrowDirTxt.text = ArrowDirection.Right.ToString();
+            else if (dirIndex == 3)
+                UiManager.Instance.rotArrowDirTxt.text = ArrowDirection.Down.ToString();
+            else
+                UiManager.Instance.rotArrowDirTxt.text = ArrowDirection.Left.ToString();
+        }
+        else
+        {
+            UiManager.Instance.rotArrowDirTxt.text = " ";
+        }
+       
+
+
+        Debug.Log("Rotating Arrow Dir Index: " + dirIndex);
     }
 
 }

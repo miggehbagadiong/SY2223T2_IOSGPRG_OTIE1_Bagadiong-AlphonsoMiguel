@@ -16,9 +16,9 @@ public class Arrow : Singleton<Arrow>
     public Sprite[] greenArrowDir;
     public Sprite[] redArrowDir;
     public Sprite[] yellowArrowDir;
-    public Sprite setYellowArrowDir;
+    public Sprite realYellowArrow;
 
-    [HideInInspector] bool isArrowRotating;
+    public bool isArrowRotating;
 
     void Start()
     {
@@ -37,26 +37,29 @@ public class Arrow : Singleton<Arrow>
         }
     }
 
-    public void SetRotatingArrowRender(bool isRotating)
+    public void SetRotateArrowRender(int index)
     {
-        StartCoroutine(RotateArrow(isRotating));
+        StartCoroutine(RotateArrow(index));
     }
 
-    public void SetFinalRotatingArrow(Sprite finalArrow)
+    public bool SetArrowRotatingBool(bool setBool)
     {
+        isArrowRotating = setBool;
 
+        return isArrowRotating;
     }
 
-    public IEnumerator RotateArrow(bool isRotating)
+    private IEnumerator RotateArrow(int finalRotArrIndex)
     {
-        while (isRotating)
+        while (!isArrowRotating)
         {
             arrowRender.sprite = yellowArrowDir[Random.Range(0, yellowArrowDir.Length - 1)];
 
             yield return new WaitForSeconds(0.5f);
         }
 
-
+        arrowRender.sprite = yellowArrowDir[finalRotArrIndex - 1];
+        
 
     }
 }

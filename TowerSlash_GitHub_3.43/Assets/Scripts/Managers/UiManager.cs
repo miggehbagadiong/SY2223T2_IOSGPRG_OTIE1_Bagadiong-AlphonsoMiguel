@@ -5,7 +5,11 @@ using TMPro;
 
 public class UiManager : Singleton<UiManager>
 {
+    [Header ("Swipe Direction")]
     public TextMeshProUGUI swipeDirTxt;
+
+    [Header("Rotating Arrow")]
+    public TextMeshProUGUI rotArrowDirTxt;
 
     // Start is called before the first frame update
     void Start()

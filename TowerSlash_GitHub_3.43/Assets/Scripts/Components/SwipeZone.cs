@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class SwipeZone : Singleton<SwipeZone>
 {
-    [HideInInspector] public bool canSwipe;
+    //[SerializeField] bool canSwipe;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            this.canSwipe = true;
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        this.canSwipe = true;
+    //        Debug.Log("enemy in swipe zone");
+    //    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            this.canSwipe = false;
-        }
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        this.canSwipe = false;
+    //        Debug.Log("enemy not in swipe zone");
+    //    }
+    //}
+
+    //public bool GetCanSwipe()
+    //{
+    //    return this.canSwipe;
+    //}
 }
