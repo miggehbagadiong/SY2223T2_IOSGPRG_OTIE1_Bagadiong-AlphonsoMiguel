@@ -20,16 +20,6 @@ public class Enemy : Unit
         
     }
 
-    protected override void Update()
-    {
-        base.Update();
-    }
-
-    protected override void LateUpdate()
-    {
-        base.LateUpdate();
-    }
-
     protected override void CheckHealth()
     {
         base.CheckHealth();

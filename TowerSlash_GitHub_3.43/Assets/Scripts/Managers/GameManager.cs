@@ -6,16 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public Player player;
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public Player GetPlayer()
     {

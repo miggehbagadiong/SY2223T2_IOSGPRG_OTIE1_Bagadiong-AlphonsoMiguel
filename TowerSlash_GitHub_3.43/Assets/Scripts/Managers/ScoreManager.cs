@@ -6,14 +6,4 @@ public class ScoreManager : Singleton<ScoreManager>
 {
     // implement player score here!!
 
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        
-    }
 }
