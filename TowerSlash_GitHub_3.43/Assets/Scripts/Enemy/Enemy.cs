@@ -9,6 +9,10 @@ public class Enemy : Unit
     public bool isArrowRightDir; // adjust this
     [HideInInspector] public string setArrowDir;
 
+    [Header("Point")]
+    public int point = 1;
+    public float kill = 1f;
+
     // rotating arrow
     public bool isInPlayerRange;
 

@@ -27,4 +27,9 @@ public abstract class Unit : MonoBehaviour
     {
         
     }
+
+    protected virtual HealthComponent GetLifeComponent()
+    {
+        return unitHealth;
+    }
 }

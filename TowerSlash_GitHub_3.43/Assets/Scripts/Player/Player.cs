@@ -38,6 +38,8 @@ public class Player : Unit
     {
         base.CheckHealth();
 
+        UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
+
         if (this.unitHealth.lifePoint <= 0)
         {
             GameManager.Instance.GoToGameOverScreen();
@@ -55,7 +57,8 @@ public class Player : Unit
         }
     }
 
-    public Enemy FindClosestEnemy()
+    //reimplement this
+    public Enemy FindClosestEnemy() // change this since inefficient
     {
         float distanceToClosestEnemy = Mathf.Infinity;
         Enemy closestEnemy = null;
@@ -89,6 +92,8 @@ public class Player : Unit
                 Destroy(closestEnemy.gameObject);
                 //Debug.Log("Swipe correct! Enemy Destroyed!");
                 // reference managers to this part
+                ScoreManager.Instance.AddScore(closestEnemy.point);
+                ScoreManager.Instance.AddKills(closestEnemy.kill);
 
             }
             else if (SwipeController.Instance.swipeDir != closestEnemy.arrowDirection.ToString())

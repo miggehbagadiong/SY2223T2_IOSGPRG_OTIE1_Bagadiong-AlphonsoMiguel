@@ -7,6 +7,12 @@ public class GameManager : Singleton<GameManager>
 {
     public Player player;
 
+    private void Update()
+    {
+        UiManager.Instance.scoreTxt.text = ScoreManager.Instance.GetPlayerScore().ToString();
+        UiManager.Instance.killsTxt.text = ScoreManager.Instance.GetKillScore().ToString();
+    }
+
     public Player GetPlayer()
     {
         return player;

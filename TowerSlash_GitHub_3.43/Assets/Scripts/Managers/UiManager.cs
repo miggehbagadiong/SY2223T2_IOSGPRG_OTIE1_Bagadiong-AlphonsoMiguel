@@ -11,5 +11,12 @@ public class UiManager : Singleton<UiManager>
     [Header("Rotating Arrow")]
     public TextMeshProUGUI rotArrowDirTxt;
 
-  
+    [Header("Score")]
+    public TextMeshProUGUI scoreTxt;
+    public TextMeshProUGUI killsTxt;
+
+    [Header("Player")]
+    public TextMeshProUGUI lifePointTxt;
+
+
 }
