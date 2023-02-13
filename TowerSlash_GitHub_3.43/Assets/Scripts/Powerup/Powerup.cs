@@ -1,32 +1,42 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-[Serializable]
-public class Powerup
+public class Powerup : Singleton<Powerup>
 {
-    [SerializeField]
-    public string name;
+    [HideInInspector] float powerupChance;
+    [HideInInspector] int additionalLife = 1;
 
 
-    [SerializeField]
-    public string duration;
-
-    [SerializeField]
-    public UnityEvent startAction;
-
-    [SerializeField]
-    public UnityEvent endAction;
-
-    public void End()
+    public int PowerupAfterKill(int addPoint)
     {
-        
+        powerupChance = Random.Range(0.01f, 1.0f);
+
+        if (powerupChance <= 0.03f)
+        {
+            addPoint += additionalLife;
+
+            return addPoint;
+        }
+        else
+        {
+            return addPoint;
+        }
     }
 
-    void Update()
+    public Unit PowerupAfterKill(Unit unit)
     {
-        
+        powerupChance = Random.Range(0.01f, 1.0f);
+
+        if (powerupChance <= 0.03f)
+        {
+            unit.GetComponent<Unit>().GetLifeComponent().GetComponent<HealthComponent>().AddLifePoint(additionalLife);
+
+            return unit;
+        }
+        else
+        {
+            return unit;
+        }
     }
 }

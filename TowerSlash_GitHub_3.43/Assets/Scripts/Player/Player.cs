@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
@@ -10,6 +11,11 @@ public class Player : Unit
     [HideInInspector] public Enemy closestEnemy;
     [HideInInspector] public bool isSwipeEnabled = true;
 
+    [HideInInspector] public int killMultiplier;
+    [HideInInspector] public int killDelay;
+
+    [HideInInspector] public Sprite playerSprite;
+
     #endregion
 
     protected override void Start()
@@ -19,6 +25,9 @@ public class Player : Unit
         // player health
         unitHealth = GetComponent<HealthComponent>();
         UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
+
+        //player sprite
+        playerSprite = GetComponent<Sprite>();
     }
 
     protected override void Update()
@@ -92,6 +101,9 @@ public class Player : Unit
                 ScoreManager.Instance.AddScore(closestEnemy.point);
                 ScoreManager.Instance.AddKills(closestEnemy.kill);
 
+                Powerup.Instance.PowerupAfterKill(this);
+                UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
+
             }
             else if (SwipeController.Instance.swipeDir != closestEnemy.arrowDirection.ToString())
             {
@@ -105,6 +117,12 @@ public class Player : Unit
         {
             Debug.Log("No Enemy in Sight!");
         }
+    }
+
+    public void SetPlayerParameters(int setLifePoints, int setKillMultiplier, Sprite setSprite)
+    {
+        this.unitHealth.lifePoint = setLifePoints;
+        this.killMultiplier = setKillMultiplier;    
     }
 
 }

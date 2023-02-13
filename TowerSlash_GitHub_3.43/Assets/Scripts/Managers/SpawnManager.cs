@@ -56,6 +56,7 @@ public class SpawnManager : Singleton<SpawnManager>
                 // Spawn Rotating Arrow
                 Debug.Log("Spawn Rotating Arrow");
 
+                // recheck this somehow or what
                 GameObject newEnemy = Instantiate(spawnedEnemy, spawnPoint.transform.position, Quaternion.identity); 
                 newEnemy.GetComponent<Enemy>().SetArrowDirection(randomDirection);
                 newEnemy.GetComponent<Enemy>().CheckArrowDirection(randomDirection);

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class RotationZone : Singleton<RotationZone>
 {
-    private bool isInRotationZone;
+    //private bool isInRotationZone;
 
     private void Start()
     {
-        isInRotationZone = true;    
+        //isInRotationZone = true;    
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)

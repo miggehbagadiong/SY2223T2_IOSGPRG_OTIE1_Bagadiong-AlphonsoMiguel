@@ -8,27 +8,21 @@ public abstract class Unit : MonoBehaviour
     [SerializeField] protected HealthComponent unitHealth;
     
     protected virtual void Start()
-    {
-        
+    { 
+
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        //CheckHealth();
-    }
-
-    protected virtual void LateUpdate()
-    {
 
     }
-
-    protected virtual void CheckHealth()
+    protected virtual void LateUpdate() 
     {
         
     }
 
-    protected virtual HealthComponent GetLifeComponent()
+    public HealthComponent GetLifeComponent()
     {
         return unitHealth;
     }

@@ -17,6 +17,12 @@ public class HealthComponent : MonoBehaviour
     {
         lifePoint += addLP;
 
+        if (lifePoint >= 5) 
+        {
+            lifePoint = 5;
+        }
+
+
         return lifePoint;
     }
 

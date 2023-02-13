@@ -7,6 +7,11 @@ public class GameManager : Singleton<GameManager>
 {
     public Player player;
 
+    private void Start()
+    {
+        CanvasManager.Instance.StartCharacterSelection();
+    }
+
     private void Update()
     {
         UiManager.Instance.scoreTxt.text = ScoreManager.Instance.GetPlayerScore().ToString();
@@ -21,6 +26,11 @@ public class GameManager : Singleton<GameManager>
     public void GoToGameOverScreen()
     {
         SceneManager.LoadScene("Game Over");
+    }
+
+    public void OnStartGameButtonPressed()
+    {
+        CanvasManager.Instance.StartGame();
     }
 
 }
