@@ -16,7 +16,9 @@ public class Player : Unit
     {
         base.Start();
 
+        // player health
         unitHealth = GetComponent<HealthComponent>();
+        UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
     }
 
     protected override void Update()
@@ -34,18 +36,6 @@ public class Player : Unit
         
     }
 
-    protected override void CheckHealth()
-    {
-        base.CheckHealth();
-
-        UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
-
-        if (this.unitHealth.lifePoint <= 0)
-        {
-            GameManager.Instance.GoToGameOverScreen();
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -53,7 +43,14 @@ public class Player : Unit
             Destroy(collision.gameObject);
             this.unitHealth.TakeDamage(1);
             this.isSwipeEnabled = true;
-            
+
+            UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
+
+            if (this.unitHealth.lifePoint <= 0)
+            {
+                GameManager.Instance.GoToGameOverScreen();
+            }
+
         }
     }
 

@@ -15,7 +15,7 @@ public abstract class Unit : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        CheckHealth();
+        //CheckHealth();
     }
 
     protected virtual void LateUpdate()
