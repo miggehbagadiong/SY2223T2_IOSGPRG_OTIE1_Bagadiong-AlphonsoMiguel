@@ -14,6 +14,16 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+
+        //if (GameManager.Instance.isGameActive)
+        //    MoveUp();
+
+        MoveUp();
+
+    }
+
+    private void MoveUp()
+    {
         float up = playerSpeed * Time.deltaTime;
         this.transform.position += new Vector3(0, up, 0);
     }

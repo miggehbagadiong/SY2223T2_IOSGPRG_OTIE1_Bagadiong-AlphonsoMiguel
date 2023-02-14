@@ -10,14 +10,20 @@ public class CanvasManager : Singleton<CanvasManager>
 
     public void StartCharacterSelection()
     {
-        characterSelectionCanvas.enabled = true;
-        gameCanvas.enabled = false;
+        //characterSelectionCanvas.enabled = true;
+        //gameCanvas.enabled = false;
+
+        GameManager.Instance.SetGameActiveBool(false);
+
     }
 
     public void StartGame()
     {
-        characterSelectionCanvas.enabled = false;
-        gameCanvas.enabled = true;
+        //characterSelectionCanvas.enabled = false;
+        //gameCanvas.enabled = true;
+
+        GameManager.Instance.SetGameActiveBool(true);
+
     }
 
 }

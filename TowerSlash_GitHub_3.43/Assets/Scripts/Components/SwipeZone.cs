@@ -11,6 +11,7 @@ public class SwipeZone : Singleton<SwipeZone>
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            enemyList.Add(collision.gameObject.GetComponent<Enemy>());  
             this.canSwipe = true;
             Debug.Log("enemy in swipe zone");
         }
@@ -20,6 +21,7 @@ public class SwipeZone : Singleton<SwipeZone>
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            enemyList.Remove(collision.gameObject.GetComponent<Enemy>());
             this.canSwipe = false;
             Debug.Log("enemy not in swipe zone");
         }

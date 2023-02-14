@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076a55631d4787249be5e8fc2e8bb528, type: 3}
+  m_Name: Characters
+  m_EditorClassIdentifier: 
+  character:
+  - characterType: Default
+    characterSelectionSprite: {fileID: 21300000, guid: 8b7d9f5185ca20e4abe394130dbcd11d, type: 3}
+    characterInSceneSprite: {fileID: 21300000, guid: 2cf5dfb51223f3e4e9a246ab1bd4bb74, type: 3}
+    currentLife: 3
+    maxLife: 5
+    killMultiplier: 1
+  - characterType: Alive
+    characterSelectionSprite: {fileID: 21300000, guid: dab0ae3dd24439442afecdb06b5db183, type: 3}
+    characterInSceneSprite: {fileID: 21300000, guid: c3436f10b82aa984f9fb2f2598a04514, type: 3}
+    currentLife: 5
+    maxLife: 7
+    killMultiplier: 1
+  - characterType: Fast
+    characterSelectionSprite: {fileID: 21300000, guid: 884d7ec21d566374c9fa59523fde0b02, type: 3}
+    characterInSceneSprite: {fileID: 21300000, guid: e8d5034f80c777643871d73d76bc509e, type: 3}
+    currentLife: 3
+    maxLife: 5
+    killMultiplier: 2

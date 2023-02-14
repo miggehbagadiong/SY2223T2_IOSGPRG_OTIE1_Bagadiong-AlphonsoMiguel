@@ -15,6 +15,7 @@ public class Dash : Singleton<Dash>
     {
         rb = GameManager.Instance.GetPlayer().GetComponent<Rigidbody2D>();
         dashTime = startDashTime;
+
     }
 
     // Update is called once per frame
@@ -38,10 +39,21 @@ public class Dash : Singleton<Dash>
 
         yield return new WaitForSeconds(dashTime);
 
+        
+
         dashTime = startDashTime;
 
         rb.velocity = Vector2.zero;
         SwipeController.Instance.isTapped = false;
     }
 
+    public IEnumerator LongDash(float longDashTime)
+    {
+        longDashTime -= (1 * Time.deltaTime);
+        rb.velocity = Vector2.up * dashSpeed;
+
+        yield return new WaitForSeconds(dashTime);
+
+        rb.velocity = Vector2.zero;
+    }
 }

@@ -14,7 +14,7 @@ public class Player : Unit
     [HideInInspector] public int killMultiplier;
     [HideInInspector] public int killDelay;
 
-    [HideInInspector] public Sprite playerSprite;
+    public SpriteRenderer playerSprite;
 
     #endregion
 
@@ -27,7 +27,7 @@ public class Player : Unit
         UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
 
         //player sprite
-        playerSprite = GetComponent<Sprite>();
+        playerSprite = GetComponent<SpriteRenderer>();
     }
 
     protected override void Update()
@@ -102,6 +102,7 @@ public class Player : Unit
                 ScoreManager.Instance.AddKills(closestEnemy.kill);
 
                 Powerup.Instance.PowerupAfterKill(this);
+                ProgressBar.Instance.AddBar(ScoreManager.Instance.killScore, 0.05f);
                 UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
 
             }
@@ -122,7 +123,8 @@ public class Player : Unit
     public void SetPlayerParameters(int setLifePoints, int setKillMultiplier, Sprite setSprite)
     {
         this.unitHealth.lifePoint = setLifePoints;
-        this.killMultiplier = setKillMultiplier;    
+        this.killMultiplier = setKillMultiplier;
+        this.playerSprite.sprite = setSprite;
     }
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthComponent : MonoBehaviour
 {
     public int lifePoint;
+    public int maxLifePoint;
 
     public int TakeDamage(int dmg)
     {
@@ -17,9 +18,9 @@ public class HealthComponent : MonoBehaviour
     {
         lifePoint += addLP;
 
-        if (lifePoint >= 5) 
+        if (lifePoint >= maxLifePoint) 
         {
-            lifePoint = 5;
+            lifePoint = maxLifePoint;
         }
 
 

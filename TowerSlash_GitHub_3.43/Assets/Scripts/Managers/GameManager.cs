@@ -7,9 +7,14 @@ public class GameManager : Singleton<GameManager>
 {
     public Player player;
 
+    public bool isGameActive = true;
+
+    public float longDashTime = 5f;
+
     private void Start()
     {
         CanvasManager.Instance.StartCharacterSelection();
+
     }
 
     private void Update()
@@ -31,6 +36,28 @@ public class GameManager : Singleton<GameManager>
     public void OnStartGameButtonPressed()
     {
         CanvasManager.Instance.StartGame();
+    }
+
+    public void SetTimeScale(float time)
+    {
+        Time.timeScale = time;
+    }
+
+    public void SetGameActiveBool(bool isActive)
+    {
+        this.isGameActive = isActive;    
+    }
+
+    public bool GetGameActiveBool()
+    {
+        return this.isGameActive;
+    }
+
+    public void OnDashButtonPressed()
+    {
+        ProgressBar.Instance.DashButton.SetActive(false);
+        ScoreManager.Instance.killScore = 0;
+        StartCoroutine(Dash.Instance.LongDash(longDashTime));
     }
 
 }

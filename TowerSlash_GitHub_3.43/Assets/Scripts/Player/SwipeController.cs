@@ -127,6 +127,7 @@ public class SwipeController : Singleton<SwipeController>
         swipeDir = "Tap";
 
         UiManager.Instance.swipeDirTxt.text = swipeDir;
+        ScoreManager.Instance.AddScore(3);
 
         // the dash implementation may also be placed here just remember to look back here
         this.isTapped = true;

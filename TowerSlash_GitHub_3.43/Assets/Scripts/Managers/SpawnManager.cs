@@ -21,13 +21,30 @@ public class SpawnManager : Singleton<SpawnManager>
     int randomDirection;
     int enemyToSpawn;
 
+    // boolean
+    public bool canStartSpawning = false;
+
     void Start()
     {
+        //StartSpawning();
         StartCoroutine(SpawnEnemy());
+    }
+
+    public void SetStartSpawning()
+    {
+        canStartSpawning = true;
+    }
+    
+    public void StartSpawning()
+    {
+        if (canStartSpawning == true)
+            StartCoroutine(SpawnEnemy());
     }
 
     public IEnumerator SpawnEnemy()
     {
+        Debug.Log("Spawning Enemy!");
+
         while (isGameActive)
         {
             randomDirection = Random.Range(1, 4);
