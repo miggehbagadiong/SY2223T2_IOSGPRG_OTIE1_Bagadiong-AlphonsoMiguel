@@ -63,6 +63,11 @@ public class Enemy : Unit
         return arrowDirection;
     }
 
+    public ArrowDirection GetArrowDirection()
+    {
+        return arrowDirection;
+    }
+
     public void CheckArrowDirection(int dirIndex)
     {
         if (this.gameObject == null)

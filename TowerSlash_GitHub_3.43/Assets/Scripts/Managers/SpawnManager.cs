@@ -16,6 +16,7 @@ public class SpawnManager : Singleton<SpawnManager>
     // Enemy GameObject
     [Header("Enemy Parameters")]
     public GameObject spawnedEnemy;
+    [HideInInspector] public List<Enemy> enemies;
 
     // What to Spawn
     int randomDirection;
@@ -41,6 +42,21 @@ public class SpawnManager : Singleton<SpawnManager>
             StartCoroutine(SpawnEnemy());
     }
 
+    public Enemy GetFirstEnemy()
+    {
+        return enemies[0];
+    }
+
+    public void RemoveEnemy()
+    {
+        enemies.RemoveAt(0);
+    }
+
+    public List<Enemy> GetEnemyList()
+    {
+        return enemies;
+    }
+
     public IEnumerator SpawnEnemy()
     {
         Debug.Log("Spawning Enemy!");
@@ -58,6 +74,8 @@ public class SpawnManager : Singleton<SpawnManager>
                 GameObject newEnemy = Instantiate(spawnedEnemy, spawnPoint.transform.position, Quaternion.identity);
                 newEnemy.GetComponent<Enemy>().SetArrowDirection(randomDirection);
                 newEnemy.GetComponentInChildren<Arrow>().SetArrowRender(randomDirection, true);
+
+                enemies.Add(newEnemy.GetComponent<Enemy>());
             }
             else if (enemyToSpawn >= 6 && enemyToSpawn <= 10)
             {
@@ -67,6 +85,9 @@ public class SpawnManager : Singleton<SpawnManager>
                 GameObject newEnemy = Instantiate(spawnedEnemy, spawnPoint.transform.position, Quaternion.identity);
                 newEnemy.GetComponent<Enemy>().SetArrowDirection(randomDirection);
                 newEnemy.GetComponentInChildren<Arrow>().SetArrowRender(randomDirection, false);
+
+                enemies.Add(newEnemy.GetComponent<Enemy>());
+
             }
             else if (enemyToSpawn >= 11 && enemyToSpawn <= 15)
             {
@@ -78,6 +99,8 @@ public class SpawnManager : Singleton<SpawnManager>
                 newEnemy.GetComponent<Enemy>().SetArrowDirection(randomDirection);
                 newEnemy.GetComponent<Enemy>().CheckArrowDirection(randomDirection);
                 newEnemy.GetComponentInChildren<Arrow>().SetRotateArrowRender(randomDirection);
+
+                enemies.Add(newEnemy.GetComponent<Enemy>());
 
             }
 

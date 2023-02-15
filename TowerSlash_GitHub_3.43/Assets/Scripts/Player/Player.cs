@@ -30,13 +30,6 @@ public class Player : Unit
         playerSprite = GetComponent<SpriteRenderer>();
     }
 
-    protected override void Update()
-    {
-        base.Update();
-
-        closestEnemy = FindClosestEnemy();
-    }
-
     protected override void LateUpdate()
     {
         base.LateUpdate();
@@ -50,6 +43,7 @@ public class Player : Unit
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
+            SpawnManager.Instance.enemies.Remove(collision.GetComponent<Enemy>());  
             this.unitHealth.TakeDamage(1);
             this.isSwipeEnabled = true;
 
@@ -63,40 +57,21 @@ public class Player : Unit
         }
     }
 
-    //reimplement this
-    public Enemy FindClosestEnemy() // change this since inefficient
-    {
-        float distanceToClosestEnemy = Mathf.Infinity;
-        Enemy closestEnemy = null;
-        Enemy[] allEnemies = GameObject.FindObjectsOfType<Enemy>();
-
-        foreach(Enemy currEnemy in allEnemies)
-        {
-            float distanceToEnemy = (currEnemy.transform.position - this.transform.position).sqrMagnitude;
-
-            if (distanceToEnemy < distanceToClosestEnemy) 
-            {
-                distanceToClosestEnemy = distanceToEnemy;
-                closestEnemy = currEnemy;
-            }
-        }
-
-        // Debug.Log(this.transform.position, closestEnemy);
-         Debug.DrawLine(this.transform.position, closestEnemy.transform.position, Color.red);
-
-        return closestEnemy;
-    }
+   
 
     private void SwipeAttack()
     {
         // set parameters to the swipe zone
 
-        if (closestEnemy != null) 
+        if (SpawnManager.Instance.enemies != null) 
         {
+            closestEnemy = SpawnManager.Instance.enemies[0];    
+
             if (SwipeController.Instance.swipeDir == closestEnemy.arrowDirection.ToString())
             {
                 Destroy(closestEnemy.gameObject);
-                //Debug.Log("Swipe correct! Enemy Destroyed!");
+                SpawnManager.Instance.enemies.RemoveAt(0);
+                
                 // reference managers to this part
                 ScoreManager.Instance.AddScore(closestEnemy.point);
                 ScoreManager.Instance.AddKills(closestEnemy.kill);
@@ -116,7 +91,7 @@ public class Player : Unit
         }
         else
         {
-            Debug.Log("No Enemy in Sight!");
+            Debug.Log("No Enemy in Sight!"); 
         }
     }
 
