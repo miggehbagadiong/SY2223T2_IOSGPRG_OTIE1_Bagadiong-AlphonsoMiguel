@@ -13,8 +13,12 @@ public class Enemy : Unit
     public int point = 1;
     public float kill = 1f;
 
-    // rotating arrow
+    [Header("Player Range")]
     public bool isInPlayerRange;
+
+    [Header("Draw Gizmos Parameters")]
+    public float playerEntryRange;
+    public float rotationStopRange;
 
     protected override void Start()
     {
@@ -24,28 +28,35 @@ public class Enemy : Unit
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("SwipeZone"))
+    //    {
+    //        this.isInPlayerRange = true;
+    //        eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
+    //        eArrowComp.SetArrowRotatingBool(this.isInPlayerRange);
+
+    //        Debug.Log("enemy in swipe zone");
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("SwipeZone"))
+    //    {
+    //        this.isInPlayerRange = false;
+    //        eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
+    //        eArrowComp.SetArrowRotatingBool(this.isInPlayerRange);
+
+    //        Debug.Log("enemy in swipe zone");
+    //    }
+    //}
+
+    private void OnDrawGizmosSelected()
     {
-        if (collision.gameObject.CompareTag("SwipeZone"))
-        {
-            this.isInPlayerRange = true;
-            eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
-            eArrowComp.SetArrowRotatingBool(this.isInPlayerRange);
-
-            Debug.Log("enemy in swipe zone");
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("SwipeZone"))
-        {
-            this.isInPlayerRange = false;
-            eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
-            eArrowComp.SetArrowRotatingBool(this.isInPlayerRange);
-
-            Debug.Log("enemy in swipe zone");
-        }
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, playerEntryRange);
+        Gizmos.DrawWireSphere(transform.position, rotationStopRange);
     }
 
 
@@ -91,4 +102,16 @@ public class Enemy : Unit
         Debug.Log("Rotating Arrow Dir Index: " + dirIndex);
     }
 
+    public void CheckRange(int index)
+    {
+        float distFromPlayer = Vector2.Distance(PlayerManager.Instance.player.transform.position, transform.position);
+
+        if (distFromPlayer < rotationStopRange)
+        {
+            // stop the arrow from rotating
+            eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
+            eArrowComp.StopRotateArrowRender(index);
+            eArrowComp.SetFinalYellowArrowRender(index);
+        }
+    }
 }

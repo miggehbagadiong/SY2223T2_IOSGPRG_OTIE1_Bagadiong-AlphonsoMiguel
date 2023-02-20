@@ -37,9 +37,20 @@ public class Arrow : Singleton<Arrow>
         }
     }
 
+    public void SetFinalYellowArrowRender(int index) 
+    {
+        arrowRender.sprite = yellowArrowDir[index - 1];
+    }
+
+
     public void SetRotateArrowRender(int index)
     {
         StartCoroutine(RotateArrow(index));
+    }
+
+    public void StopRotateArrowRender(int index)
+    {
+        StopCoroutine(RotateArrow(index));
     }
 
     public bool SetArrowRotatingBool(bool setBool)

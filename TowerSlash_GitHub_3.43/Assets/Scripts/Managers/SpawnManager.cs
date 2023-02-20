@@ -97,9 +97,9 @@ public class SpawnManager : Singleton<SpawnManager>
                 // recheck this somehow or what
                 GameObject newEnemy = Instantiate(spawnedEnemy, spawnPoint.transform.position, Quaternion.identity); 
                 newEnemy.GetComponent<Enemy>().SetArrowDirection(randomDirection);
-                newEnemy.GetComponent<Enemy>().CheckArrowDirection(randomDirection);
                 newEnemy.GetComponentInChildren<Arrow>().SetRotateArrowRender(randomDirection);
-
+                newEnemy.GetComponent<Enemy>().CheckRange(randomDirection);
+                
                 enemies.Add(newEnemy.GetComponent<Enemy>());
 
             }

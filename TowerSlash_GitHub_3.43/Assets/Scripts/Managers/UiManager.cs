@@ -18,5 +18,8 @@ public class UiManager : Singleton<UiManager>
     [Header("Player")]
     public TextMeshProUGUI lifePointTxt;
 
+    [Header("System")]
+    public TextMeshProUGUI swipeDisabledTxt;
+
 
 }

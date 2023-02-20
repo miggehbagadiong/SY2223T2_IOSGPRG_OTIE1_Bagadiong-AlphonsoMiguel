@@ -128,7 +128,11 @@ MonoBehaviour:
   arrowDirection: 0
   isArrowRightDir: 0
   setArrowDir: 
+  point: 1
+  kill: 1
   isInPlayerRange: 0
+  playerEntryRange: 2
+  rotationStopRange: 8
 --- !u!1 &5452152072765630414
 GameObject:
   m_ObjectHideFlags: 0

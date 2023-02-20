@@ -28,6 +28,9 @@ public class Player : Unit
 
         //player sprite
         playerSprite = GetComponent<SpriteRenderer>();
+
+        
+
     }
 
     protected override void LateUpdate()
@@ -35,7 +38,7 @@ public class Player : Unit
         base.LateUpdate();
 
         SwipeAttack();
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,7 +46,7 @@ public class Player : Unit
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
-            SpawnManager.Instance.enemies.Remove(collision.GetComponent<Enemy>());  
+            SpawnManager.Instance.enemies.RemoveAt(0);  
             this.unitHealth.TakeDamage(1);
             this.isSwipeEnabled = true;
 
@@ -70,8 +73,9 @@ public class Player : Unit
             if (SwipeController.Instance.swipeDir == closestEnemy.arrowDirection.ToString())
             {
                 Destroy(closestEnemy.gameObject);
-                SpawnManager.Instance.enemies.RemoveAt(0);
-                
+                //SpawnManager.Instance.enemies.RemoveAt(0);
+                SpawnManager.Instance.enemies.Remove(closestEnemy);
+
                 // reference managers to this part
                 ScoreManager.Instance.AddScore(closestEnemy.point);
                 ScoreManager.Instance.AddKills(closestEnemy.kill);
@@ -85,8 +89,12 @@ public class Player : Unit
             {
                 Debug.Log("Swipe wrong. Player swipe disabled!");
                 this.isSwipeEnabled = false;
+                
+                //StartCoroutine(DisplaySwipeDisabledText());
 
-                // start coroutine where swipe is disabled
+                //// start coroutine where swipe is disabled
+                this.unitHealth.TakeDamage(1);
+                UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
             }
         }
         else
@@ -100,6 +108,24 @@ public class Player : Unit
         this.unitHealth.lifePoint = setLifePoints;
         this.killMultiplier = setKillMultiplier;
         this.playerSprite.sprite = setSprite;
+    }
+
+    private IEnumerator DisplaySwipeDisabledText()
+    {
+
+        if (this.isSwipeEnabled == false)
+        {
+            UiManager.Instance.swipeDisabledTxt.text = "Swipe Disabled!";
+
+            yield return new WaitForSeconds(0.5f);
+
+            UiManager.Instance.swipeDisabledTxt.text = " ";
+        }
+        else
+        {
+            this.isSwipeEnabled = true;
+        }
+
     }
 
 }
