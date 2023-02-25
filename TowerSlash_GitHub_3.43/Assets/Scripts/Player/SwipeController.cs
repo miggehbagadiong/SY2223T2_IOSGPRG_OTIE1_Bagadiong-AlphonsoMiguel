@@ -56,6 +56,7 @@ public class SwipeController : Singleton<SwipeController>
             if (Input.GetTouch(0).phase == TouchPhase.Began) 
             {
                 startTapPos = Input.GetTouch(0).position;
+                
             }
 
             if (Input.GetTouch(0).phase == TouchPhase.Ended)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class SpawnManager : Singleton<SpawnManager>
@@ -10,7 +11,8 @@ public class SpawnManager : Singleton<SpawnManager>
     [Header("Spawn Parameters")]
     public GameObject spawnPoint;
     public float spawnRate;
-    public float spawnDelayTime; // Set to 5f
+    public float maxSpawnDelayTime;
+    private float spawnDelayTime; // Set to 5f
     [HideInInspector] public float enemySpawnVal;
 
     // Enemy GameObject
@@ -23,7 +25,7 @@ public class SpawnManager : Singleton<SpawnManager>
     int enemyToSpawn;
 
     // boolean
-    public bool canStartSpawning = false;
+    public bool canStartRotating = false;
 
     void Start()
     {
@@ -33,12 +35,12 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void SetStartSpawning()
     {
-        canStartSpawning = true;
+        canStartRotating = true;
     }
     
     public void StartSpawning()
     {
-        if (canStartSpawning == true)
+        if (canStartRotating == true)
             StartCoroutine(SpawnEnemy());
     }
 
@@ -65,6 +67,7 @@ public class SpawnManager : Singleton<SpawnManager>
         {
             randomDirection = Random.Range(1, 4);
             enemyToSpawn = Random.Range(1, 15);
+            spawnDelayTime = Random.Range(1, maxSpawnDelayTime);
 
             if (enemyToSpawn >= 1 && enemyToSpawn <= 5)
             {
@@ -96,10 +99,9 @@ public class SpawnManager : Singleton<SpawnManager>
 
                 // recheck this somehow or what
                 GameObject newEnemy = Instantiate(spawnedEnemy, spawnPoint.transform.position, Quaternion.identity); 
-                newEnemy.GetComponent<Enemy>().SetArrowDirection(randomDirection);
-                newEnemy.GetComponentInChildren<Arrow>().SetRotateArrowRender(randomDirection);
-                newEnemy.GetComponent<Enemy>().CheckRange(randomDirection);
-                
+                newEnemy.GetComponent<Enemy>().SetArrowDirection(randomDirection); // sets the arrow direction
+                newEnemy.GetComponent<Enemy>().InitializeRotatingArrows(randomDirection);
+                StartCoroutine(newEnemy.GetComponentInChildren<Arrow>().RotateArrow(canStartRotating, randomDirection));
                 enemies.Add(newEnemy.GetComponent<Enemy>());
 
             }

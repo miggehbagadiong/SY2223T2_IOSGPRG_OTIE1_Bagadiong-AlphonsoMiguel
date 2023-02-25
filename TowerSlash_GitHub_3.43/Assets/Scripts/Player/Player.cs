@@ -15,6 +15,7 @@ public class Player : Unit
     [HideInInspector] public int killDelay;
 
     public SpriteRenderer playerSprite;
+    List<Enemy> enemyList;
 
     #endregion
 
@@ -29,7 +30,7 @@ public class Player : Unit
         //player sprite
         playerSprite = GetComponent<SpriteRenderer>();
 
-        
+       
 
     }
 
@@ -38,24 +39,16 @@ public class Player : Unit
         base.LateUpdate();
 
         SwipeAttack();
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
-            SpawnManager.Instance.enemies.RemoveAt(0);  
-            this.unitHealth.TakeDamage(1);
-            this.isSwipeEnabled = true;
+            //Destroy(collision.gameObject);
 
-            UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
-
-            if (this.unitHealth.lifePoint <= 0)
-            {
-                GameManager.Instance.GoToGameOverScreen();
-            }
+            //enemyList.Add(collision.gameObject.GetComponent<Enemy>());
+            //SwipeAttack(); //allow to do swipe attacks
 
         }
     }
@@ -65,16 +58,17 @@ public class Player : Unit
     private void SwipeAttack()
     {
         // set parameters to the swipe zone
+        closestEnemy = SpawnManager.Instance.enemies[0];
+        //closestEnemy = enemyList[0];
 
-        if (SpawnManager.Instance.enemies != null) 
+        //if (SpawnManager.Instance.enemies != null) 
+        if (closestEnemy != null)
         {
-            closestEnemy = SpawnManager.Instance.enemies[0];    
-
             if (SwipeController.Instance.swipeDir == closestEnemy.arrowDirection.ToString())
             {
                 Destroy(closestEnemy.gameObject);
-                //SpawnManager.Instance.enemies.RemoveAt(0);
                 SpawnManager.Instance.enemies.Remove(closestEnemy);
+                enemyList.Remove(closestEnemy);
 
                 // reference managers to this part
                 ScoreManager.Instance.AddScore(closestEnemy.point);
@@ -88,14 +82,22 @@ public class Player : Unit
             else if (SwipeController.Instance.swipeDir != closestEnemy.arrowDirection.ToString())
             {
                 Debug.Log("Swipe wrong. Player swipe disabled!");
-                this.isSwipeEnabled = false;
-                
-                //StartCoroutine(DisplaySwipeDisabledText());
 
-                //// start coroutine where swipe is disabled
+                //Destroy(closestEnemy.gameObject);
+                SpawnManager.Instance.enemies.Remove(closestEnemy);
+                enemyList.Remove(closestEnemy);
+                
                 this.unitHealth.TakeDamage(1);
                 UiManager.Instance.lifePointTxt.text = this.unitHealth.GetLifePoint().ToString();
+
+                if (this.unitHealth.lifePoint <= 0)
+                {
+                    GameManager.Instance.GoToGameOverScreen();
+                }
+
             }
+
+
         }
         else
         {

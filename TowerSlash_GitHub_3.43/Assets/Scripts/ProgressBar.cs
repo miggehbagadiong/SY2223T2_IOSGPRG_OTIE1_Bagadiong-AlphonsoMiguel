@@ -38,6 +38,10 @@ public class ProgressBar : Singleton<ProgressBar>
         {
             DashButton.SetActive(true);
         }
+        else if (curr < max) 
+        {
+            DashButton.SetActive(false);    
+        }
     }
 
     public float AddBar(float addToBar, float barPercent)

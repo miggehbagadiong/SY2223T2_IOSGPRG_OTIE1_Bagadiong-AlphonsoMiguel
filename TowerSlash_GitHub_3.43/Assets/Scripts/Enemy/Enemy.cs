@@ -15,48 +15,17 @@ public class Enemy : Unit
 
     [Header("Player Range")]
     public bool isInPlayerRange;
-
-    [Header("Draw Gizmos Parameters")]
-    public float playerEntryRange;
-    public float rotationStopRange;
+    public Vector2 rangePos;
+    
 
     protected override void Start()
     {
         base.Start();
 
         this.isInPlayerRange = false;
-        
-    }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("SwipeZone"))
-    //    {
-    //        this.isInPlayerRange = true;
-    //        eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
-    //        eArrowComp.SetArrowRotatingBool(this.isInPlayerRange);
-
-    //        Debug.Log("enemy in swipe zone");
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("SwipeZone"))
-    //    {
-    //        this.isInPlayerRange = false;
-    //        eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
-    //        eArrowComp.SetArrowRotatingBool(this.isInPlayerRange);
-
-    //        Debug.Log("enemy in swipe zone");
-    //    }
-    //}
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, playerEntryRange);
-        Gizmos.DrawWireSphere(transform.position, rotationStopRange);
+        //rangePos = SpawnManager.Instance.GetVector2Range();
+        rangePos = transform.GetChild(1).transform.position;
     }
 
 
@@ -102,16 +71,21 @@ public class Enemy : Unit
         Debug.Log("Rotating Arrow Dir Index: " + dirIndex);
     }
 
-    public void CheckRange(int index)
+    public void InitializeRotatingArrows(int index)
     {
-        float distFromPlayer = Vector2.Distance(PlayerManager.Instance.player.transform.position, transform.position);
+        eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
 
-        if (distFromPlayer < rotationStopRange)
+        // insert the new parameter here
+        if (PlayerManager.Instance.player.transform.position.y <= rangePos.y)
         {
-            // stop the arrow from rotating
-            eArrowComp = transform.GetChild(0).gameObject.GetComponent<Arrow>();
-            eArrowComp.StopRotateArrowRender(index);
-            eArrowComp.SetFinalYellowArrowRender(index);
+            eArrowComp.isArrowRotating = true;
+            
         }
+        else
+        {
+            eArrowComp.isArrowRotating = false;
+            //eArrowComp.SetFinalYellowArrowRender(index);
+        }
+
     }
 }
