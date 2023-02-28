@@ -29,17 +29,59 @@ public class Player : Unit
         {
             if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Pistol)
             {
-                // parameters here
+                Debug.Log("Collided with " + objectLoot.gameObject);
+                Destroy(objectLoot.gameObject);
+
+                pInventory.AddPistolMag(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoCount);
+                UiManager.Instance.UpdateAmmoUI(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData);
+
             }
             else if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Shotgun)
             {
+                Debug.Log("Collided with " + objectLoot.gameObject);
+                Destroy(objectLoot.gameObject);
 
+                pInventory.AddShotgunMag(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoCount);
+                UiManager.Instance.UpdateAmmoUI(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData);
             }
             else if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Rifle)
             {
+                Debug.Log("Collided with " + objectLoot.gameObject);
+                Destroy(objectLoot.gameObject);
 
+                pInventory.AddRifleMag(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoCount);
+                UiManager.Instance.UpdateAmmoUI(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData);
             }
 
+
+        }
+        else if (objectLoot.gameObject.GetComponent<WeaponItem>())
+        {
+            if (objectLoot.gameObject.GetComponent<WeaponItem>().weaponData.weaponType == WeaponType.Pistol)
+            {
+                Debug.Log("Collided with " + objectLoot.gameObject);
+                Destroy(objectLoot.gameObject);
+                
+                // insert here the rest
+
+            }
+            else if (objectLoot.gameObject.GetComponent<WeaponItem>().weaponData.weaponType == WeaponType.Shotgun)
+            {
+                Debug.Log("Collided with " + objectLoot.gameObject);
+                Destroy(objectLoot.gameObject);
+
+                // insert here the rest
+
+            }
+            else if (objectLoot.gameObject.GetComponent<WeaponItem>().weaponData.weaponType == WeaponType.Rifle)
+            {
+                Debug.Log("Collided with " + objectLoot.gameObject);
+                Destroy(objectLoot.gameObject);
+
+                // insert here the rest
+
+                
+            }
 
         }
     }

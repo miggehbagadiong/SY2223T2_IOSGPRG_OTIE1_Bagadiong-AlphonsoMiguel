@@ -46,6 +46,15 @@ public void SetHealth(int refHealth)
 
 #region Player Ammo and Weapon
 
+public void UpdateAmmoUI(Ammo ammo)
+{
+    if (ammo.ammoType == AmmoType.Pistol)
+        pistolAmmoTxt.text = ammo.ammoCount.ToString();
+    else if (ammo.ammoType == AmmoType.Rifle)
+        pistolAmmoTxt.text = ammo.ammoCount.ToString();
+    else if (ammo.ammoType == AmmoType.Shotgun)
+        pistolAmmoTxt.text = ammo.ammoCount.ToString();
+}
 
 
 #endregion
