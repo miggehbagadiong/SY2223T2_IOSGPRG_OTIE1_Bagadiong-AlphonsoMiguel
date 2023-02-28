@@ -11,6 +11,11 @@ public class UiManager : Singleton<UiManager>
     public Slider slider;
     public HealthBar healthBar;
 
+    [Header("Ammo Value Parameters")]
+    public TextMeshProUGUI pistolAmmoTxt;
+    public TextMeshProUGUI rifleAmmoTxt;
+    public TextMeshProUGUI shotgunAmmoTxt;
+
 
     // functions and content
     void Start()
@@ -36,6 +41,12 @@ public void SetHealth(int refHealth)
 {
     slider.value = refHealth;
 }
+
+#endregion
+
+#region Player Ammo and Weapon
+
+
 
 #endregion
 
