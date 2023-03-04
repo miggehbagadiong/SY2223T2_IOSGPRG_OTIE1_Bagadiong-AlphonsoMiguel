@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class WeaponInventory : MonoBehaviour
 {
+    // Weapon References
     [Header("Weapon References")]
     public string weaponType;
+    [SerializeField] GameObject wHeld; // means "Weapon Held"
+    [SerializeField] Sprite[] wSprites;
+    [SerializeField] Transform wMuzzle;
+
+    [HideInInspector] public List<Weapon> weapons = new List<Weapon>();
+    [HideInInspector] public Weapon currWeapon;
 
 
     [Header("Ammo References")]

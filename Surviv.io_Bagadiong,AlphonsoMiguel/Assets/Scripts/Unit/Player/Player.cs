@@ -25,6 +25,8 @@ public class Player : Unit
 
     private void OnTriggerEnter2D(Collider2D objectLoot) 
     {
+        // player looting system
+
         if (objectLoot.gameObject.GetComponent<AmmoItem>())
         {
             if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Pistol)
@@ -55,7 +57,7 @@ public class Player : Unit
 
 
         }
-        else if (objectLoot.gameObject.GetComponent<WeaponItem>())
+        else if (objectLoot.gameObject.GetComponent<WeaponItem>()) // reimplement this due to primary and secondary method implementation
         {
             if (objectLoot.gameObject.GetComponent<WeaponItem>().weaponData.weaponType == WeaponType.Pistol)
             {
