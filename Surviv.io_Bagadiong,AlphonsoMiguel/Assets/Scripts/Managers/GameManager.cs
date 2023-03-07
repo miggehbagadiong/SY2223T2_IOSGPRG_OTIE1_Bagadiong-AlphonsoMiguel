@@ -6,11 +6,15 @@ public class GameManager : Singleton<GameManager>
 {
     void Start()
     {
-        SpawnManager.Instance.StartSpawning();
+        StartGame();
     }
 
-    void Update()
+    private void StartGame()
     {
-
+        //SpawnManager.Instance.StartSpawning();
     }
+
+    #region Button Functions
+
+    #endregion
 }

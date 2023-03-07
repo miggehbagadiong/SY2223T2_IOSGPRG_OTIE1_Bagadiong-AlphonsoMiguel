@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e0b6e8ea1efb404e809857712b8a3eb, type: 3}
-  m_Name: PistolData
+  m_Script: {fileID: 11500000, guid: 60b1d7fea52b99e4685d17824a6f15e2, type: 3}
+  m_Name: Bullet_RifleData
   m_EditorClassIdentifier: 
-  weaponType: 1
-  wCurrAmmo: 15
-  wMaxAmmo: 90
-  wFireRate: 0
-  hasSpread: 0
-  isAutomatic: 1
-  wBullet: {fileID: 0}
-  wBulletSpeed: 20
+  weaponType: 3
+  bulletDMG: 15
+  bulletSpeed: 20

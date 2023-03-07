@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e0b6e8ea1efb404e809857712b8a3eb, type: 3}
-  m_Name: ShotgunData
+  m_Name: Weapon_RifleData
   m_EditorClassIdentifier: 
-  weaponType: 2
-  wCurrAmmo: 2
-  wMaxAmmo: 60
+  weaponType: 3
+  wCurrAmmo: 30
+  wMaxAmmo: 120
+  weaponSprite: {fileID: 1433340881, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
   wFireRate: 0
   hasSpread: 1
   isAutomatic: 1

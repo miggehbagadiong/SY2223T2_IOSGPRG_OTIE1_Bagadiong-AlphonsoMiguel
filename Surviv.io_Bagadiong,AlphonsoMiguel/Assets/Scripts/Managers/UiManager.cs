@@ -16,18 +16,9 @@ public class UiManager : Singleton<UiManager>
     public TextMeshProUGUI rifleAmmoTxt;
     public TextMeshProUGUI shotgunAmmoTxt;
 
-
-    // functions and content
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Weapon Parameters")]
+    public TextMeshProUGUI primaryWeapTxt;
+    public TextMeshProUGUI secondaryWeapTxt;
 
 #region Player Health
 
@@ -51,11 +42,22 @@ public void UpdateAmmoUI(Ammo ammo)
     if (ammo.ammoType == AmmoType.Pistol)
         pistolAmmoTxt.text = ammo.ammoCount.ToString();
     else if (ammo.ammoType == AmmoType.Rifle)
-        pistolAmmoTxt.text = ammo.ammoCount.ToString();
+        rifleAmmoTxt.text = ammo.ammoCount.ToString();
     else if (ammo.ammoType == AmmoType.Shotgun)
-        pistolAmmoTxt.text = ammo.ammoCount.ToString();
+        shotgunAmmoTxt.text = ammo.ammoCount.ToString();
 }
 
+public void UpdateWeaponUI(Weapon weapon)
+{
+    if (weapon.weaponType == WeaponType.Rifle || weapon.weaponType == WeaponType.Shotgun)
+    {
+        primaryWeapTxt.text = weapon.weaponType.ToString();
+    }
+    else if (weapon.weaponType == WeaponType.Pistol)
+    {
+        secondaryWeapTxt.text = weapon.weaponType.ToString();
+    }
+}
 
 #endregion
 

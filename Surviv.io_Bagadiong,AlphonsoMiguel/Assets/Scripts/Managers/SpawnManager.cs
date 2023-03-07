@@ -10,7 +10,6 @@ public class SpawnManager : Singleton<SpawnManager>
     public WeaponItem[] lootableWeapons;
     public AmmoItem[] lootableAmmos;
     public GameObject[] obstacleObjects;
-    public GameObject[] lootablesAndObstacles;
 
     [Header("Spawn Area Parameters")]
     public GameObject worldSpawnBox;
@@ -20,7 +19,6 @@ public class SpawnManager : Singleton<SpawnManager>
     public float numOfSpawnedWorldObstacles;
     public int numOfSpawnedAmmos;
     public int numOfSpawnedWeapons;
-    public int numOfSpawnedObjects; // this stands for the lootables and obstacles
 
 #endregion
 
@@ -37,6 +35,7 @@ public class SpawnManager : Singleton<SpawnManager>
     void Start()
     {
         spawnBox = worldSpawnBox.GetComponent<MeshCollider>();
+        StartSpawning();
     }
     
 
@@ -58,11 +57,6 @@ public class SpawnManager : Singleton<SpawnManager>
         }
 
         SpawnWorldObstacles(); // spawning the world obstacles
-    }
-
-    public void SpawnLootablesAndObstacles()
-    {
-
     }
 
     private void SpawnAmmos(GameObject ammoSpawn)

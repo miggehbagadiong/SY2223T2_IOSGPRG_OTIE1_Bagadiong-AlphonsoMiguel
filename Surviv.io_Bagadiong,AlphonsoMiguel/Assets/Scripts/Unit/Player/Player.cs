@@ -23,6 +23,7 @@ public class Player : Unit
 
     }
 
+    // collision loot system happening here
     private void OnTriggerEnter2D(Collider2D objectLoot) 
     {
         // player looting system
@@ -64,6 +65,8 @@ public class Player : Unit
                 Debug.Log("Collided with " + objectLoot.gameObject);
                 Destroy(objectLoot.gameObject);
                 
+                //pInventory.ShowGun(objectLoot.gameObject.GetComponent<WeaponItem>().weaponData);
+                UiManager.Instance.UpdateWeaponUI(objectLoot.gameObject.GetComponent<WeaponItem>().weaponData);
                 // insert here the rest
 
             }
@@ -74,6 +77,8 @@ public class Player : Unit
 
                 // insert here the rest
 
+                UiManager.Instance.UpdateWeaponUI(objectLoot.gameObject.GetComponent<WeaponItem>().weaponData);
+
             }
             else if (objectLoot.gameObject.GetComponent<WeaponItem>().weaponData.weaponType == WeaponType.Rifle)
             {
@@ -81,6 +86,7 @@ public class Player : Unit
                 Destroy(objectLoot.gameObject);
 
                 // insert here the rest
+                UiManager.Instance.UpdateWeaponUI(objectLoot.gameObject.GetComponent<WeaponItem>().weaponData);
 
                 
             }

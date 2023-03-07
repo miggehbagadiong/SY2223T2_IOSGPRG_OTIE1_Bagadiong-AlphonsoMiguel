@@ -11,12 +11,18 @@ public enum WeaponType{
 [CreateAssetMenu(menuName = "Weapon")]
 public class Weapon : ScriptableObject
 {
+
+#region Variables
+
     [Header("Weapon Type")]
     public WeaponType weaponType;
 
     [Header("Weapon Ammo")]
     public int wCurrAmmo;
     public int wMaxAmmo;
+
+    [Header("Weapon Render")]
+    public Sprite weaponSprite;
 
     [Header("Weapon Firing")]
     public float wFireRate;
@@ -26,5 +32,7 @@ public class Weapon : ScriptableObject
     [Header("Bullet")]
     public GameObject wBullet;
     public float wBulletSpeed = 20f;    
+
+#endregion
 
 }
