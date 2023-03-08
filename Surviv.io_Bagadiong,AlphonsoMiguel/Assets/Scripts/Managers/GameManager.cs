@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour
 {
     void Start()
     {
@@ -15,6 +15,16 @@ public class GameManager : Singleton<GameManager>
     }
 
     #region Button Functions
+
+    public void OnShootButtonPressed()
+    {
+        WeaponInventory.Instance.Shoot();
+    }
+
+    public void OnReloadButtonPressed()
+    {
+        WeaponInventory.Instance.Reload();
+    }
 
     #endregion
 }

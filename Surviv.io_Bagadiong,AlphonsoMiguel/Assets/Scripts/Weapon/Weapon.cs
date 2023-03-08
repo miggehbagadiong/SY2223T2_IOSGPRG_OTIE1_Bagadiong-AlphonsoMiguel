@@ -20,6 +20,7 @@ public class Weapon : ScriptableObject
     [Header("Weapon Ammo")]
     public int wCurrAmmo;
     public int wMaxAmmo;
+    public int wMagCap;
 
     [Header("Weapon Render")]
     public Sprite weaponSprite;

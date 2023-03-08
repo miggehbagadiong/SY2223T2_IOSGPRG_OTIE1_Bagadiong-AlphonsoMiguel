@@ -20,6 +20,10 @@ public class UiManager : Singleton<UiManager>
     public TextMeshProUGUI primaryWeapTxt;
     public TextMeshProUGUI secondaryWeapTxt;
 
+    [Header("Current Weapon Ammo Parameters")]
+    public TextMeshProUGUI currAmmoTxt;
+    public TextMeshProUGUI currAmmoStockTxt;
+
 #region Player Health
 
 public void SetMaxHealth(int refHealth)
@@ -57,6 +61,12 @@ public void UpdateWeaponUI(Weapon weapon)
     {
         secondaryWeapTxt.text = weapon.weaponType.ToString();
     }
+}
+
+public void UpdateCurrWeapAmmoUI(Weapon currWeap)
+{
+    currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
+    currAmmoStockTxt.text = currWeap.wMagCap.ToString();
 }
 
 #endregion

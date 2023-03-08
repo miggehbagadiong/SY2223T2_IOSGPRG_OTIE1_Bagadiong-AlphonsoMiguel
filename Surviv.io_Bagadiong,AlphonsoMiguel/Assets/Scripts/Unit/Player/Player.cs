@@ -60,7 +60,7 @@ public class Player : Unit
         }
         else if (objectLoot.gameObject.GetComponent<WeaponItem>()) // reimplement this due to primary and secondary method implementation
         {
-            if (objectLoot.gameObject.GetComponent<WeaponItem>().weaponData.weaponType == WeaponType.Pistol)
+            if (objectLoot.gameObject.GetComponent<WeaponItem>().weaponData.weaponType == WeaponType.Pistol) // secondary weapon
             {
                 Debug.Log("Collided with " + objectLoot.gameObject);
                 Destroy(objectLoot.gameObject);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponInventory : MonoBehaviour
+public class WeaponInventory : Singleton<WeaponInventory>
 {
     // Weapon References
     [Header("Weapon References")]
@@ -14,11 +14,18 @@ public class WeaponInventory : MonoBehaviour
     [HideInInspector] public Weapon currWeapon;
 
 
-    [Header("Ammo References")]
-    public int rifleMag;
-    public int pistolMag;
-    public int shotgunMag;
+   // [Header("Ammo References")]
+    [HideInInspector] public int rifleMag;
+    [HideInInspector] public int pistolMag;
+    [HideInInspector] public int shotgunMag;
+    [HideInInspector] public int pistolMagCap;
+    [HideInInspector] public int rifleMagCap;
+    [HideInInspector] public int shotgunMagCap;
 
+    private void Start()
+    {
+        
+    }
 
 
 #region Ammo References
@@ -83,6 +90,12 @@ public class WeaponInventory : MonoBehaviour
         }
     }
 
+    public Weapon AddCurrentWeapon(Weapon addCurrWeap)
+    {
+        currWeapon = addCurrWeap;
+        return currWeapon;
+    }
+
     public void ShowGun(Weapon weap)
     {
         wGFX.sprite = weap.weaponSprite;
@@ -95,23 +108,42 @@ public class WeaponInventory : MonoBehaviour
 // implementation currently for secondary weapon need to retweak this again
 public void Shoot()
 {
-    GameObject bullet = Instantiate(weapons[1].wBullet, this.wMuzzle.transform.position, this.wMuzzle.transform.rotation);
-    Rigidbody2D rb = weapons[1].wBullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(this.wMuzzle.up * weapons[1].wBullet.GetComponent<BulletComponent>().bulletData.bulletSpeed, ForceMode2D.Impulse);
-
-    if(weapons[1].wCurrAmmo > 0)
+    if (!currWeapon)
     {
-        weapons[1].wCurrAmmo -= 1;
+        GameObject bullet = Instantiate(currWeapon.wBullet, this.wMuzzle.transform.position, this.wMuzzle.transform.rotation);
+        Rigidbody2D rb = weapons[1].wBullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(this.wMuzzle.up * currWeapon.wBullet.GetComponent<BulletComponent>().bulletData.bulletSpeed, ForceMode2D.Impulse);
+
+        if(currWeapon.wCurrAmmo > 0)
+        {
+            currWeapon.wCurrAmmo -= 1;
+            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
         
+        }
+        else
+        {
+            Debug.Log("No Ammo. Reload!");
+            currWeapon.wCurrAmmo = 0;
+        }
+    }
+    else
+    {
+        Debug.Log("Is null. recheck!");
+        return;
     }
 
 }
 
 public void Reload()
 {
-    if (weapons[1].wCurrAmmo <= 0 || weapons[1].wCurrAmmo >= 0)
+    if (currWeapon.wCurrAmmo <= 0 || currWeapon.wCurrAmmo >= 0)
     {
+        Debug.Log("Reloading!");
 
+        int magBag = GetPistolMag();
+        magBag -= currWeapon.wMagCap;
+        UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+        
     }
 }
 
