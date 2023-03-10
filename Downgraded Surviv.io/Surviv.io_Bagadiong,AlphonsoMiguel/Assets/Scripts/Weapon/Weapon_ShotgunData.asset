@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0b6e8ea1efb404e809857712b8a3eb, type: 3}
+  m_Name: Weapon_ShotgunData
+  m_EditorClassIdentifier: 
+  weaponType: 2
+  wCurrAmmo: 2
+  wMaxAmmo: 60
+  wMagCap: 2
+  weaponSprite: {fileID: 614389102, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
+  wFireRate: 0
+  hasSpread: 1
+  isAutomatic: 1
+  wBullet: {fileID: 2536142194191904013, guid: 81e11ea49a618034ca0adb1fbab53c0c, type: 3}
+  wBulletSpeed: 20
