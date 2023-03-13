@@ -10,7 +10,7 @@ public class WeaponInventory : Singleton<WeaponInventory>
     [SerializeField] Transform wMuzzle;
     [SerializeField] SpriteRenderer wGFX;
 
-    [HideInInspector] public List<Weapon> weapons = new List<Weapon>();
+    [HideInInspector] public List<Weapon> weaponsList = new List<Weapon>();
     [HideInInspector] public Weapon currWeapon;
 
 
@@ -25,8 +25,7 @@ public class WeaponInventory : Singleton<WeaponInventory>
     private void Start()
     {
         
-    }
-
+    }   
 
 #region Ammo References
 
@@ -80,13 +79,13 @@ public class WeaponInventory : Singleton<WeaponInventory>
         //if (weapons[0] == null && (WeaponType.Rifle || WeaponType.Shotgun == null))
         //    return newWeap;
         if ((newWeap.weaponType.ToString() == WeaponType.Rifle.ToString() 
-                || newWeap.weaponType.ToString() == WeaponType.Shotgun.ToString()) && !weapons[0])
+                || newWeap.weaponType.ToString() == WeaponType.Shotgun.ToString()) && !weaponsList[0])
         {
-            weapons[0] = newWeap;
+            weaponsList[0] = newWeap;
         }
-        else if (newWeap.weaponType.ToString() == WeaponType.Pistol.ToString() && !weapons[1])
+        else if (newWeap.weaponType.ToString() == WeaponType.Pistol.ToString() && !weaponsList[1])
         {
-            weapons[1] = newWeap;
+            weaponsList[1] = newWeap;
         }
     }
 
@@ -102,6 +101,11 @@ public class WeaponInventory : Singleton<WeaponInventory>
         //wGFX.transform.Rotate(Vector3(0,0,90),transform.position);
     }
 
+    public void CheckCurrentWeapon(Weapon setWeap)
+    {
+        
+    }
+
 #endregion
 
 #region Weapon Functions 
@@ -111,14 +115,13 @@ public void Shoot()
     if (!currWeapon)
     {
         GameObject bullet = Instantiate(currWeapon.wBullet, this.wMuzzle.transform.position, this.wMuzzle.transform.rotation);
-        Rigidbody2D rb = weapons[1].wBullet.GetComponent<Rigidbody2D>();
+        Rigidbody2D rb = weaponsList[1].wBullet.GetComponent<Rigidbody2D>();
             rb.AddForce(this.wMuzzle.up * currWeapon.wBullet.GetComponent<BulletComponent>().bulletData.bulletSpeed, ForceMode2D.Impulse);
 
         if(currWeapon.wCurrAmmo > 0)
         {
             currWeapon.wCurrAmmo -= 1;
             UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
-        
         }
         else
         {
@@ -147,7 +150,21 @@ public void Reload()
     }
 }
 
-#endregion
+    #endregion
 
+    #region Ammo Inventory Functions
+    public void AddToAmmoInventory(AmmoItem ammoPack)
+    {
+        if (ammoPack.ammoData.ammoType == AmmoType.Pistol)
+            this.AddPistolMag(ammoPack.ammoData.ammoCount);
+        else if (ammoPack.ammoData.ammoType == AmmoType.Rifle)
+            this.AddRifleMag(ammoPack.ammoData.ammoCount);
+        else if (ammoPack.ammoData.ammoType == AmmoType.Shotgun)
+            this.AddShotgunMag(ammoPack.ammoData.ammoCount);
+    }
+
+
+    #endregion
 
 }
+

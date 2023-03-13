@@ -30,42 +30,43 @@ public class Player : Unit
 
         if (objectLoot.gameObject.GetComponent<AmmoItem>())
         {
-            if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Pistol)
-            {
-                Debug.Log("Collided with " + objectLoot.gameObject);
-                Destroy(objectLoot.gameObject);
+            //if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Pistol)
+            //{
+            //    Debug.Log("Collided with " + objectLoot.gameObject);
+            //    Destroy(objectLoot.gameObject);
 
-                pInventory.AddPistolMag(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoCount);
-                UiManager.Instance.UpdateAmmoUI(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData);
+            //    pInventory.AddPistolMag(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoCount);
+            //    UiManager.Instance.UpdateAmmoUI(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData);
 
-            }
-            else if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Shotgun)
-            {
-                Debug.Log("Collided with " + objectLoot.gameObject);
-                Destroy(objectLoot.gameObject);
+            //}
+            //else if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Shotgun)
+            //{
+            //    Debug.Log("Collided with " + objectLoot.gameObject);
+            //    Destroy(objectLoot.gameObject);
 
-                pInventory.AddShotgunMag(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoCount);
-                UiManager.Instance.UpdateAmmoUI(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData);
-            }
-            else if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Rifle)
-            {
-                Debug.Log("Collided with " + objectLoot.gameObject);
-                Destroy(objectLoot.gameObject);
+            //    pInventory.AddShotgunMag(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoCount);
+            //    UiManager.Instance.UpdateAmmoUI(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData);
+            //}
+            //else if (objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoType == AmmoType.Rifle)
+            //{
+            //    Debug.Log("Collided with " + objectLoot.gameObject);
+            //    Destroy(objectLoot.gameObject);
 
-                pInventory.AddRifleMag(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoCount);
-                UiManager.Instance.UpdateAmmoUI(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData);
-            }
+            //    pInventory.AddRifleMag(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData.ammoCount);
+            //    UiManager.Instance.UpdateAmmoUI(objectLoot.gameObject.GetComponent<AmmoItem>().ammoData);
+            //}
 
 
         }
-        else if (objectLoot.gameObject.GetComponent<WeaponItem>()) // reimplement this due to primary and secondary method implementation
+        if (objectLoot.gameObject.GetComponent<WeaponItem>()) // reimplement this due to primary and secondary method implementation
         {
             if (objectLoot.gameObject.GetComponent<WeaponItem>().weaponData.weaponType == WeaponType.Pistol) // secondary weapon
             {
                 Debug.Log("Collided with " + objectLoot.gameObject);
                 Destroy(objectLoot.gameObject);
-                
-                //pInventory.ShowGun(objectLoot.gameObject.GetComponent<WeaponItem>().weaponData);
+
+                pInventory.AddWeapon(objectLoot.gameObject.GetComponent<WeaponItem>().weaponData);
+                pInventory.ShowGun(objectLoot.gameObject.GetComponent<WeaponItem>().weaponData);
                 UiManager.Instance.UpdateWeaponUI(objectLoot.gameObject.GetComponent<WeaponItem>().weaponData);
                 // insert here the rest
 

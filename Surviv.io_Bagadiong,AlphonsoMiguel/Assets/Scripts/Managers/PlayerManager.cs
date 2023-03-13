@@ -12,6 +12,11 @@ public class PlayerManager : Singleton<PlayerManager>
         return player;
     }
 
+    public WeaponInventory GetPlayerInventory()
+    {
+        return player.GetComponent<WeaponInventory>();
+    }
+
     [Header("Player Component References")]
     public Joystick pMoveJoystick;
     public Joystick pAimJoystick;

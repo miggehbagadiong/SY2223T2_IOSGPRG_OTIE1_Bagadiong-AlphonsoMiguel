@@ -19,6 +19,9 @@ public class SpawnManager : Singleton<SpawnManager>
     public float numOfSpawnedWorldObstacles;
     public int numOfSpawnedAmmos;
     public int numOfSpawnedWeapons;
+    public int numOfSpawnWeapsAndAmmos;
+
+
 
 #endregion
 
@@ -45,56 +48,29 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void StartSpawning()
     {
+        // replace the current with the new one
         // insert parameters when spawning
         for (int i = 0; i < numOfSpawnedAmmos; i++) // spawning ammos
-        {
-            SpawnAmmos(lootableAmmos[Random.Range(0, lootableAmmos.Length)].gameObject);
-        }
+           Spawn(lootableAmmos[Random.Range(0, lootableAmmos.Length)].gameObject);
 
         for (int i=0; i < numOfSpawnedWeapons; i++)
-        {
-            SpawnWeapons(lootableWeapons[Random.Range(0, lootableWeapons.Length)].gameObject);
-        }
+           Spawn(lootableWeapons[Random.Range(0, lootableWeapons.Length)].gameObject);
 
-        SpawnWorldObstacles(); // spawning the world obstacles
+        for (int i = 0; i < numOfSpawnedWorldObstacles; i++)
+            Spawn(obstacleObjects[Random.Range(0, obstacleObjects.Length)].gameObject);
+
     }
 
-    private void SpawnAmmos(GameObject ammoSpawn)
+    public void Spawn(GameObject prefabToSpawn)
     {
         float spawnPosX = Random.Range(spawnBox.bounds.min.x, spawnBox.bounds.max.x);
         float spawnPosY = Random.Range(spawnBox.bounds.min.y, spawnBox.bounds.max.y);
 
         Vector2 pos = new Vector2(spawnPosX, spawnPosY);
 
-        GameObject spawnedAmmo = Instantiate(ammoSpawn, pos, Quaternion.identity);
-        spawnedAmmo.transform.SetParent(this.transform);
+        GameObject spawnedObject = Instantiate(prefabToSpawn, pos, Quaternion.identity);
+        spawnedObject.transform.SetParent(this.transform);
 
-    }
-
-    private void SpawnWeapons(GameObject weaponSpawn)
-    {
-        float spawnPosX = Random.Range(spawnBox.bounds.min.x, spawnBox.bounds.max.x);
-        float spawnPosY = Random.Range(spawnBox.bounds.min.x, spawnBox.bounds.max.y);
-
-        Vector2 pos = new Vector2(spawnPosX, spawnPosY);
-
-        GameObject spawnedWeapon = Instantiate(weaponSpawn, pos, Quaternion.identity);
-        spawnedWeapon.transform.SetParent(this.transform);
-    }
-
-    private void SpawnWorldObstacles()
-    {
-        for (int i=0; i < numOfSpawnedWorldObstacles; i++)
-        {
-            float spawnPosX = Random.Range(spawnBox.bounds.min.x, spawnBox.bounds.max.x);
-            float spawnPosY = Random.Range(spawnBox.bounds.min.y, spawnBox.bounds.max.y);
-
-            Vector2 pos = new Vector2(spawnPosX, spawnPosY);
-
-            GameObject spawnedWorldObstacles = Instantiate(obstacleObjects[Random.Range(0, obstacleObjects.Length)],
-                pos, Quaternion.identity);
-            spawnedWorldObstacles.transform.SetParent(this.transform);
-        }
     }
 
 #endregion
