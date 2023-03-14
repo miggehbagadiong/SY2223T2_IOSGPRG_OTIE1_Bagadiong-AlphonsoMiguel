@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,9 @@ public class WeaponInventory : Singleton<WeaponInventory>
     [SerializeField] GameObject wHeld; // means "Weapon Held"
     [SerializeField] Transform wMuzzle;
     [SerializeField] SpriteRenderer wGFX;
-
-    [HideInInspector] public List<Weapon> weaponsList = new List<Weapon>();
+    [SerializeField] Weapon[] weaponsList;
+    [SerializeField] Weapon primaryWeap;
+    [SerializeField] Weapon secondaryWeap;
     [HideInInspector] public Weapon currWeapon;
 
 
@@ -67,32 +69,35 @@ public class WeaponInventory : Singleton<WeaponInventory>
 
 #endregion
 
-#region Weapon Instances
+#region Weapon Inventory Functions
 
     public Transform GetMuzzle()
     {
         return wMuzzle;
     }
 
-    public void AddWeapon(Weapon newWeap) // adds either primary or secondary weapon
+    public void AddWeaponToInventory(Weapon newWeap) // adds either primary or secondary weapon
     {
-        //if (weapons[0] == null && (WeaponType.Rifle || WeaponType.Shotgun == null))
-        //    return newWeap;
-        if ((newWeap.weaponType.ToString() == WeaponType.Rifle.ToString() 
-                || newWeap.weaponType.ToString() == WeaponType.Shotgun.ToString()) && !weaponsList[0])
+      
+        if ((newWeap.weaponType == WeaponType.Rifle 
+                || newWeap.weaponType == WeaponType.Shotgun) && !primaryWeap)
         {
-            weaponsList[0] = newWeap;
-        }
-        else if (newWeap.weaponType.ToString() == WeaponType.Pistol.ToString() && !weaponsList[1])
-        {
-            weaponsList[1] = newWeap;
-        }
-    }
+            Debug.Log("Added weapon " + newWeap.weaponType.ToString());
+            primaryWeap = newWeap;
 
-    public Weapon AddCurrentWeapon(Weapon addCurrWeap)
-    {
-        currWeapon = addCurrWeap;
-        return currWeapon;
+        }
+        else if ((newWeap.weaponType == WeaponType.Pistol) && !secondaryWeap)
+        {
+            Debug.Log("Added weapon " + newWeap.weaponType.ToString());
+            secondaryWeap = newWeap;
+
+        }
+
+        if (!currWeapon)
+        {
+            currWeapon = newWeap;
+            ShowGun(newWeap);
+        }
     }
 
     public void ShowGun(Weapon weap)
@@ -101,7 +106,7 @@ public class WeaponInventory : Singleton<WeaponInventory>
         //wGFX.transform.Rotate(Vector3(0,0,90),transform.position);
     }
 
-    public void CheckCurrentWeapon(Weapon setWeap)
+    public void CheckCurrentWeapon(Weapon setWeap) // setup the instance parameters
     {
         
     }
@@ -112,13 +117,14 @@ public class WeaponInventory : Singleton<WeaponInventory>
 // implementation currently for secondary weapon need to retweak this again
 public void Shoot()
 {
-    if (!currWeapon)
+    if (currWeapon)
     {
+            
         GameObject bullet = Instantiate(currWeapon.wBullet, this.wMuzzle.transform.position, this.wMuzzle.transform.rotation);
-        Rigidbody2D rb = weaponsList[1].wBullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(this.wMuzzle.up * currWeapon.wBullet.GetComponent<BulletComponent>().bulletData.bulletSpeed, ForceMode2D.Impulse);
+        Rigidbody2D rb = currWeapon.wBullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(this.wMuzzle.up * bullet.GetComponent<BulletComponent>().bulletData.bulletSpeed, ForceMode2D.Impulse);
 
-        if(currWeapon.wCurrAmmo > 0)
+        if (currWeapon.wCurrAmmo > 0)
         {
             currWeapon.wCurrAmmo -= 1;
             UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
@@ -153,14 +159,14 @@ public void Reload()
     #endregion
 
     #region Ammo Inventory Functions
-    public void AddToAmmoInventory(AmmoItem ammoPack)
-    {
-        if (ammoPack.ammoData.ammoType == AmmoType.Pistol)
-            this.AddPistolMag(ammoPack.ammoData.ammoCount);
-        else if (ammoPack.ammoData.ammoType == AmmoType.Rifle)
-            this.AddRifleMag(ammoPack.ammoData.ammoCount);
-        else if (ammoPack.ammoData.ammoType == AmmoType.Shotgun)
-            this.AddShotgunMag(ammoPack.ammoData.ammoCount);
+    public void AddToAmmoInventory(Ammo ammoData)
+    { 
+        if (ammoData.ammoType == AmmoType.Pistol)
+            this.AddPistolMag(ammoData.GetAmmoCap());
+        else if (ammoData.ammoType == AmmoType.Rifle)
+            this.AddRifleMag(ammoData.GetAmmoCap());
+        else if (ammoData.ammoType == AmmoType.Shotgun)
+            this.AddShotgunMag(ammoData.GetAmmoCap());
     }
 
 

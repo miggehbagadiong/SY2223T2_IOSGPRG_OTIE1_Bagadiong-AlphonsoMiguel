@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 2
   bulletDMG: 20
-  bulletSpeed: 20
+  bulletSpeed: 500

@@ -778,6 +778,8 @@ MonoBehaviour:
   wMuzzle: {fileID: 472501157}
   wGFX: {fileID: 1313031712}
   weaponsList: []
+  primaryWeap: {fileID: 0}
+  secondaryWeap: {fileID: 0}
   currWeapon: {fileID: 0}
   rifleMag: 0
   pistolMag: 0
@@ -2568,6 +2570,7 @@ MonoBehaviour:
   numOfSpawnedWorldObstacles: 50
   numOfSpawnedAmmos: 13
   numOfSpawnedWeapons: 7
+  numOfSpawnWeapsAndAmmos: 0
 --- !u!1 &1360748154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,6 +2624,8 @@ MonoBehaviour:
   secondaryWeapTxt: {fileID: 1753728045}
   currAmmoTxt: {fileID: 779712602}
   currAmmoStockTxt: {fileID: 1636765163}
+  primaryButton: {fileID: 1491856610}
+  secondaryButton: {fileID: 629254777}
 --- !u!1 &1396123248
 GameObject:
   m_ObjectHideFlags: 0

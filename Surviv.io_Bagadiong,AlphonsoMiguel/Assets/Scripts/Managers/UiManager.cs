@@ -24,51 +24,95 @@ public class UiManager : Singleton<UiManager>
     public TextMeshProUGUI currAmmoTxt;
     public TextMeshProUGUI currAmmoStockTxt;
 
-#region Player Health
+    [Header("Button Components")]
+    public GameObject primaryButton;
+    public GameObject secondaryButton;
 
-public void SetMaxHealth(int refHealth)
-{
-    slider.maxValue = refHealth;
-    slider.value = refHealth;
-}
 
-public void SetHealth(int refHealth)
-{
-    slider.value = refHealth;
-}
+    #region Unity Functions
+
+    private void Start()
+    {
+        primaryButton.GetComponent<Button>().interactable = false;
+        secondaryButton.GetComponent<Button>().interactable = false;
+    }
+
+    #endregion
+
+
+    #region Player Health
+
+    public void SetMaxHealth(int refHealth)
+    {
+        slider.maxValue = refHealth;
+        slider.value = refHealth;
+    }
+
+    public void SetHealth(int refHealth)
+    {
+        slider.value = refHealth;
+    }
 
 #endregion
 
 #region Player Ammo and Weapon
 
-public void UpdateAmmoUI(Ammo ammo)
-{
-    if (ammo.ammoType == AmmoType.Pistol)
-        pistolAmmoTxt.text = ammo.ammoCount.ToString();
-    else if (ammo.ammoType == AmmoType.Rifle)
-        rifleAmmoTxt.text = ammo.ammoCount.ToString();
-    else if (ammo.ammoType == AmmoType.Shotgun)
-        shotgunAmmoTxt.text = ammo.ammoCount.ToString();
-}
-
-public void UpdateWeaponUI(Weapon weapon)
-{
-    if (weapon.weaponType == WeaponType.Rifle || weapon.weaponType == WeaponType.Shotgun)
+    public void UpdateAmmoUI(Ammo ammo)
     {
-        primaryWeapTxt.text = weapon.weaponType.ToString();
-    }
-    else if (weapon.weaponType == WeaponType.Pistol)
+        if (ammo.ammoType == AmmoType.Pistol)
+            pistolAmmoTxt.text = ammo.ammoCount.ToString();
+        else if (ammo.ammoType == AmmoType.Rifle)
+            rifleAmmoTxt.text = ammo.ammoCount.ToString();
+        else if (ammo.ammoType == AmmoType.Shotgun)
+            shotgunAmmoTxt.text = ammo.ammoCount.ToString();
+}
+
+    public void UpdateWeaponUI(Weapon weapon)
     {
-        secondaryWeapTxt.text = weapon.weaponType.ToString();
+        if (weapon.weaponType == WeaponType.Rifle || weapon.weaponType == WeaponType.Shotgun)
+        {
+            primaryWeapTxt.text = weapon.weaponType.ToString();
+        }
+        else if (weapon.weaponType == WeaponType.Pistol)
+        {
+            secondaryWeapTxt.text = weapon.weaponType.ToString();
+        }
     }
-}
 
-public void UpdateCurrWeapAmmoUI(Weapon currWeap)
-{
-    currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
-    currAmmoStockTxt.text = currWeap.wMagCap.ToString();
-}
+    public void UpdateCurrWeapAmmoUI(Weapon currWeap)
+    {
+        currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
+        currAmmoStockTxt.text = currWeap.wMagCap.ToString();
+    
+        if (currWeap.weaponType == WeaponType.Rifle || currWeap.weaponType == WeaponType.Shotgun)
+        {
+            primaryWeapTxt.text = currWeap.weaponType.ToString();
+        }
+        else if (currWeap.weaponType == WeaponType.Pistol) 
+        {    
+            secondaryWeapTxt.text = currWeap.weaponType.ToString();
+        }
 
-#endregion
+    }
+
+    #endregion
+
+    #region Buttons
+
+    public void SetInteractableWeapon(int buttonIndex, bool buttonState)
+    {
+        if (buttonIndex == 1) 
+        {
+            primaryButton.GetComponent<Button>().interactable = buttonState;
+        }
+        else if (buttonIndex == 2)
+        {
+            secondaryButton.GetComponent<Button>().interactable = buttonState;
+        }
+    }
+
+    #endregion
+
+
 
 }
