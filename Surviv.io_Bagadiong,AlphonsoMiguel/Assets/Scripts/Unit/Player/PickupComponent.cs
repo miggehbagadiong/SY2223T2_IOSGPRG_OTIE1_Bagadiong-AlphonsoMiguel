@@ -35,8 +35,7 @@ public class PickupComponent : MonoBehaviour
             var weaponItem = objectLoot.gameObject.GetComponent<WeaponItem>();
 
             pInventory.AddWeaponToInventory(weaponItem.weaponData);
-            //pInventory.ShowGun(weaponItem.weaponData);
-
+            UiManager.Instance.UpdateWeaponUI(weaponItem.weaponData);
            
             // add the other stuff here later
 

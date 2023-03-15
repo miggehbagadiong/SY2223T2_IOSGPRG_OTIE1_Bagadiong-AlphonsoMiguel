@@ -27,14 +27,19 @@ public class UiManager : Singleton<UiManager>
     [Header("Button Components")]
     public GameObject primaryButton;
     public GameObject secondaryButton;
+    public GameObject fireButton;
+    public GameObject reloadButton;
 
 
     #region Unity Functions
 
     private void Start()
     {
+        // set the interactable to false on the very start
         primaryButton.GetComponent<Button>().interactable = false;
         secondaryButton.GetComponent<Button>().interactable = false;
+        fireButton.GetComponent<Button>().interactable = false;
+        reloadButton.GetComponent<Button>().interactable = false;
     }
 
     #endregion
@@ -62,9 +67,9 @@ public class UiManager : Singleton<UiManager>
         if (ammo.ammoType == AmmoType.Pistol)
             pistolAmmoTxt.text = ammo.ammoCount.ToString();
         else if (ammo.ammoType == AmmoType.Rifle)
-            rifleAmmoTxt.text = ammo.ammoCount.ToString();
+            rifleAmmoTxt.text += ammo.ammoCount.ToString();
         else if (ammo.ammoType == AmmoType.Shotgun)
-            shotgunAmmoTxt.text = ammo.ammoCount.ToString();
+            shotgunAmmoTxt.text += ammo.ammoCount.ToString();
 }
 
     public void UpdateWeaponUI(Weapon weapon)
@@ -81,16 +86,19 @@ public class UiManager : Singleton<UiManager>
 
     public void UpdateCurrWeapAmmoUI(Weapon currWeap)
     {
-        currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
-        currAmmoStockTxt.text = currWeap.wMagCap.ToString();
-    
         if (currWeap.weaponType == WeaponType.Rifle || currWeap.weaponType == WeaponType.Shotgun)
         {
             primaryWeapTxt.text = currWeap.weaponType.ToString();
+
+            currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
+            currAmmoStockTxt.text = currWeap.wMagCap.ToString();
         }
         else if (currWeap.weaponType == WeaponType.Pistol) 
         {    
             secondaryWeapTxt.text = currWeap.weaponType.ToString();
+
+            currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
+            currAmmoStockTxt.text = currWeap.wMagCap.ToString();
         }
 
     }
@@ -108,6 +116,25 @@ public class UiManager : Singleton<UiManager>
         else if (buttonIndex == 2)
         {
             secondaryButton.GetComponent<Button>().interactable = buttonState;
+        }
+    }
+
+    public void SetFiringSystemButtons(string activeButton)
+    {
+        if (activeButton == "fire") // fire button is active
+        {
+            fireButton.GetComponent<Button>().interactable = true;
+            reloadButton.GetComponent<Button>().interactable = false;
+        }
+        else if (activeButton == "reload") // reload button is active
+        {
+            fireButton.GetComponent<Button>().interactable = false;
+            reloadButton.GetComponent<Button>().interactable = true;
+        }
+        else if (activeButton == "waitReload")
+        {
+            fireButton.GetComponent<Button>().interactable = false;
+            reloadButton.GetComponent<Button>().interactable = false;
         }
     }
 

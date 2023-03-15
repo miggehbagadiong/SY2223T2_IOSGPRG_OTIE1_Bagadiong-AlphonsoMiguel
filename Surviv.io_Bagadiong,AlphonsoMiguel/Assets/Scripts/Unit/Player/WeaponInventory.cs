@@ -84,19 +84,24 @@ public class WeaponInventory : Singleton<WeaponInventory>
         {
             Debug.Log("Added weapon " + newWeap.weaponType.ToString());
             primaryWeap = newWeap;
+            UiManager.Instance.SetInteractableWeapon(1, true); // sets the UiButton to True
 
         }
         else if ((newWeap.weaponType == WeaponType.Pistol) && !secondaryWeap)
         {
             Debug.Log("Added weapon " + newWeap.weaponType.ToString());
             secondaryWeap = newWeap;
+            UiManager.Instance.SetInteractableWeapon(2, true);
 
         }
 
         if (!currWeapon)
         {
             currWeapon = newWeap;
+            Debug.Log("Current Weapon: " + currWeapon);
             ShowGun(newWeap);
+            UiManager.Instance.UpdateCurrWeapAmmoUI(newWeap);
+            UiManager.Instance.SetFiringSystemButtons("fire");
         }
     }
 
@@ -106,9 +111,9 @@ public class WeaponInventory : Singleton<WeaponInventory>
         //wGFX.transform.Rotate(Vector3(0,0,90),transform.position);
     }
 
-    public void CheckCurrentWeapon(Weapon setWeap) // setup the instance parameters
+    public void SwitchWeapon(Weapon currWeap)
     {
-        
+
     }
 
 #endregion
@@ -119,21 +124,36 @@ public void Shoot()
 {
     if (currWeapon)
     {
-            
+        // reimplement for the shotgun
         GameObject bullet = Instantiate(currWeapon.wBullet, this.wMuzzle.transform.position, this.wMuzzle.transform.rotation);
-        Rigidbody2D rb = currWeapon.wBullet.GetComponent<Rigidbody2D>();
+        //Rigidbody2D rb = currWeapon.wBullet.GetComponent<Rigidbody2D>();
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(this.wMuzzle.up * bullet.GetComponent<BulletComponent>().bulletData.bulletSpeed, ForceMode2D.Impulse);
 
-        if (currWeapon.wCurrAmmo > 0)
-        {
-            currWeapon.wCurrAmmo -= 1;
-            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
-        }
-        else
+        currWeapon.wCurrAmmo -= 1;
+        UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+        Debug.Log("Current Ammo: " + currWeapon.wCurrAmmo);
+
+        if (currWeapon.wCurrAmmo <= 0)
         {
             Debug.Log("No Ammo. Reload!");
             currWeapon.wCurrAmmo = 0;
+            UiManager.Instance.SetFiringSystemButtons("reload");
         }
+
+        // if (currWeapon.wCurrAmmo != 0)
+        // {
+        //     // currWeapon.wCurrAmmo -= 1;
+        //     // UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+        //     // Debug.Log("Current Ammo: " + currWeapon.wCurrAmmo);
+            
+        // }
+        // else
+        // {
+        //     Debug.Log("No Ammo. Reload!");
+        //     currWeapon.wCurrAmmo = 0;
+        //     UiManager.Instance.SetFiringSystemButtons("reload");
+        // }
     }
     else
     {
@@ -162,11 +182,25 @@ public void Reload()
     public void AddToAmmoInventory(Ammo ammoData)
     { 
         if (ammoData.ammoType == AmmoType.Pistol)
-            this.AddPistolMag(ammoData.GetAmmoCap());
+            AddPistolMag(ammoData.GetAmmoCap());
         else if (ammoData.ammoType == AmmoType.Rifle)
-            this.AddRifleMag(ammoData.GetAmmoCap());
+            AddRifleMag(ammoData.GetAmmoCap());
         else if (ammoData.ammoType == AmmoType.Shotgun)
-            this.AddShotgunMag(ammoData.GetAmmoCap());
+            AddShotgunMag(ammoData.GetAmmoCap());
+    }
+
+
+    #endregion
+
+    #region Coroutines
+    
+    public IEnumerator GoWeaponReload(float reloadTime)
+    {
+        yield return new WaitForSeconds(reloadTime);
+
+        int magBag = GetPistolMag();
+        magBag -= currWeapon.wMagCap;
+        UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
     }
 
 

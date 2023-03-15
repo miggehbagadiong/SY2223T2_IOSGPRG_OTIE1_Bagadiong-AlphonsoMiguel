@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public enum WeaponType{
     Pistol = 1,
@@ -8,7 +9,8 @@ public enum WeaponType{
     Rifle = 3
 };
 
-[CreateAssetMenu(menuName = "Weapon")]
+[CreateAssetMenu(menuName = "Weapon/WeaponBase")]
+[InitializeOnLoad]
 public class Weapon : ScriptableObject
 {
 
@@ -33,6 +35,19 @@ public class Weapon : ScriptableObject
     [Header("Bullet")]
     public GameObject wBullet;
     public float wBulletSpeed = 20f;    
+
+#endregion
+
+protected virtual void ResetParameters()
+{
+    wCurrAmmo = wMagCap;
+}
+
+#region Unity Functions
+private void OnDisable() {
+    ResetParameters();
+}
+
 
 #endregion
 
