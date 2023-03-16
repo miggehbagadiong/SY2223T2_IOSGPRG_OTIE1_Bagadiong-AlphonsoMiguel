@@ -23,7 +23,7 @@ public class PickupComponent : MonoBehaviour
             var ammoItem = objectLoot.gameObject.GetComponent<AmmoItem>();
 
             pInventory.AddToAmmoInventory(ammoItem.ammoData);
-            UiManager.Instance.UpdateAmmoUI(ammoItem.ammoData);
+            UiManager.Instance.UpdateAmmoUI(ammoItem.ammoData, pInventory.GetAmmoMagData(ammoItem.ammoData));
         }
 
         else if (objectLoot.gameObject.GetComponent<WeaponItem>())

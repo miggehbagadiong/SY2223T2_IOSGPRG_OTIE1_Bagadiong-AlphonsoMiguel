@@ -24,6 +24,8 @@ public class WeaponInventory : Singleton<WeaponInventory>
     [HideInInspector] public int rifleMagCap;
     [HideInInspector] public int shotgunMagCap;
 
+    [HideInInspector] int refData;
+
     private void Start()
     {
         
@@ -31,25 +33,33 @@ public class WeaponInventory : Singleton<WeaponInventory>
 
 #region Ammo References
 
-    public int AddPistolMag(int add)
+    public void AddPistolMag(int add)
     {
         pistolMag += add;
-
-        return pistolMag;
     }
 
-    public int AddRifleMag(int add)
+    public void AddRifleMag(int add)
     {
         rifleMag += add;
-
-        return rifleMag;
     }
 
-    public int AddShotgunMag(int add)
+    public void AddShotgunMag(int add)
     {
         shotgunMag += add;
+    }
 
-        return shotgunMag;
+    public int GetAmmoMagData(Ammo ammoRef)
+    {
+        
+        if (ammoRef.ammoType == AmmoType.Pistol)
+            refData = pistolMag;
+        else if (ammoRef.ammoType == AmmoType.Rifle)
+            refData = rifleMag;
+        else if (ammoRef.ammoType == AmmoType.Shotgun)
+            refData = shotgunMag;
+
+        return refData;
+
     }
 
     public int GetPistolMag()
@@ -165,14 +175,22 @@ public void Shoot()
 
 public void Reload()
 {
-    if (currWeapon.wCurrAmmo <= 0 || currWeapon.wCurrAmmo >= 0)
+    if (currWeapon.weaponType == WeaponType.Pistol && pistolMag != 0)
     {
-        Debug.Log("Reloading!");
-
-        int magBag = GetPistolMag();
-        magBag -= currWeapon.wMagCap;
-        UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
-        
+        StartCoroutine(GoWeaponReload(2f, currWeapon));
+    }
+    else if (currWeapon.weaponType == WeaponType.Rifle && rifleMag != 0)
+    {
+        StartCoroutine(GoWeaponReload(2f, currWeapon));
+    }
+    else if (currWeapon.weaponType == WeaponType.Shotgun && shotgunMag != 0)
+    {
+        StartCoroutine(GoWeaponReload(2f, currWeapon));
+    }
+    else
+    {
+        Debug.Log("No ammos in inventory!");
+        // insert content to make this notify there isnt any left
     }
 }
 
@@ -182,11 +200,20 @@ public void Reload()
     public void AddToAmmoInventory(Ammo ammoData)
     { 
         if (ammoData.ammoType == AmmoType.Pistol)
+        {
             AddPistolMag(ammoData.GetAmmoCap());
+            Debug.Log("Pistol Mag: " + pistolMag);
+        }
         else if (ammoData.ammoType == AmmoType.Rifle)
+        {
             AddRifleMag(ammoData.GetAmmoCap());
+            Debug.Log("Rifle Mag: " + rifleMag);
+        }
         else if (ammoData.ammoType == AmmoType.Shotgun)
+        {
             AddShotgunMag(ammoData.GetAmmoCap());
+            Debug.Log("Shotgun Mag: " + shotgunMag);
+        }
     }
 
 
@@ -194,13 +221,37 @@ public void Reload()
 
     #region Coroutines
     
-    public IEnumerator GoWeaponReload(float reloadTime)
+    public IEnumerator GoWeaponReload(float reloadTime, Weapon equippedWeap)
     {
+
+        UiManager.Instance.SetFiringSystemButtons("waitReload");
+
         yield return new WaitForSeconds(reloadTime);
 
-        int magBag = GetPistolMag();
-        magBag -= currWeapon.wMagCap;
+        if (equippedWeap.weaponType == WeaponType.Pistol)
+        {
+            int magBag = GetPistolMag();
+            magBag -= currWeapon.wMagCap;
+            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+        }
+        else if (equippedWeap.weaponType == WeaponType.Rifle)
+        {
+            int magBag = GetRifleMag();
+            magBag -= currWeapon.wMagCap;
+            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+        }
+        else if (equippedWeap.weaponType == WeaponType.Shotgun)
+        {
+            int magBag = GetShotgunMag();
+            magBag -= currWeapon.wMagCap;
+            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+        }
+        
+
+        currWeapon.wCurrAmmo += currWeapon.wMagCap;
         UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+        UiManager.Instance.SetFiringSystemButtons("fire");
+        
     }
 
 

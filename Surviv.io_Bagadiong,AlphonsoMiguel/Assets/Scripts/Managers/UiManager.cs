@@ -62,14 +62,14 @@ public class UiManager : Singleton<UiManager>
 
 #region Player Ammo and Weapon
 
-    public void UpdateAmmoUI(Ammo ammo)
+    public void UpdateAmmoUI(Ammo ammo, int ammoMag)
     {
         if (ammo.ammoType == AmmoType.Pistol)
-            pistolAmmoTxt.text = ammo.ammoCount.ToString();
+            pistolAmmoTxt.text = ammoMag.ToString();
         else if (ammo.ammoType == AmmoType.Rifle)
-            rifleAmmoTxt.text += ammo.ammoCount.ToString();
+            rifleAmmoTxt.text = ammoMag.ToString();
         else if (ammo.ammoType == AmmoType.Shotgun)
-            shotgunAmmoTxt.text += ammo.ammoCount.ToString();
+            shotgunAmmoTxt.text = ammoMag.ToString();
 }
 
     public void UpdateWeaponUI(Weapon weapon)
