@@ -27,5 +27,15 @@ public class GameManager : MonoBehaviour
         WeaponInventory.Instance.Reload();
     }
 
+    public void OnPrimaryButtonPressed()
+    {
+        WeaponInventory.Instance.SwitchWeapon("primary");
+    }
+
+    public void OnSecondaryButtonPressed()
+    {
+        WeaponInventory.Instance.SwitchWeapon("secondary");
+    }
+
     #endregion
 }

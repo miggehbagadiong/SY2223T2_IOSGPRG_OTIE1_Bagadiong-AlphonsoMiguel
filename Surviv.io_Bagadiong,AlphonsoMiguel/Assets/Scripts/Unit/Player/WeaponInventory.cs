@@ -89,30 +89,48 @@ public class WeaponInventory : Singleton<WeaponInventory>
     public void AddWeaponToInventory(Weapon newWeap) // adds either primary or secondary weapon
     {
       
-        if ((newWeap.weaponType == WeaponType.Rifle 
-                || newWeap.weaponType == WeaponType.Shotgun) && !primaryWeap)
+        if ((newWeap.weaponType == WeaponType.Rifle || newWeap.weaponType == WeaponType.Shotgun) && !primaryWeap)
         {
             Debug.Log("Added weapon " + newWeap.weaponType.ToString());
             primaryWeap = newWeap;
-            UiManager.Instance.SetInteractableWeapon(1, true); // sets the UiButton to True
-
+           
         }
         else if ((newWeap.weaponType == WeaponType.Pistol) && !secondaryWeap)
         {
             Debug.Log("Added weapon " + newWeap.weaponType.ToString());
             secondaryWeap = newWeap;
-            UiManager.Instance.SetInteractableWeapon(2, true);
+           
 
         }
 
+        // setup for current weapon
         if (!currWeapon)
         {
             currWeapon = newWeap;
             Debug.Log("Current Weapon: " + currWeapon);
             ShowGun(newWeap);
+
             UiManager.Instance.UpdateCurrWeapAmmoUI(newWeap);
             UiManager.Instance.SetFiringSystemButtons("fire");
         }
+        else
+        {
+            Debug.Log("Current weapon occupied!");
+        }
+
+        // if both are not null, then
+        if (primaryWeap && secondaryWeap)
+        {
+            if (currWeapon.weaponType == WeaponType.Rifle || currWeapon.weaponType == WeaponType.Shotgun)
+            {
+                UiManager.Instance.SetInteractableWeapon("primary", true);
+            }
+            else if (currWeapon.weaponType == WeaponType.Pistol)
+            {
+                 UiManager.Instance.SetInteractableWeapon("secondary", true);
+            }
+        }
+        
     }
 
     public void ShowGun(Weapon weap)
@@ -121,9 +139,17 @@ public class WeaponInventory : Singleton<WeaponInventory>
         //wGFX.transform.Rotate(Vector3(0,0,90),transform.position);
     }
 
-    public void SwitchWeapon(Weapon currWeap)
+    public void SwitchWeapon(string switchedWeapon)
     {
-
+        if (switchedWeapon == "primary")
+        {
+            // switch to rifle/shotgun
+            
+        }
+        else if (switchedWeapon == "secondary")
+        {
+            // switch to pistol
+        }
     }
 
 #endregion
@@ -150,20 +176,6 @@ public void Shoot()
             currWeapon.wCurrAmmo = 0;
             UiManager.Instance.SetFiringSystemButtons("reload");
         }
-
-        // if (currWeapon.wCurrAmmo != 0)
-        // {
-        //     // currWeapon.wCurrAmmo -= 1;
-        //     // UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
-        //     // Debug.Log("Current Ammo: " + currWeapon.wCurrAmmo);
-            
-        // }
-        // else
-        // {
-        //     Debug.Log("No Ammo. Reload!");
-        //     currWeapon.wCurrAmmo = 0;
-        //     UiManager.Instance.SetFiringSystemButtons("reload");
-        // }
     }
     else
     {
@@ -230,6 +242,7 @@ public void Reload()
 
         if (equippedWeap.weaponType == WeaponType.Pistol)
         {
+            
             int magBag = GetPistolMag();
             magBag -= currWeapon.wMagCap;
             UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);

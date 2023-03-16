@@ -86,19 +86,26 @@ public class UiManager : Singleton<UiManager>
 
     public void UpdateCurrWeapAmmoUI(Weapon currWeap)
     {
-        if (currWeap.weaponType == WeaponType.Rifle || currWeap.weaponType == WeaponType.Shotgun)
+        if (currWeap.weaponType == WeaponType.Rifle)
         {
             primaryWeapTxt.text = currWeap.weaponType.ToString();
 
             currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
-            currAmmoStockTxt.text = currWeap.wMagCap.ToString();
+            currAmmoStockTxt.text = WeaponInventory.Instance.GetRifleMag().ToString();
+        }
+        else if (currWeap.weaponType == WeaponType.Shotgun)
+        {
+            primaryWeapTxt.text = currWeap.weaponType.ToString();
+
+            currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
+            currAmmoStockTxt.text = WeaponInventory.Instance.GetShotgunMag().ToString();
         }
         else if (currWeap.weaponType == WeaponType.Pistol) 
         {    
             secondaryWeapTxt.text = currWeap.weaponType.ToString();
 
             currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
-            currAmmoStockTxt.text = currWeap.wMagCap.ToString();
+            currAmmoStockTxt.text = WeaponInventory.Instance.GetPistolMag().ToString();
         }
 
     }
@@ -107,13 +114,13 @@ public class UiManager : Singleton<UiManager>
 
     #region Buttons
 
-    public void SetInteractableWeapon(int buttonIndex, bool buttonState)
+    public void SetInteractableWeapon(string weaponButton, bool buttonState)
     {
-        if (buttonIndex == 1) 
+        if (weaponButton == "primary") 
         {
             primaryButton.GetComponent<Button>().interactable = buttonState;
         }
-        else if (buttonIndex == 2)
+        else if (weaponButton == "secondary")
         {
             secondaryButton.GetComponent<Button>().interactable = buttonState;
         }

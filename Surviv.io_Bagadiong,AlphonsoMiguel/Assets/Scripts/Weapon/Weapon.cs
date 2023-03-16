@@ -10,7 +10,6 @@ public enum WeaponType{
 };
 
 [CreateAssetMenu(menuName = "Weapon/WeaponBase")]
-[InitializeOnLoad]
 public class Weapon : ScriptableObject
 {
 
