@@ -9,14 +9,12 @@ public class SpawnManager : Singleton<SpawnManager>
     [Header("Objects Spawn Parameters")]
     public WeaponItem[] lootableWeapons;
     public AmmoItem[] lootableAmmos;
-    public GameObject[] obstacleObjects;
 
     [Header("Spawn Area Parameters")]
     public GameObject worldSpawnBox;
     MeshCollider spawnBox;
 
     [Header("Spawning Parameters")]
-    public float numOfSpawnedWorldObstacles;
     public int numOfSpawnedAmmos;
     public int numOfSpawnedWeapons;
     public int numOfSpawnWeapsAndAmmos;
@@ -27,9 +25,9 @@ public class SpawnManager : Singleton<SpawnManager>
 
 #region Enemy AI 
 
-    // [Header("Enemy Parameters")]
-    // public GameObject enemyPrefab;
-    // public int numOfSpawnedEnemies;
+    [Header("Enemy Parameters")]
+    public GameObject enemyPrefab;
+    public int numOfSpawnedEnemies;
 
 #endregion
 
@@ -56,8 +54,8 @@ public class SpawnManager : Singleton<SpawnManager>
         for (int i=0; i < numOfSpawnedWeapons; i++)
            Spawn(lootableWeapons[Random.Range(0, lootableWeapons.Length)].gameObject);
 
-        for (int i = 0; i < numOfSpawnedWorldObstacles; i++)
-            Spawn(obstacleObjects[Random.Range(0, obstacleObjects.Length)].gameObject);
+        // for (int i = 0; i < numOfSpawnedWorldObstacles; i++)
+        //     Spawn(obstacleObjects[Random.Range(0, obstacleObjects.Length)].gameObject);
 
     }
 

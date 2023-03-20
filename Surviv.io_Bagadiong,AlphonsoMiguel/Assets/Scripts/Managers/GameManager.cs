@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
+
+#region Accessible Variables
+
+public PatrolSpot patrolSpots;
+
+#endregion
 
     void Start()
     {

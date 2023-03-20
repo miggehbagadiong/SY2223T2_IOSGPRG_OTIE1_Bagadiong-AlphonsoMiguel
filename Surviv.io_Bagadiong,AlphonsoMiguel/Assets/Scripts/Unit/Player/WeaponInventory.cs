@@ -20,9 +20,6 @@ public class WeaponInventory : Singleton<WeaponInventory>
     [HideInInspector] public int rifleMag;
     [HideInInspector] public int pistolMag;
     [HideInInspector] public int shotgunMag;
-    [HideInInspector] public int pistolMagCap;
-    [HideInInspector] public int rifleMagCap;
-    [HideInInspector] public int shotgunMagCap;
 
     [HideInInspector] int refData;
 
@@ -30,6 +27,13 @@ public class WeaponInventory : Singleton<WeaponInventory>
     {
         
     }   
+
+    private void Update()
+    {
+        if (currWeapon != null)
+            UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
+
+    }
 
 #region Ammo References
 
@@ -46,6 +50,21 @@ public class WeaponInventory : Singleton<WeaponInventory>
     public void AddShotgunMag(int add)
     {
         shotgunMag += add;
+    }
+
+    public void ReducePistolMag(int reduce)
+    {
+        pistolMag -= reduce;
+    }
+
+    public void ReduceRifleMag(int reduce)
+    {
+        rifleMag -= reduce;
+    }
+
+    public void ReduceShotgunMag(int reduce)
+    {
+        shotgunMag -= reduce;
     }
 
     public int GetAmmoMagData(Ammo ammoRef)
@@ -94,12 +113,14 @@ public class WeaponInventory : Singleton<WeaponInventory>
             Debug.Log("Added weapon " + newWeap.weaponType.ToString());
             primaryWeap = newWeap;
            
+            UiManager.Instance.SetInteractableWeapon("primary", true);
         }
         else if ((newWeap.weaponType == WeaponType.Pistol) && !secondaryWeap)
         {
             Debug.Log("Added weapon " + newWeap.weaponType.ToString());
             secondaryWeap = newWeap;
            
+            UiManager.Instance.SetInteractableWeapon("secondary", true);
 
         }
 
@@ -111,32 +132,18 @@ public class WeaponInventory : Singleton<WeaponInventory>
             ShowGun(newWeap);
 
             UiManager.Instance.UpdateCurrWeapAmmoUI(newWeap);
+            UiManager.Instance.UpdateCurrAmmoStockUI(newWeap, pistolMag, rifleMag, shotgunMag);
             UiManager.Instance.SetFiringSystemButtons("fire");
         }
         else
         {
             Debug.Log("Current weapon occupied!");
         }
-
-        // if both are not null, then
-        if (primaryWeap && secondaryWeap)
-        {
-            if (currWeapon.weaponType == WeaponType.Rifle || currWeapon.weaponType == WeaponType.Shotgun)
-            {
-                UiManager.Instance.SetInteractableWeapon("primary", true);
-            }
-            else if (currWeapon.weaponType == WeaponType.Pistol)
-            {
-                 UiManager.Instance.SetInteractableWeapon("secondary", true);
-            }
-        }
-        
     }
 
     public void ShowGun(Weapon weap)
     {
         wGFX.sprite = weap.weaponSprite;
-        //wGFX.transform.Rotate(Vector3(0,0,90),transform.position);
     }
 
     public void SwitchWeapon(string switchedWeapon)
@@ -144,11 +151,23 @@ public class WeaponInventory : Singleton<WeaponInventory>
         if (switchedWeapon == "primary")
         {
             // switch to rifle/shotgun
+            currWeapon = primaryWeap;
+            ShowGun(currWeapon);
+
+            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+            UiManager.Instance. UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
+
             
         }
         else if (switchedWeapon == "secondary")
         {
             // switch to pistol
+
+            currWeapon = secondaryWeap;
+            ShowGun(currWeapon);
+
+            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+            UiManager.Instance. UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
         }
     }
 
@@ -158,31 +177,7 @@ public class WeaponInventory : Singleton<WeaponInventory>
 // implementation currently for secondary weapon need to retweak this again
 public void Shoot()
 {
-    if (currWeapon)
-    {
-        // reimplement for the shotgun
-        GameObject bullet = Instantiate(currWeapon.wBullet, this.wMuzzle.transform.position, this.wMuzzle.transform.rotation);
-        //Rigidbody2D rb = currWeapon.wBullet.GetComponent<Rigidbody2D>();
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(this.wMuzzle.up * bullet.GetComponent<BulletComponent>().bulletData.bulletSpeed, ForceMode2D.Impulse);
-
-        currWeapon.wCurrAmmo -= 1;
-        UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
-        Debug.Log("Current Ammo: " + currWeapon.wCurrAmmo);
-
-        if (currWeapon.wCurrAmmo <= 0)
-        {
-            Debug.Log("No Ammo. Reload!");
-            currWeapon.wCurrAmmo = 0;
-            UiManager.Instance.SetFiringSystemButtons("reload");
-        }
-    }
-    else
-    {
-        Debug.Log("Is null. recheck!");
-        return;
-    }
-
+    currWeapon.GunShooting(this.wMuzzle);
 }
 
 public void Reload()
@@ -238,29 +233,31 @@ public void Reload()
 
         UiManager.Instance.SetFiringSystemButtons("waitReload");
 
-        yield return new WaitForSeconds(reloadTime);
 
         if (equippedWeap.weaponType == WeaponType.Pistol)
         {
-            
-            int magBag = GetPistolMag();
-            magBag -= currWeapon.wMagCap;
+            ReducePistolMag(currWeapon.wMagCap);
+            UiManager.Instance.UpdatePistolAmmoUi(this.pistolMag);
             UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+            UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
         }
         else if (equippedWeap.weaponType == WeaponType.Rifle)
         {
-            int magBag = GetRifleMag();
-            magBag -= currWeapon.wMagCap;
+            ReduceRifleMag(currWeapon.wMagCap);
+            UiManager.Instance.UpdateRifleAmmoUi(this.rifleMag);
             UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+            UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
         }
         else if (equippedWeap.weaponType == WeaponType.Shotgun)
         {
-            int magBag = GetShotgunMag();
-            magBag -= currWeapon.wMagCap;
+            ReduceShotgunMag(currWeapon.wMagCap);
+            UiManager.Instance.UpdateShotgunAmmoUi(this.shotgunMag);
             UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+            UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
         }
-        
 
+        yield return new WaitForSeconds(reloadTime);
+        
         currWeapon.wCurrAmmo += currWeapon.wMagCap;
         UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
         UiManager.Instance.SetFiringSystemButtons("fire");

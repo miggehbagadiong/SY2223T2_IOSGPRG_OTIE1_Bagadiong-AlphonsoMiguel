@@ -9,8 +9,7 @@ public enum WeaponType{
     Rifle = 3
 };
 
-[CreateAssetMenu(menuName = "Weapon/WeaponBase")]
-public class Weapon : ScriptableObject
+public class Weapon : MonoBehaviour
 {
 
 #region Variables
@@ -28,8 +27,6 @@ public class Weapon : ScriptableObject
 
     [Header("Weapon Firing")]
     public float wFireRate;
-    public bool hasSpread;
-    public bool isAutomatic;
 
     [Header("Bullet")]
     public GameObject wBullet;
@@ -37,13 +34,20 @@ public class Weapon : ScriptableObject
 
 #endregion
 
+// shooting events will be run through the weapon since
+// there is an instance like the shotgun to have a spread
+public virtual void GunShooting(Transform muzzle)
+{
+    
+}
+
 protected virtual void ResetParameters()
 {
     wCurrAmmo = wMagCap;
 }
 
 #region Unity Functions
-private void OnDisable() {
+protected virtual void OnDisable() {
     ResetParameters();
 }
 

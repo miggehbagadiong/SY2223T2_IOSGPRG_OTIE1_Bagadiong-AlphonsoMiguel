@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8106504427223127375}
-  - component: {fileID: 8106504427223127374}
   - component: {fileID: 8106504427223127369}
+  - component: {fileID: 8106504427223127374}
+  - component: {fileID: -229906232644428802}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Weapon
@@ -34,19 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8106504427223127374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8106504427223127368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 511714305be8dad4d8bcaa27272ebf82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 19edc18fdde3a7c469bf03248373e54a, type: 2}
 --- !u!61 &8106504427223127369
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73,6 +61,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 21.36, y: 4.88}
   m_EdgeRadius: 0
+--- !u!114 &8106504427223127374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106504427223127368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511714305be8dad4d8bcaa27272ebf82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: -229906232644428802}
+--- !u!114 &-229906232644428802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106504427223127368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe725d147f6cb0549859902546119cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 2
+  wCurrAmmo: 2
+  wMaxAmmo: 60
+  wMagCap: 2
+  weaponSprite: {fileID: 614389102, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
+  wFireRate: 0
+  wBullet: {fileID: 2536142194191904013, guid: 81e11ea49a618034ca0adb1fbab53c0c, type: 3}
+  wBulletSpeed: 20
 --- !u!1 &8106504428084567904
 GameObject:
   m_ObjectHideFlags: 0

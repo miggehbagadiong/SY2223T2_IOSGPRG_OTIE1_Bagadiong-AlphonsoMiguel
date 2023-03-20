@@ -93,8 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9189510472865552449}
-  - component: {fileID: 6726557544223959650}
   - component: {fileID: 3834633816419762081}
+  - component: {fileID: 6726557544223959650}
+  - component: {fileID: -7053281508214607239}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Weapon
@@ -118,19 +119,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6726557544223959650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8638165885206523387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 511714305be8dad4d8bcaa27272ebf82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: bfea5a45f54e1a8409ab20cd31b779e7, type: 2}
 --- !u!61 &3834633816419762081
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,3 +145,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 18, y: 3.5}
   m_EdgeRadius: 0
+--- !u!114 &6726557544223959650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638165885206523387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511714305be8dad4d8bcaa27272ebf82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: -7053281508214607239}
+--- !u!114 &-7053281508214607239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638165885206523387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8593f883173c9634b9fe5dcfdcc172fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 3
+  wCurrAmmo: 30
+  wMaxAmmo: 120
+  wMagCap: 30
+  weaponSprite: {fileID: 1433340881, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
+  wFireRate: 0
+  wBullet: {fileID: 259804377794743205, guid: a654830c557edda49b27942e9f2f7789, type: 3}
+  wBulletSpeed: 20

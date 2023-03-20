@@ -62,6 +62,21 @@ public class UiManager : Singleton<UiManager>
 
 #region Player Ammo and Weapon
 
+    public void UpdatePistolAmmoUi(int pistolMag)
+    {
+        pistolAmmoTxt.text = pistolMag.ToString();
+    }
+
+    public void UpdateRifleAmmoUi(int rifleMag)
+    {
+        rifleAmmoTxt.text = rifleMag.ToString();
+    }
+
+    public void UpdateShotgunAmmoUi(int shotgunMag)
+    {
+        shotgunAmmoTxt.text = shotgunMag.ToString();
+    }
+
     public void UpdateAmmoUI(Ammo ammo, int ammoMag)
     {
         if (ammo.ammoType == AmmoType.Pistol)
@@ -91,23 +106,40 @@ public class UiManager : Singleton<UiManager>
             primaryWeapTxt.text = currWeap.weaponType.ToString();
 
             currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
-            currAmmoStockTxt.text = WeaponInventory.Instance.GetRifleMag().ToString();
+            //currAmmoStockTxt.text = WeaponInventory.Instance.GetRifleMag().ToString();
         }
         else if (currWeap.weaponType == WeaponType.Shotgun)
         {
             primaryWeapTxt.text = currWeap.weaponType.ToString();
 
             currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
-            currAmmoStockTxt.text = WeaponInventory.Instance.GetShotgunMag().ToString();
+            //currAmmoStockTxt.text = WeaponInventory.Instance.GetShotgunMag().ToString();
         }
         else if (currWeap.weaponType == WeaponType.Pistol) 
         {    
             secondaryWeapTxt.text = currWeap.weaponType.ToString();
 
             currAmmoTxt.text = currWeap.wCurrAmmo.ToString();
-            currAmmoStockTxt.text = WeaponInventory.Instance.GetPistolMag().ToString();
+            //currAmmoStockTxt.text = WeaponInventory.Instance.GetPistolMag().ToString();
         }
 
+    }
+
+    public void UpdateCurrAmmoStockUI(Weapon currWeap, int pistolStock, int rifleStock, int shotgunStock)
+    {
+        if (currWeap.weaponType == WeaponType.Pistol)
+        {
+            currAmmoStockTxt.text = pistolStock.ToString();
+        }
+        else if (currWeap.weaponType == WeaponType.Rifle)
+        {
+            currAmmoStockTxt.text = rifleStock.ToString();
+        }
+        else if (currWeap.weaponType == WeaponType.Shotgun)
+        {
+            currAmmoStockTxt.text = shotgunStock.ToString();
+        }
+        
     }
 
     #endregion

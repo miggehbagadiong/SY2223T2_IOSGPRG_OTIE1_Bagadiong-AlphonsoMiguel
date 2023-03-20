@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
-    // Start is called before the first frame update
+    [HideInInspector] public GameObject unitTarget;
+
+    [Header("Animator Parameters")]
+    public Animator eAnimator;
+
+    [Header("Detection Parameters")]
+    public float eMoveSpeed;
+    public float lineOfSight;
+    public float shootingRange;
+    public SphereCollider detectionSphere;
+
     protected override void Start()
     {
         base.Start();
 
         this.uHealthComponent = GetComponent<HealthComponent>();
+
+        unitTarget = PlayerManager.Instance.GetPlayer().gameObject;
+        eAnimator = GetComponent<Animator>();
+        eAnimator.SetBool("isPatrolling", true);
 
     }
 
@@ -17,5 +31,46 @@ public class Enemy : Unit
     protected override void Update()
     {
         base.Update();
+
+        DetectTarget();
+
+    }
+
+    private float GetDistanceFromTargetAndSelf()
+    {
+        return Vector2.Distance(unitTarget.transform.position, 
+                    this.transform.position);
+    }
+
+    private void DetectTarget()
+    {
+        if (this.GetDistanceFromTargetAndSelf() < lineOfSight && this.GetDistanceFromTargetAndSelf() > shootingRange)
+        {
+            eAnimator.SetBool("isPatrolling", false);
+            eAnimator.SetBool("isChasing", true);
+            eAnimator.SetFloat("enemySpeed", eMoveSpeed);
+        }
+        else if (this.GetDistanceFromTargetAndSelf() <= shootingRange)
+        {
+            eAnimator.SetBool("isChasing", false);
+            eAnimator.SetBool("isAttacking", true);
+        }
+        else
+        {
+            // set the parameter to patrol only
+            eAnimator.SetBool("isPatrolling", true);
+            eAnimator.SetBool("isChasing", false);
+            eAnimator.SetBool("isAttacking", false);
+        }
+    }
+
+    private void OnDrawGizmosSelected() 
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, lineOfSight);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, shootingRange);
+        
+
     }
 }
