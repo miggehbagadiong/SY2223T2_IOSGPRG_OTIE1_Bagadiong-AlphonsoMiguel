@@ -13,6 +13,11 @@ public class BulletComponent : MonoBehaviour
             unitObject.gameObject.GetComponent<Player>().GetComponent<HealthComponent>().TakeDamage((int)bulletData.bulletDMG);
             Debug.Log("Damaged Player!");
         }
+        else if (unitObject.gameObject.GetComponent<Enemy>())
+        {
+            unitObject.gameObject.GetComponent<Enemy>().GetComponent<HealthComponent>().TakeDamage((int)bulletData.bulletDMG);
+            Debug.Log("Damaged Enemy");
+        }
     }
 
 }

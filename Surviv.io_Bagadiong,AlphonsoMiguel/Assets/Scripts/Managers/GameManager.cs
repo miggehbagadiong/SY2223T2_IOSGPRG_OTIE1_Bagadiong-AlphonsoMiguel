@@ -11,16 +11,6 @@ public PatrolSpot patrolSpots;
 
 #endregion
 
-    void Start()
-    {
-        StartGame();
-    }
-
-    private void StartGame()
-    {
-        //SpawnManager.Instance.StartSpawning();
-    }
-
     #region Button Functions
 
     public void OnShootButtonPressed()

@@ -23,11 +23,6 @@ public class WeaponInventory : Singleton<WeaponInventory>
 
     [HideInInspector] int refData;
 
-    private void Start()
-    {
-        
-    }   
-
     private void Update()
     {
         if (currWeapon != null)
