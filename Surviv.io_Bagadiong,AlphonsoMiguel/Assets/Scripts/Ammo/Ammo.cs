@@ -35,9 +35,9 @@ public class Ammo : ScriptableObject
         return ammoDmg;
     }
 
-    public int GetAmmoCap()
+    public int GetAmmoCount()
     {
-        return maxAmmoCap;
+        return ammoCount; 
     }
     
 }

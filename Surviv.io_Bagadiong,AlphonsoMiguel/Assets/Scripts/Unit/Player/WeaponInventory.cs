@@ -14,6 +14,7 @@ public class WeaponInventory : Singleton<WeaponInventory>
     [SerializeField] Weapon primaryWeap;
     [SerializeField] Weapon secondaryWeap;
     [HideInInspector] public Weapon currWeapon;
+    [HideInInspector] public bool hasNoAmmo = false;
 
 
    // [Header("Ammo References")]
@@ -25,6 +26,7 @@ public class WeaponInventory : Singleton<WeaponInventory>
 
     private void Update()
     {
+        // constant update for the ammo stock due to instances when just inserted only still nothing happens
         if (currWeapon != null)
             UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
 
@@ -32,34 +34,58 @@ public class WeaponInventory : Singleton<WeaponInventory>
 
 #region Ammo References
 
-    public void AddPistolMag(int add)
+    private void AddPistolMag(int add)
     {
         pistolMag += add;
     }
 
-    public void AddRifleMag(int add)
+    private void AddRifleMag(int add)
     {
         rifleMag += add;
     }
 
-    public void AddShotgunMag(int add)
+    private void AddShotgunMag(int add)
     {
         shotgunMag += add;
     }
 
-    public void ReducePistolMag(int reduce)
+    private void ReducePistolMag(int reduce)
     {
         pistolMag -= reduce;
     }
 
-    public void ReduceRifleMag(int reduce)
+    private void ReduceRifleMag(int reduce)
     {
         rifleMag -= reduce;
     }
 
-    public void ReduceShotgunMag(int reduce)
+    private void ReduceShotgunMag(int reduce)
     {
         shotgunMag -= reduce;
+    }
+
+    private void CheckPistolCount(Ammo ammoRef)
+    {
+        if (pistolMag >= ammoRef.maxAmmoCap)
+        {
+            pistolMag = ammoRef.maxAmmoCap;
+        }
+    }
+
+    private void CheckRifleCount(Ammo ammoRef)
+    {
+        if (rifleMag >= ammoRef.maxAmmoCap)
+        {
+            rifleMag = ammoRef.maxAmmoCap;
+        }    
+    }
+
+    private void CheckShotgunCount(Ammo ammoRef)
+    {
+        if (shotgunMag >= ammoRef.maxAmmoCap)
+        {
+            shotgunMag = ammoRef.maxAmmoCap;
+        }
     }
 
     public int GetAmmoMagData(Ammo ammoRef)
@@ -74,21 +100,6 @@ public class WeaponInventory : Singleton<WeaponInventory>
 
         return refData;
 
-    }
-
-    public int GetPistolMag()
-    {
-        return pistolMag;
-    }
-
-    public int GetRifleMag()
-    {
-        return rifleMag;
-    }
-
-    public int GetShotgunMag()
-    {
-        return shotgunMag;
     }
 
 #endregion
@@ -177,23 +188,9 @@ public void Shoot()
 
 public void Reload()
 {
-    if (currWeapon.weaponType == WeaponType.Pistol && pistolMag != 0)
-    {
-        StartCoroutine(GoWeaponReload(2f, currWeapon));
-    }
-    else if (currWeapon.weaponType == WeaponType.Rifle && rifleMag != 0)
-    {
-        StartCoroutine(GoWeaponReload(2f, currWeapon));
-    }
-    else if (currWeapon.weaponType == WeaponType.Shotgun && shotgunMag != 0)
-    {
-        StartCoroutine(GoWeaponReload(2f, currWeapon));
-    }
-    else
-    {
-        Debug.Log("No ammos in inventory!");
-        // insert content to make this notify there isnt any left
-    }
+    
+    StartCoroutine(GoWeaponReload(2f, currWeapon));
+
 }
 
     #endregion
@@ -203,59 +200,70 @@ public void Reload()
     { 
         if (ammoData.ammoType == AmmoType.Pistol)
         {
-            AddPistolMag(ammoData.GetAmmoCap());
+            AddPistolMag(ammoData.GetAmmoCount());
+            CheckPistolCount(ammoData);
+
             Debug.Log("Pistol Mag: " + pistolMag);
         }
         else if (ammoData.ammoType == AmmoType.Rifle)
         {
-            AddRifleMag(ammoData.GetAmmoCap());
+            AddRifleMag(ammoData.GetAmmoCount());
+            CheckRifleCount(ammoData);
+
             Debug.Log("Rifle Mag: " + rifleMag);
         }
         else if (ammoData.ammoType == AmmoType.Shotgun)
         {
-            AddShotgunMag(ammoData.GetAmmoCap());
+            AddShotgunMag(ammoData.GetAmmoCount());
+            CheckShotgunCount(ammoData);
+
             Debug.Log("Shotgun Mag: " + shotgunMag);
         }
     }
-
-
     #endregion
 
     #region Coroutines
     
-    public IEnumerator GoWeaponReload(float reloadTime, Weapon equippedWeap)
+    private IEnumerator GoWeaponReload(float reloadTime, Weapon equippedWeap)
     {
-
         UiManager.Instance.SetFiringSystemButtons("waitReload");
 
-
-        if (equippedWeap.weaponType == WeaponType.Pistol)
+        if (equippedWeap.weaponType == WeaponType.Pistol && this.pistolMag > 0)
         {
             ReducePistolMag(currWeapon.wMagCap);
             UiManager.Instance.UpdatePistolAmmoUi(this.pistolMag);
-            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
-            UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
+            hasNoAmmo = false;
         }
-        else if (equippedWeap.weaponType == WeaponType.Rifle)
+        else if (equippedWeap.weaponType == WeaponType.Rifle && this.rifleMag > 0)
         {
             ReduceRifleMag(currWeapon.wMagCap);
             UiManager.Instance.UpdateRifleAmmoUi(this.rifleMag);
-            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
-            UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
+            hasNoAmmo = false;
         }
-        else if (equippedWeap.weaponType == WeaponType.Shotgun)
+        else if (equippedWeap.weaponType == WeaponType.Shotgun && this.shotgunMag > 0)
         {
             ReduceShotgunMag(currWeapon.wMagCap);
             UiManager.Instance.UpdateShotgunAmmoUi(this.shotgunMag);
-            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
-            UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
+            hasNoAmmo = false;
         }
+        else{
+            Debug.Log("Out of Ammo!");
+            hasNoAmmo = true;
+            UiManager.Instance.SetFiringSystemButtons("reload");
+        }
+
+        UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+        UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
 
         yield return new WaitForSeconds(reloadTime);
         
-        currWeapon.wCurrAmmo += currWeapon.wMagCap;
-        UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
-        UiManager.Instance.SetFiringSystemButtons("fire");
+        if (hasNoAmmo != true)
+        {
+            currWeapon.wCurrAmmo += currWeapon.wMagCap; // fix this
+            UiManager.Instance.UpdateCurrWeapAmmoUI(currWeapon);
+            UiManager.Instance.SetFiringSystemButtons("fire");
+        }
+        
         
     }
 

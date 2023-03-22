@@ -933,6 +933,7 @@ MonoBehaviour:
   primaryWeap: {fileID: 0}
   secondaryWeap: {fileID: 0}
   currWeapon: {fileID: 0}
+  hasNoAmmo: 0
   rifleMag: 0
   pistolMag: 0
   shotgunMag: 0
@@ -6091,6 +6092,7 @@ GameObject:
   - component: {fileID: 4859091615901441501}
   - component: {fileID: 4859091615901441491}
   - component: {fileID: 1361367319}
+  - component: {fileID: 4859091615901441503}
   m_Layer: 3
   m_Name: Obstacle (16)
   m_TagString: Untagged
@@ -6098,6 +6100,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091615901441503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091615901441502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091615918840101
 Transform:
   m_ObjectHideFlags: 0
@@ -6124,6 +6138,7 @@ GameObject:
   - component: {fileID: 4859091615918840101}
   - component: {fileID: 4859091615918840123}
   - component: {fileID: 1345148399}
+  - component: {fileID: 4859091615918840124}
   m_Layer: 3
   m_Name: Obstacle (15)
   m_TagString: Untagged
@@ -6183,6 +6198,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091615918840124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091615918840102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091615920318131
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6261,6 +6288,7 @@ GameObject:
   - component: {fileID: 4859091615920318141}
   - component: {fileID: 4859091615920318131}
   - component: {fileID: 992986078376007920}
+  - component: {fileID: 4859091615920318143}
   m_Layer: 3
   m_Name: Obstacle (12)
   m_TagString: Untagged
@@ -6268,6 +6296,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091615920318143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091615920318142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &4859091615927709208
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6310,6 +6350,7 @@ GameObject:
   - component: {fileID: 4859091615927709209}
   - component: {fileID: 4859091615927709215}
   - component: {fileID: 4859091615927709208}
+  - component: {fileID: 4859091615927709216}
   m_Layer: 3
   m_Name: Obstacle (11)
   m_TagString: Untagged
@@ -6369,6 +6410,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091615927709216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091615927709210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091615929183352
 Transform:
   m_ObjectHideFlags: 0
@@ -6395,6 +6448,7 @@ GameObject:
   - component: {fileID: 4859091615929183352}
   - component: {fileID: 4859091615929183358}
   - component: {fileID: 1397694644}
+  - component: {fileID: 4859091615929183359}
   m_Layer: 3
   m_Name: Obstacle (4)
   m_TagString: Untagged
@@ -6454,6 +6508,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091615929183359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091615929183353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &4859091615960595056
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6496,6 +6562,7 @@ GameObject:
   - component: {fileID: 4859091615960595057}
   - component: {fileID: 4859091615960595063}
   - component: {fileID: 4859091615960595056}
+  - component: {fileID: 4859091615960595064}
   m_Layer: 3
   m_Name: Obstacle (10)
   m_TagString: Untagged
@@ -6555,6 +6622,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091615960595064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091615960595058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &4859091616026798488
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6597,6 +6676,7 @@ GameObject:
   - component: {fileID: 4859091616026798489}
   - component: {fileID: 4859091616026798495}
   - component: {fileID: 4859091616026798488}
+  - component: {fileID: 4859091616026798496}
   m_Layer: 3
   m_Name: Obstacle (7)
   m_TagString: Untagged
@@ -6656,6 +6736,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616026798496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616026798490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616028130296
 Transform:
   m_ObjectHideFlags: 0
@@ -6682,6 +6774,7 @@ GameObject:
   - component: {fileID: 4859091616028130296}
   - component: {fileID: 4859091616028130302}
   - component: {fileID: 1504311092}
+  - component: {fileID: 4859091616028130303}
   m_Layer: 3
   m_Name: Obstacle (12)
   m_TagString: Untagged
@@ -6741,6 +6834,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616028130303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616028130297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616056736081
 Transform:
   m_ObjectHideFlags: 0
@@ -6767,6 +6872,7 @@ GameObject:
   - component: {fileID: 4859091616056736081}
   - component: {fileID: 4859091616056736087}
   - component: {fileID: 3801762427672437672}
+  - component: {fileID: 4859091616056736088}
   m_Layer: 3
   m_Name: Barrel
   m_TagString: Untagged
@@ -6826,6 +6932,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616056736088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616056736082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091616114403100
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6904,6 +7022,7 @@ GameObject:
   - component: {fileID: 4859091616114403102}
   - component: {fileID: 4859091616114403100}
   - component: {fileID: 1549102038}
+  - component: {fileID: 4859091616114403104}
   m_Layer: 3
   m_Name: Obstacle (7)
   m_TagString: Untagged
@@ -6911,6 +7030,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616114403104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616114403103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616148331952
 Transform:
   m_ObjectHideFlags: 0
@@ -7039,6 +7170,7 @@ GameObject:
   - component: {fileID: 4859091616176426258}
   - component: {fileID: 4859091616176426256}
   - component: {fileID: 4859091616176426257}
+  - component: {fileID: 4859091616176426260}
   m_Layer: 3
   m_Name: Tree
   m_TagString: Untagged
@@ -7046,6 +7178,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616176426260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616176426259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091616212125745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7124,6 +7268,7 @@ GameObject:
   - component: {fileID: 4859091616212125747}
   - component: {fileID: 4859091616212125745}
   - component: {fileID: 1117881593}
+  - component: {fileID: 4859091616212125757}
   m_Layer: 3
   m_Name: Obstacle (3)
   m_TagString: Untagged
@@ -7131,6 +7276,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616212125757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616212125756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616255619048
 Transform:
   m_ObjectHideFlags: 0
@@ -7157,6 +7314,7 @@ GameObject:
   - component: {fileID: 4859091616255619048}
   - component: {fileID: 4859091616255619054}
   - component: {fileID: 1144529700}
+  - component: {fileID: 4859091616255619055}
   m_Layer: 3
   m_Name: Obstacle (2)
   m_TagString: Untagged
@@ -7216,6 +7374,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616255619055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616255619049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616267522277
 Transform:
   m_ObjectHideFlags: 0
@@ -7242,6 +7412,7 @@ GameObject:
   - component: {fileID: 4859091616267522277}
   - component: {fileID: 4859091616267522299}
   - component: {fileID: 6212784980636679149}
+  - component: {fileID: 6212784980636679150}
   m_Layer: 3
   m_Name: Obstacle (4)
   m_TagString: Untagged
@@ -7395,6 +7566,7 @@ GameObject:
   - component: {fileID: 4859091616322843868}
   - component: {fileID: 4859091616322843858}
   - component: {fileID: 4859091616322843859}
+  - component: {fileID: 4859091616322843870}
   m_Layer: 3
   m_Name: Obstacle (8)
   m_TagString: Untagged
@@ -7402,6 +7574,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616322843870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616322843869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616374832104
 Transform:
   m_ObjectHideFlags: 0
@@ -7428,6 +7612,7 @@ GameObject:
   - component: {fileID: 4859091616374832104}
   - component: {fileID: 4859091616374832110}
   - component: {fileID: 4525250272325580729}
+  - component: {fileID: 4859091616374832111}
   m_Layer: 3
   m_Name: Obstacle (14)
   m_TagString: Untagged
@@ -7487,6 +7672,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616374832111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616374832105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091616389847352
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7581,6 +7778,7 @@ GameObject:
   - component: {fileID: 4859091616389847354}
   - component: {fileID: 4859091616389847352}
   - component: {fileID: 4859091616389847353}
+  - component: {fileID: 4859091616389847356}
   m_Layer: 3
   m_Name: Obstacle (16)
   m_TagString: Untagged
@@ -7588,6 +7786,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616389847356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616389847355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091616421317027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7666,6 +7876,7 @@ GameObject:
   - component: {fileID: 4859091616421317037}
   - component: {fileID: 4859091616421317027}
   - component: {fileID: 1310295399}
+  - component: {fileID: 4859091616421317039}
   m_Layer: 3
   m_Name: Obstacle (6)
   m_TagString: Untagged
@@ -7673,6 +7884,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616421317039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616421317038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616444035265
 Transform:
   m_ObjectHideFlags: 0
@@ -7699,6 +7922,7 @@ GameObject:
   - component: {fileID: 4859091616444035265}
   - component: {fileID: 4859091616444035271}
   - component: {fileID: 1895775243}
+  - component: {fileID: 4859091616444035272}
   m_Layer: 3
   m_Name: Obstacle (13)
   m_TagString: Untagged
@@ -7758,6 +7982,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616444035272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616444035266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &4859091616450730792
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7800,6 +8036,7 @@ GameObject:
   - component: {fileID: 4859091616450730793}
   - component: {fileID: 4859091616450730799}
   - component: {fileID: 4859091616450730792}
+  - component: {fileID: 4859091616450730800}
   m_Layer: 3
   m_Name: Obstacle (20)
   m_TagString: Untagged
@@ -7859,6 +8096,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616450730800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616450730794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616503233000
 Transform:
   m_ObjectHideFlags: 0
@@ -7885,6 +8134,7 @@ GameObject:
   - component: {fileID: 4859091616503233000}
   - component: {fileID: 4859091616503233006}
   - component: {fileID: 1963357476}
+  - component: {fileID: 4859091616503233007}
   m_Layer: 3
   m_Name: Obstacle (17)
   m_TagString: Untagged
@@ -7944,6 +8194,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616503233007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616503233001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616511643025
 Transform:
   m_ObjectHideFlags: 0
@@ -7970,6 +8232,7 @@ GameObject:
   - component: {fileID: 4859091616511643025}
   - component: {fileID: 4859091616511643031}
   - component: {fileID: 1955053915}
+  - component: {fileID: 4859091616511643032}
   m_Layer: 3
   m_Name: Obstacle (5)
   m_TagString: Untagged
@@ -8029,6 +8292,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616511643032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616511643026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616539012628
 Transform:
   m_ObjectHideFlags: 0
@@ -8055,6 +8330,7 @@ GameObject:
   - component: {fileID: 4859091616539012628}
   - component: {fileID: 4859091616539012650}
   - component: {fileID: 4859091616539012651}
+  - component: {fileID: 4859091616539012652}
   m_Layer: 3
   m_Name: Obstacle (15)
   m_TagString: Untagged
@@ -8130,6 +8406,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.55
+--- !u!114 &4859091616539012652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616539012629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091616545185443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8208,6 +8496,7 @@ GameObject:
   - component: {fileID: 4859091616545185453}
   - component: {fileID: 4859091616545185443}
   - component: {fileID: 7958269060249476644}
+  - component: {fileID: 7958269060249476645}
   m_Layer: 3
   m_Name: Obstacle (13)
   m_TagString: Untagged
@@ -8267,6 +8556,7 @@ GameObject:
   - component: {fileID: 4859091616565367680}
   - component: {fileID: 4859091616565367686}
   - component: {fileID: 4859091616565367687}
+  - component: {fileID: 4859091616565367688}
   m_Layer: 3
   m_Name: Obstacle (12)
   m_TagString: Untagged
@@ -8342,6 +8632,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.55
+--- !u!114 &4859091616565367688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616565367681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091616584706851
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8420,6 +8722,7 @@ GameObject:
   - component: {fileID: 4859091616584706861}
   - component: {fileID: 4859091616584706851}
   - component: {fileID: 2019207143}
+  - component: {fileID: 4859091616584706863}
   m_Layer: 3
   m_Name: Obstacle (14)
   m_TagString: Untagged
@@ -8427,6 +8730,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616584706863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616584706862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616638460737
 Transform:
   m_ObjectHideFlags: 0
@@ -8453,6 +8768,7 @@ GameObject:
   - component: {fileID: 4859091616638460737}
   - component: {fileID: 4859091616638460743}
   - component: {fileID: 2098655115}
+  - component: {fileID: 4859091616638460744}
   m_Layer: 3
   m_Name: Container
   m_TagString: Untagged
@@ -8512,6 +8828,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616638460744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616638460738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091616868710258
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8590,6 +8918,7 @@ GameObject:
   - component: {fileID: 4859091616868710268}
   - component: {fileID: 4859091616868710258}
   - component: {fileID: 1800354744}
+  - component: {fileID: 4859091616868710270}
   m_Layer: 3
   m_Name: Obstacle (10)
   m_TagString: Untagged
@@ -8597,6 +8926,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616868710270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616868710269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091616924009640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8675,6 +9016,7 @@ GameObject:
   - component: {fileID: 4859091616924009642}
   - component: {fileID: 4859091616924009640}
   - component: {fileID: 780614444220802519}
+  - component: {fileID: 4859091616924009644}
   m_Layer: 3
   m_Name: Obstacle (7)
   m_TagString: Untagged
@@ -8682,6 +9024,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616924009644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616924009643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091616924202908
 Transform:
   m_ObjectHideFlags: 0
@@ -8757,6 +9111,7 @@ GameObject:
   - component: {fileID: 4859091616976638905}
   - component: {fileID: 4859091616976638911}
   - component: {fileID: 3673338783251549734}
+  - component: {fileID: 4859091616976638912}
   m_Layer: 3
   m_Name: Obstacle (3)
   m_TagString: Untagged
@@ -8816,6 +9171,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091616976638912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616976638906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091616990855298
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8894,6 +9261,7 @@ GameObject:
   - component: {fileID: 4859091616990855308}
   - component: {fileID: 4859091616990855298}
   - component: {fileID: 5024177307583756991}
+  - component: {fileID: 5024177307583756992}
   m_Layer: 3
   m_Name: Obstacle (1)
   m_TagString: Untagged
@@ -8995,6 +9363,7 @@ GameObject:
   - component: {fileID: 4859091616996802146}
   - component: {fileID: 4859091616996802144}
   - component: {fileID: 4859091616996802145}
+  - component: {fileID: 4859091616996802148}
   m_Layer: 3
   m_Name: Obstacle (17)
   m_TagString: Untagged
@@ -9002,6 +9371,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091616996802148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616996802147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091617025896240
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9096,6 +9477,7 @@ GameObject:
   - component: {fileID: 4859091617025896242}
   - component: {fileID: 4859091617025896240}
   - component: {fileID: 4859091617025896241}
+  - component: {fileID: 4859091617025896244}
   m_Layer: 3
   m_Name: Obstacle (6)
   m_TagString: Untagged
@@ -9103,6 +9485,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091617025896244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617025896243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091617050040992
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9181,6 +9575,7 @@ GameObject:
   - component: {fileID: 4859091617050040994}
   - component: {fileID: 4859091617050040992}
   - component: {fileID: 5879818069008016449}
+  - component: {fileID: 5879818069008016450}
   m_Layer: 3
   m_Name: Obstacle (6)
   m_TagString: Untagged
@@ -9199,6 +9594,7 @@ GameObject:
   - component: {fileID: 4859091617079602619}
   - component: {fileID: 4859091617079602617}
   - component: {fileID: 4859091617079602618}
+  - component: {fileID: 4859091617079602620}
   m_Layer: 3
   m_Name: Obstacle (4)
   m_TagString: Untagged
@@ -9289,6 +9685,18 @@ Transform:
   m_Father: {fileID: 4859091617317581372}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4859091617079602620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617079602596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091617113046624
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9367,6 +9775,7 @@ GameObject:
   - component: {fileID: 4859091617113046626}
   - component: {fileID: 4859091617113046624}
   - component: {fileID: 417297066}
+  - component: {fileID: 4859091617113046628}
   m_Layer: 3
   m_Name: Obstacle (18)
   m_TagString: Untagged
@@ -9374,6 +9783,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091617113046628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617113046627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4859091617269555220
 GameObject:
   m_ObjectHideFlags: 0
@@ -9385,6 +9806,7 @@ GameObject:
   - component: {fileID: 4859091617269555243}
   - component: {fileID: 4859091617269555241}
   - component: {fileID: 9155367692843069170}
+  - component: {fileID: 9155367692843069171}
   m_Layer: 3
   m_Name: Obstacle (11)
   m_TagString: Untagged
@@ -9537,6 +9959,7 @@ GameObject:
   - component: {fileID: 4859091617296886621}
   - component: {fileID: 4859091617296886611}
   - component: {fileID: 97101719}
+  - component: {fileID: 4859091617296886623}
   m_Layer: 3
   m_Name: Obstacle (8)
   m_TagString: Untagged
@@ -9544,6 +9967,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091617296886623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617296886622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091617315098514
 Transform:
   m_ObjectHideFlags: 0
@@ -9691,6 +10126,7 @@ GameObject:
   - component: {fileID: 4859091617366386192}
   - component: {fileID: 4859091617366386198}
   - component: {fileID: 3094746918057438407}
+  - component: {fileID: 4859091617366386199}
   m_Layer: 3
   m_Name: Obstacle (5)
   m_TagString: Untagged
@@ -9750,6 +10186,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091617366386199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617366386193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091617370914194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9828,6 +10276,7 @@ GameObject:
   - component: {fileID: 4859091617370914204}
   - component: {fileID: 4859091617370914194}
   - component: {fileID: 750516973645425244}
+  - component: {fileID: 4859091617370914206}
   m_Layer: 3
   m_Name: Obstacle (9)
   m_TagString: Untagged
@@ -9835,6 +10284,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091617370914206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617370914205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &4859091617550600865
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9887,6 +10348,7 @@ GameObject:
   - component: {fileID: 4859091617554178137}
   - component: {fileID: 4859091617554178143}
   - component: {fileID: 849587347}
+  - component: {fileID: 4859091617554178144}
   m_Layer: 3
   m_Name: Obstacle (1)
   m_TagString: Untagged
@@ -9946,6 +10408,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091617554178144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617554178138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091617613108627
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10040,6 +10514,7 @@ GameObject:
   - component: {fileID: 4859091617613108637}
   - component: {fileID: 4859091617613108627}
   - component: {fileID: 4859091617613108636}
+  - component: {fileID: 4859091617613108639}
   m_Layer: 3
   m_Name: Obstacle (14)
   m_TagString: Untagged
@@ -10047,6 +10522,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091617613108639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617613108638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4859091617653698928
 GameObject:
   m_ObjectHideFlags: 0
@@ -10058,6 +10545,7 @@ GameObject:
   - component: {fileID: 4859091617653698935}
   - component: {fileID: 4859091617653698933}
   - component: {fileID: 4859091617653698934}
+  - component: {fileID: 4859091617653698936}
   m_Layer: 3
   m_Name: Obstacle (5)
   m_TagString: Untagged
@@ -10148,6 +10636,18 @@ Transform:
   m_Father: {fileID: 4859091617317581372}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4859091617653698936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617653698928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4859091617689698324
 GameObject:
   m_ObjectHideFlags: 0
@@ -10159,6 +10659,7 @@ GameObject:
   - component: {fileID: 4859091617689698347}
   - component: {fileID: 4859091617689698345}
   - component: {fileID: 4859091617689698346}
+  - component: {fileID: 4859091617689698348}
   m_Layer: 3
   m_Name: Obstacle (19)
   m_TagString: Untagged
@@ -10249,6 +10750,18 @@ Transform:
   m_Father: {fileID: 4859091617317581372}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4859091617689698348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617689698324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4859091617706995556
 Transform:
   m_ObjectHideFlags: 0
@@ -10275,6 +10788,7 @@ GameObject:
   - component: {fileID: 4859091617706995556}
   - component: {fileID: 4859091617706995578}
   - component: {fileID: 4859091617706995579}
+  - component: {fileID: 4859091617706995580}
   m_Layer: 3
   m_Name: Obstacle (13)
   m_TagString: Untagged
@@ -10350,6 +10864,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.55
+--- !u!114 &4859091617706995580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617706995557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &4859091617756188032
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10392,6 +10918,7 @@ GameObject:
   - component: {fileID: 4859091617756188033}
   - component: {fileID: 4859091617756188039}
   - component: {fileID: 4859091617756188032}
+  - component: {fileID: 4859091617756188040}
   m_Layer: 3
   m_Name: Obstacle (3)
   m_TagString: Untagged
@@ -10451,6 +10978,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091617756188040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617756188034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091617763821724
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10529,6 +11068,7 @@ GameObject:
   - component: {fileID: 4859091617763821726}
   - component: {fileID: 4859091617763821724}
   - component: {fileID: 6714259470194238249}
+  - component: {fileID: 6714259470194238250}
   m_Layer: 3
   m_Name: Obstacle (2)
   m_TagString: Untagged
@@ -10630,6 +11170,7 @@ GameObject:
   - component: {fileID: 4859091617845749491}
   - component: {fileID: 4859091617845749489}
   - component: {fileID: 4859091617845749490}
+  - component: {fileID: 4859091617845749501}
   m_Layer: 3
   m_Name: Obstacle (9)
   m_TagString: Untagged
@@ -10637,6 +11178,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091617845749501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617845749500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4859091617884966856
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10715,6 +11268,7 @@ GameObject:
   - component: {fileID: 4859091617884966858}
   - component: {fileID: 4859091617884966856}
   - component: {fileID: 651821826}
+  - component: {fileID: 4859091617884966860}
   m_Layer: 3
   m_Name: Obstacle (11)
   m_TagString: Untagged
@@ -10722,6 +11276,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4859091617884966860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617884966859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &4859091617893694120
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10764,6 +11330,7 @@ GameObject:
   - component: {fileID: 4859091617893694121}
   - component: {fileID: 4859091617893694127}
   - component: {fileID: 4859091617893694120}
+  - component: {fileID: 4859091617893694128}
   m_Layer: 3
   m_Name: Obstacle (18)
   m_TagString: Untagged
@@ -10823,6 +11390,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091617893694128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617893694122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &4859091617927085082
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10875,6 +11454,7 @@ GameObject:
   - component: {fileID: 4859091618006335124}
   - component: {fileID: 4859091618006335146}
   - component: {fileID: 4326554828416737844}
+  - component: {fileID: 4859091618006335147}
   m_Layer: 3
   m_Name: Obstacle (10)
   m_TagString: Untagged
@@ -10934,6 +11514,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4859091618006335147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091618006335125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &5024177307583756991
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10950,6 +11542,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 6.88
+--- !u!114 &5024177307583756992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616990855309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &5879818069008016449
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10966,6 +11570,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 6.88
+--- !u!114 &5879818069008016450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617050040995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &6212784980636679149
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10982,6 +11598,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 6.88
+--- !u!114 &6212784980636679150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616267522278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &6714259470194238249
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10998,6 +11626,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 6.88
+--- !u!114 &6714259470194238250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617763821727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6959912510095819432
 GameObject:
   m_ObjectHideFlags: 0
@@ -31212,6 +31852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6959912510714799830}
+  - component: {fileID: 6959912510714799831}
   m_Layer: 3
   m_Name: World Boundaries
   m_TagString: Untagged
@@ -31238,6 +31879,18 @@ Transform:
   m_Father: {fileID: 6959912510908962416}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6959912510714799831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959912510714799825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16a4c1cf2f2e734fb34a6cbaa3593b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6959912510717007464
 Transform:
   m_ObjectHideFlags: 0
@@ -35711,6 +36364,7 @@ GameObject:
   - component: {fileID: 6959912510914086284}
   - component: {fileID: 6959912510914086287}
   - component: {fileID: 4859091617927085082}
+  - component: {fileID: 6959912510914086288}
   m_Layer: 3
   m_Name: Lower Boundary
   m_TagString: Untagged
@@ -35783,6 +36437,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6959912510914086288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959912510914086280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16a4c1cf2f2e734fb34a6cbaa3593b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &6959912510919829786
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49161,6 +49827,7 @@ GameObject:
   - component: {fileID: 6959912511375265640}
   - component: {fileID: 6959912511375265643}
   - component: {fileID: 4859091616551071977}
+  - component: {fileID: 6959912511375265654}
   m_Layer: 3
   m_Name: Right Boundary
   m_TagString: Untagged
@@ -49183,6 +49850,18 @@ Transform:
   m_Father: {fileID: 6959912510714799830}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6959912511375265654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959912511375265652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16a4c1cf2f2e734fb34a6cbaa3593b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &6959912511375383940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57882,6 +58561,7 @@ GameObject:
   - component: {fileID: 6959912511616064316}
   - component: {fileID: 6959912511616064319}
   - component: {fileID: 4859091617332795708}
+  - component: {fileID: 6959912511616064320}
   m_Layer: 3
   m_Name: Left Boundary
   m_TagString: Untagged
@@ -57954,6 +58634,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6959912511616064320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959912511616064312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16a4c1cf2f2e734fb34a6cbaa3593b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6959912511616697832
 GameObject:
   m_ObjectHideFlags: 0
@@ -74802,6 +75494,7 @@ GameObject:
   - component: {fileID: 6959912512111454996}
   - component: {fileID: 6959912512111454999}
   - component: {fileID: 4859091617550600865}
+  - component: {fileID: 6959912512111455000}
   m_Layer: 3
   m_Name: Upper Boundary
   m_TagString: Untagged
@@ -74874,6 +75567,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6959912512111455000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959912512111454992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16a4c1cf2f2e734fb34a6cbaa3593b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6959912512111910793
 GameObject:
   m_ObjectHideFlags: 0
@@ -79088,6 +79793,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 6.88
+--- !u!114 &7958269060249476645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091616545185454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &9155367692843069170
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -79104,3 +79821,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 6.88
+--- !u!114 &9155367692843069171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859091617269555220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6152856d20ef1bb4aad9ae4d712d2cff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -18,6 +18,11 @@ public class BulletComponent : MonoBehaviour
             unitObject.gameObject.GetComponent<Enemy>().GetComponent<HealthComponent>().TakeDamage((int)bulletData.bulletDMG);
             Debug.Log("Damaged Enemy");
         }
+        else if (unitObject.gameObject.GetComponent<WorldObjects>() || unitObject.gameObject.GetComponent<WorldWalls>())
+        {
+            Destroy(this.gameObject);
+            Debug.Log("Hit Obstacles");
+        }
     }
 
 }
