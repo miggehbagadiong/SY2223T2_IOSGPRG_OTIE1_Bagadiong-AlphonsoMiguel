@@ -94,7 +94,7 @@ MonoBehaviour:
   wFireRate: 1
   wBullet: {fileID: 2536142194191904013, guid: 81e11ea49a618034ca0adb1fbab53c0c, type: 3}
   wBulletSpeed: 20
-  spread: 4
+  spread: 0.7
 --- !u!1 &8106504428084567904
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,11 +38,19 @@ public class EnemyWeaponInventory : MonoBehaviour
         eWGFX.sprite = currWeap.weaponSprite;
     }
 
+    Transform GetMuzzle()
+    {
+        return eWeaponMuzzle;
+    }
+
 #endregion
 
-#region Unity Functions
+#region Enemy Functions
 
-
+public void EnemyShoot()
+{
+    
+}
 
 
 #endregion

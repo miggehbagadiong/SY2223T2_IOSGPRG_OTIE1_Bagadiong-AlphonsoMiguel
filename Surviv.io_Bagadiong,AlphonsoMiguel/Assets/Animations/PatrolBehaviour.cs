@@ -11,8 +11,8 @@ public class PatrolBehaviour : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       patrol = GameManager.Instance.patrolSpots.GetComponent<PatrolSpot>();
-       randomSpot = Random.Range(0, patrol.patrollingPoints.Length);
+      patrol = GameManager.Instance.patrolSpots.GetComponent<PatrolSpot>();
+      randomSpot = Random.Range(0, patrol.patrollingPoints.Length);
 
     }
 

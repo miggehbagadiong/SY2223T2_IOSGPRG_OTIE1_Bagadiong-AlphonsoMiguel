@@ -15,6 +15,9 @@ public class Enemy : Unit
     public float shootingRange;
     public SphereCollider detectionSphere;
 
+    [Header("Patrol Parameters")]
+    public float ePatrolSpeed;
+
     protected override void Start()
     {
         base.Start();
@@ -24,6 +27,7 @@ public class Enemy : Unit
         unitTarget = PlayerManager.Instance.GetPlayer().gameObject;
         eAnimator = GetComponent<Animator>();
         eAnimator.SetBool("isPatrolling", true);
+        eAnimator.SetFloat("patrolSpeed", ePatrolSpeed);
 
     }
 
@@ -58,6 +62,7 @@ public class Enemy : Unit
         else
         {
             // set the parameter to patrol only
+            eAnimator.SetFloat("patrolSpeed", ePatrolSpeed);
             eAnimator.SetBool("isPatrolling", true);
             eAnimator.SetBool("isChasing", false);
             eAnimator.SetBool("isAttacking", false);
@@ -70,7 +75,13 @@ public class Enemy : Unit
         Gizmos.DrawWireSphere(transform.position, lineOfSight);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, shootingRange);
-        
+    }
 
+    private void StartPatrolling()
+    {
+        eAnimator.SetFloat("patrolSpeed", ePatrolSpeed);
+        eAnimator.SetBool("isPatrolling", true);
+        eAnimator.SetBool("isChasing", false);
+        eAnimator.SetBool("isAttacking", false);
     }
 }

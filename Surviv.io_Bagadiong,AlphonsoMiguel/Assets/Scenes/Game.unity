@@ -5203,6 +5203,7 @@ MonoBehaviour:
   lineOfSight: 60
   shootingRange: 30
   detectionSphere: {fileID: 0}
+  ePatrolSpeed: 15
 --- !u!58 &2042594650
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
 
 #region Accessible Variables
 
+[Header("Patrol Spot Reference")]
 public PatrolSpot patrolSpots;
 
 #endregion
