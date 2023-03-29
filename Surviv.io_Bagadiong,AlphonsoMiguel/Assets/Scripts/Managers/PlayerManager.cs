@@ -6,6 +6,7 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     [Header ("Self Reference")]
     public Player player;
+    
 
     public Player GetPlayer()
     {

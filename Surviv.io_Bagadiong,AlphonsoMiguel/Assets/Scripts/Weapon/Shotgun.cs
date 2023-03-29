@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class Shotgun : Weapon
 {
+    [Header("Shotgun Spread Component")]
+    public float spread;
+    
+
     public override void GunShooting(Transform muzzle)
     {
         Debug.Log("Shooting from " + this.weaponType);
 
-        // reimplement for this case since there is spread
-        GameObject bullet = Instantiate(this.wBullet, muzzle.transform.position, muzzle.transform.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(muzzle.up * bullet.GetComponent<BulletComponent>().bulletData.bulletSpeed, ForceMode2D.Impulse);
+        // spreading part
+        for (int i = 0; i < 8; i++)
+        {
+            GameObject bullet = Instantiate(this.wBullet, muzzle.position, muzzle.rotation);
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            Vector2 bulletDir = muzzle.transform.rotation * Vector2.up;
+            Vector2 perpDir = Vector2.Perpendicular(bulletDir) * Random.Range(-spread, spread);
+            bulletRb.velocity = (bulletDir + perpDir) * bullet.GetComponent<BulletComponent>().bulletData.bulletSpeed;
+
+        }
 
         this.wCurrAmmo -= 1;
         UiManager.Instance.UpdateCurrWeapAmmoUI(this);

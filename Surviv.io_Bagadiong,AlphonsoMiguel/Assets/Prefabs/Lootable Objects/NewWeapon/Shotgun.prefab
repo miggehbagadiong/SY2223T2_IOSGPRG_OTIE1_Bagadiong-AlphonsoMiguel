@@ -91,9 +91,10 @@ MonoBehaviour:
   wMaxAmmo: 60
   wMagCap: 2
   weaponSprite: {fileID: 614389102, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
-  wFireRate: 0
+  wFireRate: 1
   wBullet: {fileID: 2536142194191904013, guid: 81e11ea49a618034ca0adb1fbab53c0c, type: 3}
   wBulletSpeed: 20
+  spread: 4
 --- !u!1 &8106504428084567904
 GameObject:
   m_ObjectHideFlags: 0

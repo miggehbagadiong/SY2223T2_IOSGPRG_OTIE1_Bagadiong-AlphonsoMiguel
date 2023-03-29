@@ -10,11 +10,11 @@ public class WeaponInventory : Singleton<WeaponInventory>
     [SerializeField] GameObject wHeld; // means "Weapon Held"
     [SerializeField] Transform wMuzzle;
     [SerializeField] SpriteRenderer wGFX;
-    [SerializeField] Weapon[] weaponsList;
-    [SerializeField] Weapon primaryWeap;
-    [SerializeField] Weapon secondaryWeap;
+    [HideInInspector] Weapon primaryWeap;
+    [HideInInspector] Weapon secondaryWeap;
     [HideInInspector] public Weapon currWeapon;
     [HideInInspector] public bool hasNoAmmo = false;
+    private float currTimer = 0;
 
 
    // [Header("Ammo References")]
@@ -26,6 +26,9 @@ public class WeaponInventory : Singleton<WeaponInventory>
 
     private void Update()
     {
+        // fireRate implementation
+        currTimer += 1 * Time.deltaTime;
+
         // constant update for the ammo stock due to instances when just inserted only still nothing happens
         if (currWeapon != null)
             UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
@@ -183,12 +186,19 @@ public class WeaponInventory : Singleton<WeaponInventory>
 // implementation currently for secondary weapon need to retweak this again
 public void Shoot()
 {
-    currWeapon.GunShooting(this.wMuzzle);
+
+    if (currTimer >= currWeapon.wFireRate)
+    {
+        currWeapon.GunShooting(this.wMuzzle);
+        currTimer = 0;
+    }
+    // reimplement here with the fireRate (?)
+    //currWeapon.GunShooting(this.wMuzzle); // change to the coroutine
 }
 
 public void Reload()
 {
-    
+    // will do the reload here
     StartCoroutine(GoWeaponReload(2f, currWeapon));
 
 }

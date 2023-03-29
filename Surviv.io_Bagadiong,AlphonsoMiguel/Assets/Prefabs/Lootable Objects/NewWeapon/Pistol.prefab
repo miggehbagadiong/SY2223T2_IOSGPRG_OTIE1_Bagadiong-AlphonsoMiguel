@@ -165,6 +165,6 @@ MonoBehaviour:
   wMaxAmmo: 90
   wMagCap: 15
   weaponSprite: {fileID: 1777001625, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
-  wFireRate: 0
+  wFireRate: 0.3
   wBullet: {fileID: 151066997658545261, guid: 7d8998993f9c3b34faa106dd470932b8, type: 3}
   wBulletSpeed: 20

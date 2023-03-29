@@ -17,7 +17,6 @@ public class SpawnManager : Singleton<SpawnManager>
     [Header("Spawning Parameters")]
     public int numOfSpawnedAmmos;
     public int numOfSpawnedWeapons;
-    public int numOfSpawnWeapsAndAmmos;
 
 
 

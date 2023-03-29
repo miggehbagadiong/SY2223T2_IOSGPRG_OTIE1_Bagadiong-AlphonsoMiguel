@@ -24,6 +24,6 @@ public class Rifle : Weapon
             UiManager.Instance.SetFiringSystemButtons("reload");
 
         }
-
     }
+
 }
