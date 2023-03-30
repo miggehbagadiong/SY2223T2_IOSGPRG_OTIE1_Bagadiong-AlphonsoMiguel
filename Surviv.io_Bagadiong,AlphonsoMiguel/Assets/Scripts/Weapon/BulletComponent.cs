@@ -11,11 +11,13 @@ public class BulletComponent : MonoBehaviour
         if (unitObject.gameObject.GetComponent<Player>())
         {
             unitObject.gameObject.GetComponent<Player>().GetComponent<HealthComponent>().TakeDamage((int)bulletData.bulletDMG);
+            Destroy(this.gameObject);
             Debug.Log("Damaged Player!");
         }
         else if (unitObject.gameObject.GetComponent<Enemy>())
         {
             unitObject.gameObject.GetComponent<Enemy>().GetComponent<HealthComponent>().TakeDamage((int)bulletData.bulletDMG);
+            Destroy(this.gameObject);
             Debug.Log("Damaged Enemy");
         }
         else if (unitObject.gameObject.GetComponent<WorldObjects>() || unitObject.gameObject.GetComponent<WorldWalls>())

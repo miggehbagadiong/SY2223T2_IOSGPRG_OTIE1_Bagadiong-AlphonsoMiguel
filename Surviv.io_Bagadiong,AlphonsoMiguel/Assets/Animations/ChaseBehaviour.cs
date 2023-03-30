@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChaseBehaviour : StateMachineBehaviour
 {
+   private Transform unitTarget;
    private Transform playerTarget;
    public float enemySpeed;
 

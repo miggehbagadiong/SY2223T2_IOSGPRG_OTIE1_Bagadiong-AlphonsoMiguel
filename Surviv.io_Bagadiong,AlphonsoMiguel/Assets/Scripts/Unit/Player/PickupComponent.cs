@@ -12,7 +12,7 @@ public class PickupComponent : MonoBehaviour
         pInventory = PlayerManager.Instance.GetPlayerInventory();
     }
 
-    private void OnCollisionEnter2D(Collision2D objectLoot)
+    private void OnTriggerEnter2D(Collider2D objectLoot)
     {
         if (objectLoot.gameObject.GetComponent<AmmoItem>())
         {

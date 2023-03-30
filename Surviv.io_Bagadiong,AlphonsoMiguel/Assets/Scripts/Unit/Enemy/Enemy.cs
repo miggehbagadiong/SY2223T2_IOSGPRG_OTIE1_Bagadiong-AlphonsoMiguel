@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : Unit
 {
     [HideInInspector] public GameObject unitTarget;
+    [HideInInspector] public EnemyWeaponInventory eWeaponInventory;
 
     [Header("Animator Parameters")]
     public Animator eAnimator;
@@ -23,11 +24,14 @@ public class Enemy : Unit
         base.Start();
 
         this.uHealthComponent = GetComponent<HealthComponent>();
-
+        this.eWeaponInventory = GetComponent<EnemyWeaponInventory>(); 
+        
         unitTarget = PlayerManager.Instance.GetPlayer().gameObject;
         eAnimator = GetComponent<Animator>();
-        eAnimator.SetBool("isPatrolling", true);
-        eAnimator.SetFloat("patrolSpeed", ePatrolSpeed);
+        // eAnimator.SetBool("isPatrolling", true);
+        // eAnimator.SetFloat("patrolSpeed", ePatrolSpeed);
+
+        StartPatrolling();
 
     }
 
@@ -79,9 +83,23 @@ public class Enemy : Unit
 
     private void StartPatrolling()
     {
-        eAnimator.SetFloat("patrolSpeed", ePatrolSpeed);
+        eAnimator.SetFloat("enemyPatrolSpeed", ePatrolSpeed);
         eAnimator.SetBool("isPatrolling", true);
         eAnimator.SetBool("isChasing", false);
         eAnimator.SetBool("isAttacking", false);
+    }
+
+    // use this implementation only for that the enemy can pass through spawnedLootables onScene
+    private void OnTriggerEnter2D(Collider2D objectLoot)
+    {
+        if (objectLoot.gameObject.GetComponent<AmmoItem>())
+        {
+            Debug.Log("Collided with " +  objectLoot.gameObject);
+        }
+
+        else if (objectLoot.gameObject.GetComponent<WeaponItem>())
+        {
+            Debug.Log("Collided with " + objectLoot.gameObject);
+        }
     }
 }

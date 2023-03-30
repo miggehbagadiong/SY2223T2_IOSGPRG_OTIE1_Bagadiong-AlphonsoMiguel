@@ -27,6 +27,8 @@ public class SpawnManager : Singleton<SpawnManager>
     [Header("Enemy Parameters")]
     public GameObject enemyPrefab;
     public int numOfSpawnedEnemies;
+    public Weapon[] enemyWeapons;
+    int randWeaponVal;
 
 #endregion
 
@@ -53,8 +55,13 @@ public class SpawnManager : Singleton<SpawnManager>
         for (int i=0; i < numOfSpawnedWeapons; i++)
            Spawn(lootableWeapons[Random.Range(0, lootableWeapons.Length)].gameObject);
 
-        // for (int i = 0; i < numOfSpawnedWorldObstacles; i++)
-        //     Spawn(obstacleObjects[Random.Range(0, obstacleObjects.Length)].gameObject);
+        for (int i = 0; i < numOfSpawnedEnemies; i++)
+        {
+            Spawn(enemyPrefab);
+            // initialize the parameters here for the weapon when in the world
+            //enemyPrefab.GetComponent<Enemy>().eWeaponInventory.GetComponent<EnemyWeaponInventory>().InitializeEnemyCurrentWeapon()
+        }
+            
 
     }
 
