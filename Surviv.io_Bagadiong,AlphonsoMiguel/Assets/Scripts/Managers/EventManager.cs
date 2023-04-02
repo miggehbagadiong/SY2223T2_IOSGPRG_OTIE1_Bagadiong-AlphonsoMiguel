@@ -6,25 +6,18 @@ using UnityEngine;
 public class EventManager : Singleton<EventManager>
 {
     // sample format for making event system on this state
-    public event Action<AmmoItem> OnAmmoPickupCollected;
+    public event Action OnPlayerDeath;
 
-    public void InvokeAmmoCollected(AmmoItem ammoItem)
+    public void InvokePlayerDeath()
     {
-        OnAmmoPickupCollected?.Invoke(ammoItem);
+        OnPlayerDeath?.Invoke();
     }
 
-    public event Action<WeaponItem> OnWeaponPickupCollected;
-    
-    public void InvokeWeaponCollected(WeaponItem weaponItem)
-    {
-        OnWeaponPickupCollected?.Invoke(weaponItem);
-    }
+    public event Action OnEnemyDeath;
 
-    public event Action OnWeaponNeedReload;
-
-    public void InvokeNeedReload()
+    public void InvokeEnemyDeath()
     {
-        OnWeaponNeedReload?.Invoke();
+        OnEnemyDeath?.Invoke();
     }
 
 }

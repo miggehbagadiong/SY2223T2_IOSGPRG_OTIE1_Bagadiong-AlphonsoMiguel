@@ -6,7 +6,9 @@ public class ChaseBehaviour : StateMachineBehaviour
 {
    private Transform unitTarget;
    private Transform playerTarget;
+   private Transform self;
    public float enemySpeed;
+   public float enemyRotSpeed;
 
    // start function
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

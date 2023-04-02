@@ -9,7 +9,7 @@ public class EnemyWeaponInventory : MonoBehaviour
     [SerializeField] GameObject eWeaponHeld;
     [SerializeField] Transform eWeaponMuzzle;
     [SerializeField, HideInInspector] SpriteRenderer eWGFX;
-    [HideInInspector] Weapon eCurrWeapon;
+    [HideInInspector] public Weapon eCurrWeapon;
     [SerializeField] Animator eAnimator;
     private float eCurrTimer = 0;
 
@@ -18,6 +18,7 @@ public class EnemyWeaponInventory : MonoBehaviour
     void Start()
     {
         eAnimator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -33,15 +34,15 @@ public class EnemyWeaponInventory : MonoBehaviour
 
 #region Initialize Parameters
 
-    public void InitializeEnemyCurrentWeapon(Weapon settedCurrWeap)
+    public void AddEnemyWeapon(Weapon settedEnemyWeap)
     {
-        eCurrWeapon = settedCurrWeap;
-        ShowEnemyGun(settedCurrWeap);
+        eCurrWeapon = settedEnemyWeap;
+        ShowEnemyGun(settedEnemyWeap);
     }
 
-    public void ShowEnemyGun(Weapon currWeap)
+    public void ShowEnemyGun(Weapon weap)
     {
-        eWGFX.sprite = currWeap.weaponSprite;
+        eWGFX.sprite = weap.weaponSprite;
     }
 
     Transform GetMuzzle()
@@ -55,13 +56,21 @@ public class EnemyWeaponInventory : MonoBehaviour
 
 public void EnemyShoot()
 {
-    eCurrWeapon.GunShooting(eWeaponMuzzle);
 
-    // automatically reload infinitely
-    if (eCurrWeapon.wCurrAmmo <= 0)
+    if (eCurrTimer >= eCurrWeapon.wFireRate)
     {
-        StartCoroutine(EnemyWeaponReload(2f, eCurrWeapon));
+        eCurrWeapon.GunShooting(eWeaponMuzzle);
+        eCurrTimer = 0;
+
+         // automatically reload infinitely
+        if (eCurrWeapon.wCurrAmmo <= 0)
+        {
+            StartCoroutine(EnemyWeaponReload(2f, eCurrWeapon));
+        }
+
     }
+
+   
 }
 
 // infinite reloading time

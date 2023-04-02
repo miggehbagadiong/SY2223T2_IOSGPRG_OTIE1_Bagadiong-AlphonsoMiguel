@@ -5,12 +5,20 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
 
-#region Accessible Variables
+    #region Accessible Variables
 
-[Header("Patrol Spot Reference")]
-public PatrolSpot patrolSpots;
+    [Header("Patrol Spot Reference")]
+    public PatrolSpot patrolSpots;
 
-#endregion
+    // Parameters for checking the kill counts
+    [HideInInspector]public int totalEnemyKills;
+
+    void Start()
+    {
+
+    }
+
+    #endregion
 
     #region Button Functions
 
@@ -32,6 +40,23 @@ public PatrolSpot patrolSpots;
     public void OnSecondaryButtonPressed()
     {
         WeaponInventory.Instance.SwitchWeapon("secondary");
+    }
+
+    #endregion
+
+    #region Killing System
+    public void AddEnemyKills()
+    {
+        totalEnemyKills++;
+    }
+
+    public void CheckKills()
+    {
+        if (totalEnemyKills == SpawnManager.Instance.numOfSpawnedEnemies)
+        {
+            Debug.Log("All enemies killed!");
+            // call to event of the condition
+        }
     }
 
     #endregion

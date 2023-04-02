@@ -18,8 +18,6 @@ public class SpawnManager : Singleton<SpawnManager>
     public int numOfSpawnedAmmos;
     public int numOfSpawnedWeapons;
 
-
-
 #endregion
 
 #region Enemy AI 
@@ -27,8 +25,10 @@ public class SpawnManager : Singleton<SpawnManager>
     [Header("Enemy Parameters")]
     public GameObject enemyPrefab;
     public int numOfSpawnedEnemies;
+
+    [Header("Weapon Initializing Parameters")]
     public Weapon[] enemyWeapons;
-    int randWeaponVal;
+    private int randWeaponVal;
 
 #endregion
 
@@ -55,11 +55,11 @@ public class SpawnManager : Singleton<SpawnManager>
         for (int i=0; i < numOfSpawnedWeapons; i++)
            Spawn(lootableWeapons[Random.Range(0, lootableWeapons.Length)].gameObject);
 
+        // will spawn enemy and initialize with the weapon
         for (int i = 0; i < numOfSpawnedEnemies; i++)
         {
+            //enemyPrefab.GetComponent<Enemy>().InitializeEnemyWeapon(enemyWeapons[Random.Range(0, enemyWeapons.Length)]);
             Spawn(enemyPrefab);
-            // initialize the parameters here for the weapon when in the world
-            //enemyPrefab.GetComponent<Enemy>().eWeaponInventory.GetComponent<EnemyWeaponInventory>().InitializeEnemyCurrentWeapon()
         }
             
 
@@ -78,5 +78,10 @@ public class SpawnManager : Singleton<SpawnManager>
     }
 
 #endregion
+
+    public Weapon GetWeaponForEnemy()
+    {
+        return enemyWeapons[Random.Range(0, 2)];
+    }
 
 }

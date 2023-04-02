@@ -14,22 +14,33 @@ public class Enemy : Unit
     public float eMoveSpeed;
     public float lineOfSight;
     public float shootingRange;
-    public SphereCollider detectionSphere;
 
     [Header("Patrol Parameters")]
     public float ePatrolSpeed;
+
+    [Header("Aim Component")]
+    public float eOffset;
+
+    //[Header("Unit Detection Awareness")]
+    
+    // [SerializeField] private float unitAwareDist;
+    
+    // other variables
+    // private Vector2 uTargetDir;
+    // public Vector2 DirectionToUnit { get; private set; }
+    private List<Unit> diffUnits = new List<Unit>();
 
     protected override void Start()
     {
         base.Start();
 
         this.uHealthComponent = GetComponent<HealthComponent>();
-        this.eWeaponInventory = GetComponent<EnemyWeaponInventory>(); 
+        this.eWeaponInventory = GetComponent<EnemyWeaponInventory>();
+        this.eWeaponInventory.eCurrWeapon = SpawnManager.Instance.GetWeaponForEnemy();
         
         unitTarget = PlayerManager.Instance.GetPlayer().gameObject;
+        //unitTarget = gameObject.GetComponent<Unit>();
         eAnimator = GetComponent<Animator>();
-        // eAnimator.SetBool("isPatrolling", true);
-        // eAnimator.SetFloat("patrolSpeed", ePatrolSpeed);
 
         StartPatrolling();
 
@@ -39,6 +50,10 @@ public class Enemy : Unit
     protected override void Update()
     {
         base.Update();
+
+        // player awareness controller reference implementation!
+        // Vector2 enemyToUTargetVector = uTarget.position - transform.position;
+        // DirectionToUnit = enemyToUTargetVector.normalized;
 
         DetectTarget();
 
@@ -52,21 +67,26 @@ public class Enemy : Unit
 
     private void DetectTarget()
     {
-        if (this.GetDistanceFromTargetAndSelf() < lineOfSight && this.GetDistanceFromTargetAndSelf() > shootingRange)
+        if (this.GetDistanceFromTargetAndSelf() <= lineOfSight && this.GetDistanceFromTargetAndSelf() > shootingRange)
         {
+            // chasing behaviour
             eAnimator.SetBool("isPatrolling", false);
             eAnimator.SetBool("isChasing", true);
             eAnimator.SetFloat("enemySpeed", eMoveSpeed);
+            // chasing paramter (rotation) insert here
+            LookTowardsUnit();
+           
         }
         else if (this.GetDistanceFromTargetAndSelf() <= shootingRange)
         {
+            // attacking behaviour
             eAnimator.SetBool("isChasing", false);
             eAnimator.SetBool("isAttacking", true);
         }
         else
         {
-            // set the parameter to patrol only
-            eAnimator.SetFloat("patrolSpeed", ePatrolSpeed);
+            // patrolling behaviour
+            eAnimator.SetFloat("enemyPatrolSpeed", ePatrolSpeed);
             eAnimator.SetBool("isPatrolling", true);
             eAnimator.SetBool("isChasing", false);
             eAnimator.SetBool("isAttacking", false);
@@ -81,6 +101,13 @@ public class Enemy : Unit
         Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
 
+    private void LookTowardsUnit()
+    {
+        Vector3 dir = (unitTarget.GetComponent<Transform>().position - transform.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle + eOffset, Vector3.forward);   
+    }
+
     private void StartPatrolling()
     {
         eAnimator.SetFloat("enemyPatrolSpeed", ePatrolSpeed);
@@ -90,16 +117,16 @@ public class Enemy : Unit
     }
 
     // use this implementation only for that the enemy can pass through spawnedLootables onScene
-    private void OnTriggerEnter2D(Collider2D objectLoot)
+    private void OnTriggerEnter2D(Collider2D target)
     {
-        if (objectLoot.gameObject.GetComponent<AmmoItem>())
+        if (target.gameObject.GetComponent<AmmoItem>())
         {
-            Debug.Log("Collided with " +  objectLoot.gameObject);
+            Debug.Log("Collided with " +  target.gameObject);
         }
 
-        else if (objectLoot.gameObject.GetComponent<WeaponItem>())
+        else if (target.gameObject.GetComponent<WeaponItem>())
         {
-            Debug.Log("Collided with " + objectLoot.gameObject);
+            Debug.Log("Collided with " + target.gameObject);
         }
     }
 }
