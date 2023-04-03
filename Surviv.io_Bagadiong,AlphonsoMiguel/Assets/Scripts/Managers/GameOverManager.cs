@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class CanvasManager : Singleton<CanvasManager>
+public class GameOverManager : MonoBehaviour
 {
-    
-    public void OnStartGameButtonPressed()
+
+    public void OnTryAgainButtonPressed()
     {
         SceneManager.LoadScene("Game");
     }
@@ -16,5 +15,5 @@ public class CanvasManager : Singleton<CanvasManager>
     {
         Application.Quit();
     }
-
+    
 }

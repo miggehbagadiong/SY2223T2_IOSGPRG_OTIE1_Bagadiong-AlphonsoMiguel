@@ -30,7 +30,7 @@ public class WeaponInventory : Singleton<WeaponInventory>
         currTimer += 1 * Time.deltaTime;
 
         // constant update for the ammo stock due to instances when just inserted only still nothing happens
-        if (currWeapon != null)
+        if (currWeapon)
             UiManager.Instance.UpdateCurrAmmoStockUI(currWeapon, pistolMag, rifleMag, shotgunMag);
 
     }

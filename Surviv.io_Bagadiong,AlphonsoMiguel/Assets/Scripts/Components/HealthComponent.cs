@@ -24,4 +24,9 @@ public class HealthComponent : MonoBehaviour
         return currHealth;
     }
 
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
 }

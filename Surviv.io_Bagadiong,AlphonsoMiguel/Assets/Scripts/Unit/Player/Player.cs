@@ -10,6 +10,8 @@ public class Player : Unit
         base.Start();
 
         this.uHealthComponent = GetComponent<HealthComponent>();
+        //UiManager.Instance.SetMaxHealth(this.uHealthComponent.GetMaxHealth());
+        UiManager.Instance.SetHealth(this.uHealthComponent.GetHealth());
     }
 
     // Update is called once per frame

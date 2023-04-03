@@ -58,7 +58,6 @@ public class SpawnManager : Singleton<SpawnManager>
         // will spawn enemy and initialize with the weapon
         for (int i = 0; i < numOfSpawnedEnemies; i++)
         {
-            //enemyPrefab.GetComponent<Enemy>().InitializeEnemyWeapon(enemyWeapons[Random.Range(0, enemyWeapons.Length)]);
             Spawn(enemyPrefab);
         }
             

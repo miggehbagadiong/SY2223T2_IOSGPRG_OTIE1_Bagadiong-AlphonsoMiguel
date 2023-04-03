@@ -43,7 +43,6 @@ public class Enemy : Unit
         eAnimator = GetComponent<Animator>();
 
         StartPatrolling();
-
     }
 
     // Update is called once per frame
@@ -119,14 +118,15 @@ public class Enemy : Unit
     // use this implementation only for that the enemy can pass through spawnedLootables onScene
     private void OnTriggerEnter2D(Collider2D target)
     {
+        // implemented to avoid making lootables as obstacles
         if (target.gameObject.GetComponent<AmmoItem>())
         {
-            Debug.Log("Collided with " +  target.gameObject);
+            //Debug.Log("Collided with " +  target.gameObject);
         }
 
         else if (target.gameObject.GetComponent<WeaponItem>())
         {
-            Debug.Log("Collided with " + target.gameObject);
+            //Debug.Log("Collided with " + target.gameObject);
         }
     }
 }

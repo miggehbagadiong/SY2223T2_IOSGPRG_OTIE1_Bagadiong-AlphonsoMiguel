@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -15,7 +16,12 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        // for the enemy death
+        EventManager.Instance.OnEnemyDeath += AddEnemyKills;
+        EventManager.Instance.OnEnemyDeath += CheckKills;
 
+        // for the player death
+        EventManager.Instance.OnPlayerDeath += GoToGameOver;
     }
 
     #endregion
@@ -48,15 +54,27 @@ public class GameManager : Singleton<GameManager>
     public void AddEnemyKills()
     {
         totalEnemyKills++;
+        Debug.Log("Enemy Kills: " + totalEnemyKills);
     }
 
     public void CheckKills()
     {
         if (totalEnemyKills == SpawnManager.Instance.numOfSpawnedEnemies)
         {
-            Debug.Log("All enemies killed!");
+            Debug.Log("All enemies killed! Player Won!");
             // call to event of the condition
+            Time.timeScale = 0; // use this when its winner winner chicken dinner
+
         }
+    }
+
+    #endregion
+
+    #region Scene Controller
+
+    public void GoToGameOver()
+    {
+        SceneManager.LoadScene("Game Over");
     }
 
     #endregion

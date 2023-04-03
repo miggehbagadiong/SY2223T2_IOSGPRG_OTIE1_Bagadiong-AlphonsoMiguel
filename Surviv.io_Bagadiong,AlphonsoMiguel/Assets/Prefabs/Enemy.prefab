@@ -343,6 +343,7 @@ MonoBehaviour:
   eWeaponHeld: {fileID: 429044450510636234}
   eWeaponMuzzle: {fileID: 429044450416531810}
   eWGFX: {fileID: 0}
+  eCurrWeapon: {fileID: 0}
   eAnimator: {fileID: 429044451831515932}
 --- !u!114 &429044451831515929
 MonoBehaviour:
@@ -356,8 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d1641d07ef2954d8067caeace5b70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currHealth: 100
-  maxHealth: 100
+  currHealth: 50
+  maxHealth: 50
 --- !u!95 &429044451831515932
 Animator:
   serializedVersion: 5

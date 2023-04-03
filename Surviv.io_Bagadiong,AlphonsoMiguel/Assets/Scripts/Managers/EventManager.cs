@@ -20,4 +20,10 @@ public class EventManager : Singleton<EventManager>
         OnEnemyDeath?.Invoke();
     }
 
+    public event Action OnPlayerWin;
+
+    public void InvokePlayerWin()
+    {
+        OnPlayerWin?.Invoke();
+    }
 }

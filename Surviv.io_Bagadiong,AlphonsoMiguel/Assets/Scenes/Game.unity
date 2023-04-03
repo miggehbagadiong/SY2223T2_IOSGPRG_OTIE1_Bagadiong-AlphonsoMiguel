@@ -710,6 +710,7 @@ GameObject:
   - component: {fileID: 400096089}
   - component: {fileID: 400096094}
   - component: {fileID: 400096093}
+  - component: {fileID: 400096098}
   - component: {fileID: 400096095}
   - component: {fileID: 400096097}
   - component: {fileID: 400096096}
@@ -897,6 +898,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d074d7fe6590e94eb304afffc43790e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &400096098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400096087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d1641d07ef2954d8067caeace5b70b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currHealth: 100
+  maxHealth: 100
 --- !u!61 &417297066
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1700,8 +1715,8 @@ MonoBehaviour:
   slider: {fileID: 725435411}
   gradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 1, g: 0.0037735105, b: 0.0037735105, a: 1}
+    key1: {r: 0.21065083, g: 0.8962264, b: 0.06256672, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2461,7 +2476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 978682929}
-  - component: {fileID: 978682930}
+  - component: {fileID: 978682931}
   m_Layer: 0
   m_Name: ShotgunData
   m_TagString: Untagged
@@ -2484,7 +2499,7 @@ Transform:
   m_Father: {fileID: 1315128793}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &978682930
+--- !u!114 &978682931
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2493,7 +2508,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 978682928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe725d147f6cb0549859902546119cc2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cbe4a77f5a505047897144af7348f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
@@ -2501,10 +2516,10 @@ MonoBehaviour:
   wMaxAmmo: 60
   wMagCap: 2
   weaponSprite: {fileID: 614389102, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
-  wFireRate: 1
+  wFireRate: 3
   wBullet: {fileID: 2536142194191904013, guid: 81e11ea49a618034ca0adb1fbab53c0c, type: 3}
-  wBulletSpeed: 20
-  spread: 0.7
+  wBulletSpeed: 1
+  eSpread: 0.7
 --- !u!1 &1101479036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,7 +2529,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1101479037}
-  - component: {fileID: 1101479038}
   - component: {fileID: 1101479039}
   m_Layer: 0
   m_Name: PistolData
@@ -2538,26 +2552,6 @@ Transform:
   m_Father: {fileID: 1315128793}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1101479038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101479036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c969477e9131f004f96b505b47bfa401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponType: 1
-  wCurrAmmo: 15
-  wMaxAmmo: 90
-  wMagCap: 15
-  weaponSprite: {fileID: 1777001625, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
-  wFireRate: 0.3
-  wBullet: {fileID: 151066997658545261, guid: 7d8998993f9c3b34faa106dd470932b8, type: 3}
-  wBulletSpeed: 20
 --- !u!114 &1101479039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,9 +2569,9 @@ MonoBehaviour:
   wMaxAmmo: 90
   wMagCap: 15
   weaponSprite: {fileID: 1777001625, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
-  wFireRate: 0.3
-  wBullet: {fileID: 0}
-  wBulletSpeed: 20
+  wFireRate: 2
+  wBullet: {fileID: 151066997658545261, guid: 7d8998993f9c3b34faa106dd470932b8, type: 3}
+  wBulletSpeed: 1
 --- !u!61 &1117881593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3010,9 +3004,9 @@ MonoBehaviour:
   enemyPrefab: {fileID: 429044451831515926, guid: fc7fe622433f56c409a9890910fabbe7, type: 3}
   numOfSpawnedEnemies: 5
   enemyWeapons:
-  - {fileID: 1101479038}
-  - {fileID: 1931003480}
-  - {fileID: 978682930}
+  - {fileID: 1101479039}
+  - {fileID: 1931003481}
+  - {fileID: 978682931}
 --- !u!1 &1323820878
 GameObject:
   m_ObjectHideFlags: 0
@@ -4826,7 +4820,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1931003479}
-  - component: {fileID: 1931003480}
+  - component: {fileID: 1931003481}
   m_Layer: 0
   m_Name: RifleData
   m_TagString: Untagged
@@ -4849,7 +4843,7 @@ Transform:
   m_Father: {fileID: 1315128793}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1931003480
+--- !u!114 &1931003481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4858,7 +4852,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931003478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8593f883173c9634b9fe5dcfdcc172fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 68263424c410a72449f67bcc9d6952b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 3
@@ -4866,9 +4860,9 @@ MonoBehaviour:
   wMaxAmmo: 120
   wMagCap: 30
   weaponSprite: {fileID: 1433340881, guid: 40178bc9a3ef230468f5172bedec1ade, type: 3}
-  wFireRate: 0.15
+  wFireRate: 2
   wBullet: {fileID: 259804377794743205, guid: a654830c557edda49b27942e9f2f7789, type: 3}
-  wBulletSpeed: 20
+  wBulletSpeed: 1
 --- !u!1 &1945046719
 GameObject:
   m_ObjectHideFlags: 0
@@ -5430,6 +5424,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429044451831515926, guid: fc7fe622433f56c409a9890910fabbe7, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429044451831515931, guid: fc7fe622433f56c409a9890910fabbe7, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 429044451831515933, guid: fc7fe622433f56c409a9890910fabbe7, type: 3}

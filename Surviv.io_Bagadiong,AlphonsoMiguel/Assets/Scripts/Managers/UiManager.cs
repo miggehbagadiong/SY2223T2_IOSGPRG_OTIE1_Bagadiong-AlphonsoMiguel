@@ -40,6 +40,10 @@ public class UiManager : Singleton<UiManager>
         secondaryButton.GetComponent<Button>().interactable = false;
         fireButton.GetComponent<Button>().interactable = false;
         reloadButton.GetComponent<Button>().interactable = false;
+
+        // initialize the player health on start
+        healthBar.SetMaxHealth(PlayerManager.Instance.GetPlayer().GetComponent<HealthComponent>().GetMaxHealth());
+
     }
 
     #endregion

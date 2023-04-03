@@ -65,7 +65,8 @@ public void EnemyShoot()
          // automatically reload infinitely
         if (eCurrWeapon.wCurrAmmo <= 0)
         {
-            StartCoroutine(EnemyWeaponReload(2f, eCurrWeapon));
+            Debug.Log(this.gameObject.ToString() + " reloading!");
+            StartCoroutine(EnemyWeaponReload(5f, eCurrWeapon));
         }
 
     }
@@ -77,7 +78,9 @@ public void EnemyShoot()
 private IEnumerator EnemyWeaponReload(float reloadTime, Weapon EnemyWeapon)
 {
     yield return new WaitForSeconds(reloadTime);
-    EnemyWeapon.wCurrAmmo += EnemyWeapon.wMagCap;
+    //EnemyWeapon.wCurrAmmo += EnemyWeapon.wMagCap;
+    EnemyWeapon.wCurrAmmo = EnemyWeapon.wMagCap;
+    Debug.Log("Current ammo: " + EnemyWeapon.wCurrAmmo);
 }
 
 

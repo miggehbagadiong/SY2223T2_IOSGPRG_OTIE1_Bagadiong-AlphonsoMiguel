@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class EnemyPistol : Weapon
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void GunShooting(Transform muzzle)
     {
-        
-    }
+        Debug.Log("Shooting from " + this.weaponType);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameObject bullet = Instantiate(this.wBullet, muzzle.transform.position, muzzle.transform.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(muzzle.up * bullet.GetComponent<BulletComponent>().bulletData.bulletSpeed, ForceMode2D.Impulse);
+
+        this.wCurrAmmo -= 1;
+
+        if (this.wCurrAmmo <= 0)
+        {
+            this.wCurrAmmo = 0;
+        }
+
     }
 }
