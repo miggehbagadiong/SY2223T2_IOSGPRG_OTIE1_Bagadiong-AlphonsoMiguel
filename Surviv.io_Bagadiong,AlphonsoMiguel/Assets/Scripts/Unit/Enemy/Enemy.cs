@@ -28,7 +28,7 @@ public class Enemy : Unit
     // other variables
     // private Vector2 uTargetDir;
     // public Vector2 DirectionToUnit { get; private set; }
-    private List<Unit> diffUnits = new List<Unit>();
+    
 
     protected override void Start()
     {

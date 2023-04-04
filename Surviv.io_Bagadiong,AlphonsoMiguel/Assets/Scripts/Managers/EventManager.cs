@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EventManager : Singleton<EventManager>
 {
@@ -18,12 +19,5 @@ public class EventManager : Singleton<EventManager>
     public void InvokeEnemyDeath()
     {
         OnEnemyDeath?.Invoke();
-    }
-
-    public event Action OnPlayerWin;
-
-    public void InvokePlayerWin()
-    {
-        OnPlayerWin?.Invoke();
     }
 }

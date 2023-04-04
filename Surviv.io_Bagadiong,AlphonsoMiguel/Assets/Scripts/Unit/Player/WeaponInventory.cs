@@ -187,13 +187,11 @@ public class WeaponInventory : Singleton<WeaponInventory>
 public void Shoot()
 {
 
-    if (currTimer >= currWeapon.wFireRate)
+    if (currTimer >= currWeapon.wFireRate && GameManager.Instance.GetIsFireButtonHeld())
     {
         currWeapon.GunShooting(this.wMuzzle);
         currTimer = 0;
     }
-    // reimplement here with the fireRate (?)
-    //currWeapon.GunShooting(this.wMuzzle); // change to the coroutine
 }
 
 public void Reload()
@@ -281,4 +279,3 @@ public void Reload()
     #endregion
 
 }
-

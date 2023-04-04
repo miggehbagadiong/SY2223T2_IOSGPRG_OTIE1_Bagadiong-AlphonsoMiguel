@@ -30,6 +30,9 @@ public class SpawnManager : Singleton<SpawnManager>
     public Weapon[] enemyWeapons;
     private int randWeaponVal;
 
+    [Header("Unit List")]
+    private List<Unit> diffUnits = new List<Unit>();
+
 #endregion
 
 #region Unity Functions

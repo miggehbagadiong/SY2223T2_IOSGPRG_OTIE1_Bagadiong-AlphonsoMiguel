@@ -14,6 +14,12 @@ public class GameManager : Singleton<GameManager>
     // Parameters for checking the kill counts
     [HideInInspector]public int totalEnemyKills;
 
+    [Header("Ui Canvases")]
+    public GameObject gameCanvas;
+    public GameObject chickenWinCanvas;
+
+    private bool isFireButtonHeld = false;
+
     void Start()
     {
         // for the enemy death
@@ -22,6 +28,9 @@ public class GameManager : Singleton<GameManager>
 
         // for the player death
         EventManager.Instance.OnPlayerDeath += GoToGameOver;
+
+        // on start of this scene, set to game ui canvas
+        SetActiveCanvas("game");
     }
 
     #endregion
@@ -31,6 +40,25 @@ public class GameManager : Singleton<GameManager>
     public void OnShootButtonPressed()
     {
         WeaponInventory.Instance.Shoot();
+    }
+
+    public void OnShootButtonOnHold()
+    {
+        if (WeaponInventory.Instance.currWeapon.weaponType == WeaponType.Rifle)
+        {
+            isFireButtonHeld = true;
+            WeaponInventory.Instance.Shoot();
+        }  
+    }
+
+    public void OnShootButtonReleased()
+    {
+        isFireButtonHeld = false;
+    }
+
+    public bool GetIsFireButtonHeld()
+    {
+        return isFireButtonHeld;
     }
 
     public void OnReloadButtonPressed()
@@ -46,6 +74,16 @@ public class GameManager : Singleton<GameManager>
     public void OnSecondaryButtonPressed()
     {
         WeaponInventory.Instance.SwitchWeapon("secondary");
+    }
+
+    public void OnTryAgainButtonPressed()
+    {
+        SceneManager.LoadScene("Start");
+    }
+
+    public void OnQuitButtonPressed()
+    {
+        Application.Quit();
     }
 
     #endregion
@@ -64,6 +102,7 @@ public class GameManager : Singleton<GameManager>
             Debug.Log("All enemies killed! Player Won!");
             // call to event of the condition
             Time.timeScale = 0; // use this when its winner winner chicken dinner
+            SetActiveCanvas("chicken dinner");
 
         }
     }
@@ -75,6 +114,20 @@ public class GameManager : Singleton<GameManager>
     public void GoToGameOver()
     {
         SceneManager.LoadScene("Game Over");
+    }
+
+    public void SetActiveCanvas(string activeCanvas)
+    {
+        if (activeCanvas == "game")
+        {
+            gameCanvas.SetActive(true);
+            chickenWinCanvas.SetActive(false);
+        }
+        else if (activeCanvas == "chicken dinner")
+        {
+            gameCanvas.SetActive(false);
+            chickenWinCanvas.SetActive(true);
+        }
     }
 
     #endregion

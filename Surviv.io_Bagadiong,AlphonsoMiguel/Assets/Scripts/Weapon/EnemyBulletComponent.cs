@@ -19,7 +19,7 @@ public class EnemyBulletComponent : MonoBehaviour
             if (unitObj.gameObject.GetComponent<Player>().GetComponent<HealthComponent>().GetHealth() <= 0)
             {
                 Debug.Log("Player Dead!");
-                //EventManager.Instance.InvokePlayerDeath();
+                EventManager.Instance.InvokePlayerDeath();
             }
         }
         else if (unitObj.gameObject.GetComponent<WorldObjects>() || unitObj.gameObject.GetComponent<WorldWalls>())

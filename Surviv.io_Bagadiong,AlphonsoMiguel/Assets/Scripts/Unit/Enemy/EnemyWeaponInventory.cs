@@ -77,8 +77,10 @@ public void EnemyShoot()
 // infinite reloading time
 private IEnumerator EnemyWeaponReload(float reloadTime, Weapon EnemyWeapon)
 {
+    
     yield return new WaitForSeconds(reloadTime);
-    //EnemyWeapon.wCurrAmmo += EnemyWeapon.wMagCap;
+    
+    // should work where this will infinitely reload and referencee the currAmmo only to the magCap
     EnemyWeapon.wCurrAmmo = EnemyWeapon.wMagCap;
     Debug.Log("Current ammo: " + EnemyWeapon.wCurrAmmo);
 }
