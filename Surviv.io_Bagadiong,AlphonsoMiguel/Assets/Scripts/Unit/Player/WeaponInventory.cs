@@ -187,7 +187,8 @@ public class WeaponInventory : Singleton<WeaponInventory>
 public void Shoot()
 {
 
-    if (currTimer >= currWeapon.wFireRate && GameManager.Instance.GetIsFireButtonHeld())
+    //if (currTimer >= currWeapon.wFireRate && GameManager.Instance.GetIsFireButtonHeld())
+    if (currTimer >= currWeapon.wFireRate)
     {
         currWeapon.GunShooting(this.wMuzzle);
         currTimer = 0;
