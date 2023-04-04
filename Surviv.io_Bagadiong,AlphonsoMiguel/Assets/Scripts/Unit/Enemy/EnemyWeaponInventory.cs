@@ -8,7 +8,7 @@ public class EnemyWeaponInventory : MonoBehaviour
     [Header("Enemy Weapon Parameters")]
     [SerializeField] GameObject eWeaponHeld;
     [SerializeField] Transform eWeaponMuzzle;
-    [SerializeField, HideInInspector] SpriteRenderer eWGFX;
+    [SerializeField] SpriteRenderer eWGFX;
     [HideInInspector] public Weapon eCurrWeapon;
     [SerializeField] Animator eAnimator;
     private float eCurrTimer = 0;
@@ -36,13 +36,15 @@ public class EnemyWeaponInventory : MonoBehaviour
 
     public void AddEnemyWeapon(Weapon settedEnemyWeap)
     {
-        eCurrWeapon = settedEnemyWeap;
+        this.eCurrWeapon = settedEnemyWeap;
+
         ShowEnemyGun(settedEnemyWeap);
     }
 
     public void ShowEnemyGun(Weapon weap)
     {
         eWGFX.sprite = weap.weaponSprite;
+        eWeaponHeld.GetComponent<SpriteRenderer>().sprite = weap.weaponSprite;
     }
 
     Transform GetMuzzle()
